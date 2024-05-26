@@ -8,7 +8,7 @@ SRC = megaphone.cpp
 
 OBJ_FOLDER = object_files
 
-OBJ_SRC = $(addprefix $(OBJ_FOLDER)/, $(SRC:.cpp=.o))
+OBJ_SRC = $(SRC:%.cpp=$(OBJ_FOLDER)/%.o)
 
 all : $(NAME)
 

@@ -1,0 +1,36 @@
+NAME = phonebook
+
+CC = g++
+
+CFLAGS = -Wall -Wextra -Werror -std=c++98 $(INC)
+
+INC = -I include
+
+SRC_FOLDER = src
+
+SRC = $(wildcard $(SRC_FOLDER)/*.cpp)
+
+OBJ_FOLDER = object_files
+
+OBJ = $(SRC:$(SRC_FOLDER)/%.cpp=$(OBJ_FOLDER)/%.o)
+
+all: $(NAME)
+
+$(NAME): $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) -o $@
+
+$(OBJ_FOLDER)/%.o: $(SRC_FOLDER)/%.cpp | $(OBJ_FOLDER) #$(OBJ_FOLDER) is to check if the folder exists
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(OBJ_FOLDER):
+	@mkdir -p $(OBJ_FOLDER)
+
+clean:
+	rm -rf $(OBJ_FOLDER)
+
+fclean: clean
+	rm -f $(NAME)
+
+re: fclean all
+
+.PHONY: all clean fclean re
