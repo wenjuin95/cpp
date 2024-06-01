@@ -1,14 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   contact.cpp                                        :+:      :+:    :+:   */
+/*   phonebook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: welow < welow@student.42kl.edu.my>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/26 17:58:25 by welow             #+#    #+#             */
-/*   Updated: 2024/05/26 17:58:25 by welow            ###   ########.fr       */
+/*   Created: 2024/06/01 18:39:32 by welow             #+#    #+#             */
+/*   Updated: 2024/06/01 18:39:32 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "contact.hpp"
+#ifndef PHONEBOOK_HPP
+# define PHONEBOOK_HPP
 
+#include <iostream>
+
+//Phonebook :: store contacts

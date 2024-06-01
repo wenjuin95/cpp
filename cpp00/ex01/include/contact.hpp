@@ -20,12 +20,25 @@
 * constructor: function called when an object is created
 * destructor: function called when an object is deleted
 */
+
+//Contact :: get contact information
+/*
+* 1. first & last name
+* 2. nickname
+* 3. phone number
+* 4. dark secret is a secret word (optional)
+*/
 class Contact
 {
+	private
+		std::string first_name;
+		std::string last_name;
+		std::string	nickname;
+		std::string	dark_secret;
+		int			phone_number;
 	public:
-		Contact(); //constructor
-		~Contact(); //destructor
-		
+		Contact();
+		~Contact();
 };
 
 #endif
