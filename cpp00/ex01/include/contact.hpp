@@ -16,9 +16,16 @@
 #include <iostream>
 
 /*
-* class: smilar to strcut in c
-* constructor: function called when an object is created
-* destructor: function called when an object is deleted
+* class: smilar to struct in c
+*
+* important for default constructor:
+* 1. Initialization: This avoids any undefined or unexpected state.
+* 2. Consistency: Ensures that every Car object starts in a consistent and 
+*	 predictable state, improving code reliability and readability.
+* 3. Safety: Helps prevent bugs related to uninitialized member variables, 
+*	 especially for built-in types like int, where uninitialized variables 
+*	 can lead to undefined behavior.
+*
 */
 
 //Contact :: get contact information
