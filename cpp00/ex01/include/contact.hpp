@@ -26,9 +26,12 @@
 *	 especially for built-in types like int, where uninitialized variables 
 *	 can lead to undefined behavior.
 *
+* destuctor :: purpose is to perform cleanup tasks, 
+* 	 		   such as releasing resources or deallocating memory, 
+* 			   associated with the object before it is destroyed
 */
 
-//Contact :: get contact information
+//Contact :: get & print contact information
 /*
 * 1. first & last name
 * 2. nickname
@@ -44,8 +47,25 @@ class Contact
 		std::string	dark_secret;
 		int			phone_number;
 	public:
-		Contact();
-		~Contact();
+		Contact(); //default constructor
+		~Contact(); //destructor
+
+		//setter :: set the value of the contact
+		void set_first_name(std::string first_name);
+		void set_last_name(std::string last_name);
+		void set_nickname(std::string nickname);
+		void set_phone_number(int phone_number);
+		void set_dark_secret(std::string dark_secret);
+		
+		//getter :: get the value from the contact
+		std::string get_first_name();
+		std::string get_last_name();
+		std::stirng get_nickname();
+		int get_phone_number();
+		std::string get_dark_secret();
+		
+		//print contact
+		void print_contact();
 };
 
 #endif
