@@ -12,71 +12,52 @@
 
 #include "contact.hpp"
 
-//default constructor
-Contact::Contact() {}
-
-/* 
-* destuctor :: purpose is to perform cleanup tasks, 
-* 	 		   such as releasing resources or deallocating memory, 
-* 			   associated with the object before it is destroyed
-*/
-Contact::~Contact() {}
-
-Contact::set_first_name(std::string fn)
+void Contact::set_first_name(std::string fn)
 {
-	fn = first_name;
+	_firstName = fn;
 }
 
-Contact::set_last_name(std::string ln)
+void Contact::set_last_name(std::string ln)
 {
-	ln = last_name;
+	_lastName = ln;
 }
 
-Contact::set_nickname(std::string nn)
+void Contact::set_nickname(std::string nn)
 {
-	nn = nickname;
+	_nickName = nn;
 }
 
-Contact::set_phone_number(int pn)
+void Contact::set_phone_number(std::string pn)
 {
-	pn = phone_number;
+	_phoneNumber = pn;
 }
 
-Contact::set_dark_secret(std::string ds)
+void Contact::set_dark_secret(std::string ds)
 {
-	ds = dark_secret;
+	_darkSecret = ds;
 }
 
-Contact::get_first_name()
+std::string Contact::get_first_name(void)
 {
-	return (first_name);
+	return (_firstName);
 }
 
-Contact::get_last_name()
+std::string Contact::get_last_name(void)
 {
-	return (last_name);
+	return (_lastName);
 }
 
-Contact::get_nickname()
+std::string Contact::get_nickname(void)
 {
-	return (nickname);
+	return (_nickName);
 }
 
-Contact::get_phone_number()
+std::string Contact::get_phone_number(void)
 {
-	return (phone_number);
+	return (_phoneNumber);
 }
 
-Contact::get_dark_secret()
+std::string Contact::get_dark_secret(void)
 {
-	return (dark_secret);
-}
-
-Contact::print_contact()
-{
-	std::cout << "First Name: " << first_name << "\n";
-	std::cout << "Last Name: " << last_name << "\n";
-	std::cout << "Nickname: " << nickname << "\n";
-	std::cout << "Phone Number: " << phone_number << "\n";
-	std::cout << "Dark Secret: " << dark_secret << "\n";
+	return (_darkSecret);
 }

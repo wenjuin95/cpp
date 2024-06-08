@@ -18,21 +18,27 @@
 /*
 * class: smilar to struct in c
 *
-* important for default constructor:
-* 1. Initialization: This avoids any undefined or unexpected state.
-* 2. Consistency: Ensures that every Car object starts in a consistent and 
-*	 predictable state, improving code reliability and readability.
-* 3. Safety: Helps prevent bugs related to uninitialized member variables, 
-*	 especially for built-in types like int, where uninitialized variables 
-*	 can lead to undefined behavior.
+* constructor :: purpose is to initialize the object of the class
+* default constructor :: 1. constructor with no arguments
+*						 2. if no constructor is defined, the compiler provides 
+*							a default constructor
 *
 * destuctor :: purpose is to perform cleanup tasks, 
 * 	 		   such as releasing resources or deallocating memory, 
 * 			   associated with the object before it is destroyed
+* default destructor :: 1. destructor with no arguments
+*						2. if no destructor is defined, the compiler provides 
+*						   a default destructor
+*
+* private :: not allow to access from outside the class
+* note: to access private member, use public member function (set & get)
+* 
+* public :: allow to access from outside the class
+* note: to access public member, use object of the class
 */
 
-//Contact :: get & print contact information
 /*
+* contact information consist of:
 * 1. first & last name
 * 2. nickname
 * 3. phone number
@@ -40,32 +46,27 @@
 */
 class Contact
 {
-	private
-		std::string first_name;
-		std::string last_name;
-		std::string	nickname;
-		std::string	dark_secret;
-		int			phone_number;
+	private:
+		std::string _firstName; // "_" is a naming convention to indicate private member
+		std::string _lastName;
+		std::string	_nickName;
+		std::string	_darkSecret;
+		std::string _phoneNumber;
+		
 	public:
-		Contact(); //default constructor
-		~Contact(); //destructor
-
 		//setter :: set the value of the contact
 		void set_first_name(std::string first_name);
 		void set_last_name(std::string last_name);
 		void set_nickname(std::string nickname);
-		void set_phone_number(int phone_number);
+		void set_phone_number(std::string phone_number);
 		void set_dark_secret(std::string dark_secret);
 		
 		//getter :: get the value from the contact
-		std::string get_first_name();
-		std::string get_last_name();
-		std::stirng get_nickname();
-		int get_phone_number();
-		std::string get_dark_secret();
-		
-		//print contact
-		void print_contact();
+		std::string get_first_name(void);
+		std::string get_last_name(void);
+		std::stirng get_nickname(void);
+		std::string get_phone_number(void);
+		std::string get_dark_secret(void);
 };
 
 #endif
