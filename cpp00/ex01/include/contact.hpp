@@ -107,7 +107,6 @@ class Contact
 
 		int check_alpha(std::string str);
 		int check_digit(std::string str);
-		// void print_contact(void);
 };
 
 #endif
