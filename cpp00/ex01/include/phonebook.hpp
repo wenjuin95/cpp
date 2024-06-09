@@ -32,7 +32,10 @@ class Phonebook
 	public:
 		Phonebook(void);
 		~Phonebook(void);
+		void add_contact(void);
+		void search_contact(void);
+		void display_contact(void);
 
-}
+};
 
 #endif
