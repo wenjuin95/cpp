@@ -34,13 +34,13 @@ class Phonebook
 	private:
 		Contact _contact[8];
 		int _index;
-		//void backdoor(void); show purpose
+		// void backdoor(void); //show purpose
 	public:
 		Phonebook(void);
 		~Phonebook(void);
 		void add_contact(void);
 		void search_contact(void);
-		// void display_contact(void); //show purpose
+		void display_contact(void); //show purpose
 
 };
 

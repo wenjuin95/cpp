@@ -187,25 +187,25 @@ void	Phonebook::add_contact(void)
 }
 
 //function to show contact (debug use)
-// void	Phonebook::display_contact(void)
-// {
-// 	std::cout << "|" << "No.";
-// 	std::cout << "|" << std::setw(10) << "FirstName";
-// 	std::cout << "|" << std::setw(10) << "LastName";
-// 	std::cout << "|" << std::setw(10) << "NickName";
-// 	std::cout << "|" << std::setw(10) << "Phone";
-// 	std::cout << "|" << std::setw(10) << "Secret" << "|" << std::endl;
-// 	for (int i = 0; i < 8; i++)
-// 	{
-// 		std::cout << "|" << std::setw(3) << i;
-// 		std::cout << "|" << std::setw(10) << _contact[i]. get_first_name();
-// 		std::cout << "|" << std::setw(10) << _contact[i]. get_last_name();
-// 		std::cout << "|" << std::setw(10) << _contact[i]. get_nickname();
-// 		std::cout << "|" << std::setw(10) << _contact[i]. get_phone_number();
-// 		std::cout << "|" << std::setw(10) << _contact[i]. get_dark_secret();
-// 		std::cout << "|" << std::endl;
-// 	}
-// }
+void	Phonebook::display_contact(void)
+{
+	std::cout << "|" << "No.";
+	std::cout << "|" << std::setw(10) << "FirstName";
+	std::cout << "|" << std::setw(10) << "LastName";
+	std::cout << "|" << std::setw(10) << "NickName";
+	std::cout << "|" << std::setw(10) << "Phone";
+	std::cout << "|" << std::setw(10) << "Secret" << "|" << std::endl;
+	for (int i = 0; i < 8; i++)
+	{
+		std::cout << "|" << std::setw(3) << i;
+		std::cout << "|" << std::setw(10) << _contact[i]. get_first_name();
+		std::cout << "|" << std::setw(10) << _contact[i]. get_last_name();
+		std::cout << "|" << std::setw(10) << _contact[i]. get_nickname();
+		std::cout << "|" << std::setw(10) << _contact[i]. get_phone_number();
+		std::cout << "|" << std::setw(10) << _contact[i]. get_dark_secret();
+		std::cout << "|" << std::endl;
+	}
+}
 
 
 

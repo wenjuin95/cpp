@@ -6,7 +6,7 @@
 /*   By: welow < welow@student.42kl.edu.my>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 19:06:03 by welow             #+#    #+#             */
-/*   Updated: 2024/06/10 00:20:41 by welow            ###   ########.fr       */
+/*   Updated: 2024/06/17 18:13:03 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ int main(void)
 				std::cout << GREEN << "EXIT PHONEBOOK\n" << RESET;
 				break;
 			}
-			// else if (input == "SHOW")
-			// 	phonebook.display_contact();
+			else if (input == "SHOW")
+				phonebook.display_contact();
 			else
 			{
 				std::cout << RED << "Invalid command\n" << RESET;
