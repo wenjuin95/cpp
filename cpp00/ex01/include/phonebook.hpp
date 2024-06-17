@@ -13,14 +13,17 @@
 #ifndef PHONEBOOK_HPP
 # define PHONEBOOK_HPP
 
-#include <iostream>
-#include <cstdio>
+#include <iostream> //input and output
+#include <iomanip> // std::setw :: set width of the next input/output field
+#include <cstdio> //for "stdin"
 #include "contact.hpp"
 
 # define RED "\033[0;31m"
 # define GREEN "\033[0;32m"
 # define BLUE "\033[0;34m"
 # define RESET "\033[0m"
+# define TRUE 1
+# define FALSE 0
 
 /*
 *	phonebook class consist of:
@@ -41,7 +44,10 @@ class Phonebook
 		void add_contact(void);
 		void search_contact(void);
 		void display_contact(void); //show purpose
-
 };
+
+std::string	get_input(std::string message, int is_alpha);
+int			check_alpha(std::string str);
+int			check_digit(std::string str);
 
 #endif

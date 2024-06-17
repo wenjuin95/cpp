@@ -16,35 +16,35 @@
 //this constructor is for phonebook class to use
 Contact::Contact(void) {}
 
-/* ****************************DESTRUCTOR*************************************/
+/******************************DESTRUCTOR*************************************/
 //this destructor is for phonebook class to use
 Contact::~Contact(void) {}
 
 /******************************SETTER*****************************************/
-void Contact::set_first_name(std::string fn)
+// "this" is a pointer to the object that is calling the function (mean this object)
+void Contact::set_first_name(std::string firstName)
 {
-	_firstName = fn;
+	this->_firstName = firstName;
 }
 
-void Contact::set_last_name(std::string ln)
+void Contact::set_last_name(std::string lastName)
 {
-	_lastName = ln;
+	this->_lastName = lastName;
 }
 
-void Contact::set_nickname(std::string nn)
+void Contact::set_nickname(std::string nickName)
 {
-	_nickName = nn;
+	this->_nickName = nickName;
 }
 
-void Contact::set_phone_number(std::string pn)
+void Contact::set_phone_number(std::string phoneNumber)
 {
-	_phoneNumber = pn;
+	this->_phoneNumber = phoneNumber;
 }
 
-void Contact::set_dark_secret(std::string ds)
+void Contact::set_dark_secret(std::string darkSecret)
 {
-
-	_darkSecret = ds;
+	this->_darkSecret = darkSecret;
 }
 
 /*******************************GETTER****************************************/
@@ -73,27 +73,3 @@ std::string Contact::get_dark_secret(void)
 	return (_darkSecret);
 }
 
-/***************************FUNCTION*****************************************/
-int Contact::check_alpha(std::string str)
-{
-	int i = 0;
-	while (str[i])
-	{
-		if (isalpha(str[i]) == 0 && str[i] != ' ') // check if the character is not a letter and not a space
-			return (FALSE);
-		i++;
-	}
-	return (TRUE);
-}
-
-int Contact::check_digit(std::string str)
-{
-	int i = 0;
-	while (str[i])
-	{
-		if (isdigit(str[i]) == 0 && str[i] != ' ') // check if the character is not a digit and not a space
-			return (FALSE);
-		i++;
-	}
-	return (TRUE);
-}

@@ -13,8 +13,6 @@
 #ifndef CONTACT_HPP
 # define CONTACT_HPP
 
-#include <iostream>
-#include <iomanip> // std::setw :: set width of the next input/output field
 #include <string> // std::string
 /*
 * class: smilar to struct in c
@@ -45,38 +43,6 @@
 * 3. phone number
 * 4. dark secret is a secret word (optional)
 */
-// class Contact
-// {
-// 	private:
-// 		int			_index;
-// 		std::string _firstName; // "_" is a naming convention to indicate private member
-// 		std::string _lastName;
-// 		std::string	_nickName;
-// 		std::string	_darkSecret;
-// 		std::string _phoneNumber;
-		
-// 	public:
-// 		//setter :: set the value of the contact
-// 		void set_index(int index);
-// 		void set_first_name(std::string first_name);
-// 		void set_last_name(std::string last_name);
-// 		void set_nickname(std::string nickname);
-// 		void set_phone_number(std::string phone_number);
-// 		void set_dark_secret(std::string dark_secret);
-		
-// 		//getter :: get the value from the contact
-// 		std::string get_first_name(void);
-// 		std::string get_last_name(void);
-// 		std::string get_nickname(void);
-// 		std::string get_phone_number(void);
-// 		std::string get_dark_secret(void);
-
-// 		void	print_contact(void);
-// 		void	display_info(void);
-// };
-
-# define TRUE 1
-# define FALSE 0
 
 class Contact
 {
@@ -92,11 +58,11 @@ class Contact
 		~Contact(void); // because you create a constructor, you need to create a destructor
 	
 		//setter :: set the value of the contact
-		void set_first_name(std::string first_name);
-		void set_last_name(std::string last_name);
-		void set_nickname(std::string nickname);
-		void set_phone_number(std::string phone_number);
-		void set_dark_secret(std::string dark_secret);
+		void set_first_name(std::string firstName);
+		void set_last_name(std::string lastName);
+		void set_nickname(std::string nickName);
+		void set_phone_number(std::string phoneNumber);
+		void set_dark_secret(std::string darkSecret);
 		
 		//getter :: get the value from the contact
 		std::string get_first_name(void);
@@ -104,9 +70,6 @@ class Contact
 		std::string get_nickname(void);
 		std::string get_phone_number(void);
 		std::string get_dark_secret(void);
-
-		int check_alpha(std::string str);
-		int check_digit(std::string str);
 };
 
 #endif

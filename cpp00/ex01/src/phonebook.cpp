@@ -12,181 +12,43 @@
 
 #include "phonebook.hpp"
 
+/*****************************CONSTRUCTOR*************************************/
 Phonebook::Phonebook(void)
 {
 	_index = 0;
 	// backdoor();
 }
 
+/******************************DESTRUCTOR*************************************/
 Phonebook::~Phonebook(void) {}
 
-//function to add contact
+/***************************CLASS FUNCTION************************************/
 void	Phonebook::add_contact(void)
 {
-	if (_index > 7)
+	Contact t_contact; //temporary "Contact" class to store the value
+	
+	if (_index > 7) //check if the index is more than 8 then set the index to 0
 		_index = 0;
-	std::string input;
-	Contact t_contact; //temporary contact
-	while (1)
+	t_contact.set_first_name(get_input("Enter first name: ", 1));
+	t_contact.set_last_name(get_input("Enter last name: ", 1));
+	t_contact.set_nickname(get_input("Enter nick name: ", 1));
+	t_contact.set_phone_number(get_input("Enter phone number: ", 2));
+	t_contact.set_dark_secret(get_input("Enter dark secret: ", 3));
+	if (t_contact.get_first_name().empty() || t_contact.get_last_name().empty()
+	|| t_contact.get_nickname().empty() || t_contact.get_phone_number().empty() 
+	|| t_contact.get_dark_secret().empty()) //check if the input is empty
 	{
-		std::cout << "Enter first name: ";
-		std::getline(std::cin, input); // get the input from the user and assign to input
-		if (std::cin.eof()) // if the user press ctrl + D then return to main
-		{
-			std::cin.clear(); //clear the buffer
-      		clearerr(stdin);  //clear the error
-      		return;
-		}
-		if (input.empty()) 
-		{
-			std::cout << RED << "first name cannot be empty\n" << RESET;
-			continue;
-		}
-		else
-		{
-			if (t_contact.check_alpha(input) == FALSE)
-			{
-				std::cout << RED << "Only alphabet allow\n" << RESET;
-				continue;
-			}
-			else
-			{
-				t_contact.set_first_name(input);
-				// std::cout << _contact[_index].get_first_name() << std::endl; //debug
-				break ;
-			}
-		}	
+		std::cout << RED << "Contact not added\n" << RESET;
+		return;
 	}
-
-	while (1)
-	{
-		std::cout << "Enter last name: ";
-		std::getline(std::cin, input);
-		if (std::cin.eof()) // if the user press ctrl + D then return to main
-		{
-			std::cin.clear(); //clear the buffer
-      		clearerr(stdin);  //clear the error
-      		return;
-		}
-		if (input.empty())
-		{
-			std::cout << RED << "last name cannot be empty\n" << RESET;
-			continue;
-		}
-		else
-		{
-			if (t_contact.check_alpha(input) == FALSE)
-			{
-				std::cout << RED << "Only alphabet allow\n" << RESET;
-				continue;
-			}
-			else
-			{
-				t_contact.set_last_name(input);
-				// std::cout << _contact[_index].get_last_name() << std::endl; //debug
-				break ;
-			}
-		}	
-	}
-
-	while (1)
-	{
-		std::cout << "Enter nick name: ";
-		std::getline(std::cin, input);
-		if (std::cin.eof()) // if the user press ctrl + D then return to main
-		{
-			std::cin.clear(); //clear the buffer
-      		clearerr(stdin);  //clear the error
-      		return;
-		}
-		if (input.empty())
-		{
-			std::cout << RED << "nick name cannot be empty\n" << RESET;
-			continue;
-		}
-		else
-		{
-			if (t_contact.check_alpha(input) == FALSE)
-			{
-				std::cout << RED << "Only alphabet allow\n" << RESET;
-				continue;
-			}
-			else
-			{
-				t_contact.set_nickname(input);
-				// std::cout << _contact[_index].get_nickname() << std::endl; //debug
-				break ;
-			}
-		}	
-	}
-
-	while (1)
-	{
-		std::cout << "Enter phone number: ";
-		std::getline(std::cin, input);
-		if (std::cin.eof()) // if the user press ctrl + D then return to main
-		{
-			std::cin.clear(); //clear the buffer
-      		clearerr(stdin);  //clear the error
-      		return;
-		}
-		if (input.empty())
-		{
-			std::cout << RED << "phone number cannot be empty\n" << RESET;
-			continue;
-		}
-		else
-		{
-			if (t_contact.check_digit(input) == FALSE)
-			{
-				std::cout << RED << "Only digit allow\n" << RESET;
-				continue;
-			}
-			else
-			{
-				t_contact.set_phone_number(input);
-				// std::cout << _contact[_index].get_phone_number() << std::endl; //debug
-				break ;
-			}
-		}	
-	}
-
-	while (1)
-	{
-		std::cout << "Enter dark secret: ";
-		std::getline(std::cin, input);
-		if (std::cin.eof()) // if the user press ctrl + D then return to main
-		{
-			std::cin.clear(); //clear the buffer
-      		clearerr(stdin);  //clear the error
-      		return;
-		}
-		if (input.empty())
-		{
-			std::cout << RED << "dark secret cannot be empty\n" << RESET;
-			continue;
-		}
-		else
-		{
-			if (t_contact.check_alpha(input) == FALSE)
-			{
-				std::cout << RED << "Only alphabet allow\n" << RESET;
-				continue;
-			}
-			else
-			{
-				t_contact.set_dark_secret(input);
-				// std::cout << _contact[_index].get_dark_secret() << std::endl; //debug
-				break ;
-			}
-		}	
-	}
-
-	_contact[_index++] = t_contact; //assign the temporary contact to the contact and index increment
+	else 
+		_contact[_index++] = t_contact; //each of the contact will be store in the array
 	std::cout << GREEN << "Contact added successfully\n" << RESET;
 }
 
-//function to show contact (debug use)
+/*
+*	@brief function to display the list of contact
+*/
 void	Phonebook::display_contact(void)
 {
 	std::cout << "|" << "No.";
@@ -197,7 +59,7 @@ void	Phonebook::display_contact(void)
 	std::cout << "|" << std::setw(10) << "Secret" << "|" << std::endl;
 	for (int i = 0; i < 8; i++)
 	{
-		std::cout << "|" << std::setw(3) << i;
+		std::cout << "|" << std::setw(3) << i + 1;
 		std::cout << "|" << std::setw(10) << _contact[i]. get_first_name();
 		std::cout << "|" << std::setw(10) << _contact[i]. get_last_name();
 		std::cout << "|" << std::setw(10) << _contact[i]. get_nickname();
@@ -205,6 +67,80 @@ void	Phonebook::display_contact(void)
 		std::cout << "|" << std::setw(10) << _contact[i]. get_dark_secret();
 		std::cout << "|" << std::endl;
 	}
+}
+
+/*****************************FUNCTION****************************************/
+int check_alpha(std::string str)
+{
+	int i = 0;
+	while (str[i])
+	{
+		if (isalpha(str[i]) == 0 && str[i] != ' ') // check if the character is not a letter and not a space
+			return (FALSE);
+		i++;
+	}
+	return (TRUE);
+}
+
+int check_digit(std::string str)
+{
+	int i = 0;
+	while (str[i])
+	{
+		if (isdigit(str[i]) == 0 && str[i] != ' ') // check if the character is not a digit and not a space
+			return (FALSE);
+		i++;
+	}
+	return (TRUE);
+}
+
+std::string get_input(std::string message, int handle_alphanum)
+{
+	std::string input;
+	while (1)
+	{
+		std::cout << message;
+		std::getline(std::cin, input);
+		//if ctrl+D pressed then return empty string
+		if (std::cin.eof())
+		{
+			std::cin.clear(); //clears the error state of the input stream, allowing it to be used again
+	   		clearerr(stdin); //clears the end-of-file and error indicators for the stream
+			std::cout << "\n"; //newline for the next input
+			return (""); //return empty string
+		}
+		if (input.empty()) //handle "enter"
+		{
+			std::cout << RED << "Input cannot be empty\n" << RESET;
+			continue;
+		}
+		if (handle_alphanum == 1) //handle alphabet
+		{
+			if (check_alpha(input) == FALSE)
+			{
+				std::cout << RED << "Only alphabet allow\n" << RESET;
+				continue;
+			}
+		}
+		else if (handle_alphanum == 2) //handle digit
+		{
+			if (check_digit(input) == FALSE)
+			{
+				std::cout << RED << "Only digit allow\n" << RESET;
+				continue;
+			}
+		
+		}
+		else if (handle_alphanum == 3) //handle alphabet and digit
+		{
+			if (check_alpha(input) == TRUE && check_digit(input) == TRUE)
+			{
+				continue;
+			}
+		}
+		break;
+	}
+	return (input);
 }
 
 
