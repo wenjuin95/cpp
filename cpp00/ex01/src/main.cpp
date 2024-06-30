@@ -6,15 +6,12 @@
 /*   By: welow < welow@student.42kl.edu.my>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 19:06:03 by welow             #+#    #+#             */
-/*   Updated: 2024/06/18 00:11:05 by welow            ###   ########.fr       */
+/*   Updated: 2024/06/30 17:12:12 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "contact.hpp"
 #include "phonebook.hpp"
-
-#define GREEN "\033[0;32m"
-#define RESET "\033[0m"
 
 std::string ft_toupper(std::string str);
 
@@ -23,7 +20,7 @@ int main(void)
 	Phonebook phonebook;
 	std::string input;
 	
-	std::cout << BLUE << "\tWELCOME TO PHONEBOOK\t\n" << RESET;
+	std::cout << std::endl << YELLOW << "\tWELCOME TO PHONEBOOK\t" << RESET;
 	while (1)
 	{
 		std::cout << "\n";
@@ -35,12 +32,6 @@ int main(void)
 		std::cout << "\rEnter your command (ADD, SEARCH, EXIT): ";
 		std::getline(std::cin, input); // get the input from the user
 		input = ft_toupper(input);
-		if (std::cin.eof()) // if the user press ctrl + D
-		{
-			std::cout << "\n";
-			std::cout << GREEN << "EXIT PHONEBOOK\n" << RESET;
-			break;
-		}
 		if (input.empty()) // if the user press enter
 			continue;
 		else
@@ -49,15 +40,13 @@ int main(void)
 			{
 				phonebook.add_contact();
 			}
-			// else if (input == "SEARCH")
-			// 	phonebook.search_contact();
+			else if (input == "SEARCH")
+				phonebook.search_contact();
 			else if (input == "EXIT")
 			{
 				std::cout << GREEN << "EXIT PHONEBOOK\n" << RESET;
 				break;
 			}
-			else if (input == "SHOW")
-				phonebook.display_contact();
 			else
 			{
 				std::cout << RED << "Invalid command\n" << RESET;
