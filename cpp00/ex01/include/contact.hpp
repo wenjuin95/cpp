@@ -13,7 +13,7 @@
 #ifndef CONTACT_HPP
 # define CONTACT_HPP
 
-#include <string> // std::string
+# include "includelib.hpp"
 /*
 * class: smilar to struct in c
 *
@@ -36,14 +36,6 @@
 * note: to access public member, use object of the class
 */
 
-/*
-* contact information consist of:
-* 1. first & last name
-* 2. nickname
-* 3. phone number
-* 4. dark secret is a secret word (optional)
-*/
-
 class Contact
 {
 	private:
@@ -54,8 +46,6 @@ class Contact
 		std::string _darkSecret;
 	
 	public:
-		Contact(void); // default constructor myself
-		~Contact(void); // because you create a constructor, you need to create a destructor
 	
 		//setter :: set the value of the contact
 		void set_first_name(std::string firstName);

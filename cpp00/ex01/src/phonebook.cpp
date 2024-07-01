@@ -12,15 +12,10 @@
 
 #include "phonebook.hpp"
 
-/*****************************CONSTRUCTOR*************************************/
-Phonebook::Phonebook(void)
-{
-	_index = 0;
-	// backdoor(); //show purpose
-}
-
-/******************************DESTRUCTOR*************************************/
-Phonebook::~Phonebook(void) {}
+/*
+*	note: if you have nothing to define in constructor then you can remove it
+*		  because default constructor will be created automatically
+*/
 
 /***************************CLASS FUNCTION************************************/
 void	Phonebook::add_contact(void)
@@ -28,39 +23,34 @@ void	Phonebook::add_contact(void)
 	Contact t_contact; //temporary "Contact" class to store the value
 	std::string input;
 
+	_index = 0;
+	// back_door(); //for testing purpose
+	std::cout << "====================================" << std::endl;
 	std::cout << "[ type BACK to return to main menu ]" << std::endl;
 	if (_index > 7) //check if the index is more than 8 then set the index to 0
 		_index = 0;
 	input = get_input("Enter first name: ", 1);
-	if (input.empty())
-		return ;
+	CheckExitOrReturn(input);
 	t_contact.set_first_name(input);
+
 	input = get_input("Enter last name: ", 1);
-	if (input.empty())
-		return ;
+	CheckExitOrReturn(input);
 	t_contact.set_last_name(input);
+	
 	input = get_input("Enter nick name: ", 1);
-	if (input.empty())
-		return ;
+	CheckExitOrReturn(input);
 	t_contact.set_nickname(input);
+	
 	input = get_input("Enter phone number: ", 2);
-	if (input.empty())
-		return ;
+	CheckExitOrReturn(input);
 	t_contact.set_phone_number(input);
+	
 	input = get_input("Enter dark secret: ", 3);
-	if (input.empty())
-		return ;
+	CheckExitOrReturn(input);
 	t_contact.set_dark_secret(input);
-	if (t_contact.get_first_name().empty() || t_contact.get_last_name().empty()
-	|| t_contact.get_nickname().empty() || t_contact.get_phone_number().empty() 
-	|| t_contact.get_dark_secret().empty()) //check if the input is empty
-	{
-		std::cout << RED << "Contact not added\n" << RESET;
-		return;
-	}
-	else 
-		_contact[_index++] = t_contact; //each of the contact will be store in the array
-	std::cout << GREEN << "Contact added successfully\n" << RESET;
+	
+	_contact[_index++] = t_contact; //each of the contact will be store in the array
+	std::cout << GREEN << "Contact added successfully" << RESET << std::endl;
 }
 
 void	Phonebook::search_contact(void)
@@ -69,6 +59,7 @@ void	Phonebook::search_contact(void)
 	std::string input;
 	int index;
 
+	std::cout << "+----------+----------+----------+----------+" << std::endl;
 	std::cout << "|" << std::setw(10) << "index";
 	std::cout << "|" << std::setw(10) << "FirstName";
 	std::cout << "|" << std::setw(10) << "LastName";
@@ -82,30 +73,37 @@ void	Phonebook::search_contact(void)
 		std::cout << "|" << std::setw(10) << ft_truncated(_contact[i]. get_nickname()) << "|" << std::endl;
 		i++;
 	}
+	std::cout << "+----------+----------+----------+----------+" << std::endl;
+
 	while (1)
 	{
 		std::cout << "[ type BACK to return to main menu ]" << std::endl;
 		std::cout << "ENTER INDEX TO DISPLAY CONTACT [1 - 8]: ";
 		std::getline(std::cin, input);
+		if (input == "exit")
+		{
+			std::cout << GREEN << "EXIT PHONEBOOK" << RESET << std::endl;
+			exit(0);
+		}
 		if (input == "back")
 			return ;
 		if (input.empty()) //handle "enter"
 		{
-			std::cout << RED << "Input cannot be empty\n" << RESET;
+			std::cout << RED << "Input cannot be empty" << RESET << std::endl;
 			continue;
 		}
 		if (check_digit(input) == FALSE)
 		{
-			std::cout << RED << "Only digit allow\n" << RESET;
+			std::cout << RED << "Only digit allow" << RESET << std::endl;
 			continue;
 		}
-		index = atoi(input.c_str());
+		index = atoi(input.c_str()); //c_str() string to char array
 		if (index < 1 || index > 8)
 		{
-			std::cout << RED << "Index out of range\n" << RESET;
+			std::cout << RED << "Index out of range" << RESET << std::endl;
 			continue;
 		}
-		std::cout << "----------Contact ["<< index << "]----------\n";
+		std::cout << "----------Contact ["<< index << "]----------" << std::endl;
 		std::cout << "First Name: "<< _contact[index - 1].get_first_name() << std::endl;
 		std::cout << "Last Name: "<< _contact[index - 1].get_last_name() << std::endl;
 		std::cout << "Nick Name: "<< _contact[index - 1].get_nickname() << std::endl;
@@ -163,6 +161,8 @@ std::string get_input(std::string message, int handle_alphanum)
 	{
 		std::cout << message;
 		std::getline(std::cin, input);
+		if (input == "exit")
+			return ("exit");
 		if (input == "back")
 		{
 			std::cout << RED << "Contact not added\n" << RESET;
@@ -213,6 +213,20 @@ std::string	ft_truncated(std::string str)
 		str.append("."); //add "." at the end of the string
 	}
 	return (str);
+}
+
+void CheckExitOrReturn(std::string input)
+{
+	if (input == "exit")
+	{
+		std::cout << GREEN << "EXIT PHONEBOOK" << RESET << std::endl;
+		exit(0);
+	}
+	if (input == "back")
+	{
+		std::cout << RED << "Contact not added\n" << RESET;
+		return ;
+	}
 }
 
 // //for input everything to it

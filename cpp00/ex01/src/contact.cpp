@@ -12,14 +12,6 @@
 
 #include "contact.hpp"
 
-/*****************************CONSTRUCTOR*************************************/
-//this constructor is for phonebook class to use
-Contact::Contact(void) {}
-
-/******************************DESTRUCTOR*************************************/
-//this destructor is for phonebook class to use
-Contact::~Contact(void) {}
-
 /******************************SETTER*****************************************/
 // "this" is a pointer to the object that is calling the function (mean this object)
 void Contact::set_first_name(std::string firstName)
