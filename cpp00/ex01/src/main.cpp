@@ -6,7 +6,7 @@
 /*   By: welow < welow@student.42kl.edu.my>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 19:06:03 by welow             #+#    #+#             */
-/*   Updated: 2024/06/30 17:12:12 by welow            ###   ########.fr       */
+/*   Updated: 2024/07/06 16:20:55 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "phonebook.hpp"
 
 std::string ft_toupper(std::string str);
+void MenuBar(void);
 
 int main(void)
 {
@@ -23,13 +24,7 @@ int main(void)
 	std::cout << std::endl << YELLOW << "\tWELCOME TO PHONEBOOK\t" << RESET;
 	while (1)
 	{
-		std::cout << "\n";
-		std::cout << "+------------MAIN MENU------------+\n";
-		std::cout << "| ADD: to add a new contact       |\n";
-		std::cout << "| SEARCH: to search for a contact |\n";
-		std::cout << "| EXIT: to exit the phonebook     |\n";
-		std::cout << "+---------------------------------+\n";
-		std::cout << "\rEnter your command (ADD, SEARCH, EXIT): ";
+		MenuBar();
 		std::getline(std::cin, input); // get the input from the user
 		input = ft_toupper(input);
 		if (input.empty()) // if the user press enter
@@ -37,25 +32,28 @@ int main(void)
 		else
 		{
 			if(input == "ADD")
-			{
-				phonebook.add_contact();
-			}
+				phonebook.AddContact();
 			else if (input == "SEARCH")
-				phonebook.search_contact();
+				phonebook.SearchContact();
 			else if (input == "EXIT")
 			{
 				std::cout << GREEN << "EXIT PHONEBOOK\n" << RESET;
 				break;
 			}
-			else
-			{
-				std::cout << RED << "Invalid command\n" << RESET;
-				continue;
-			}
-			
 		}
 	}
 	return (0);
+}
+
+void	MenuBar(void)
+{
+	std::cout << "\n";
+	std::cout << "+------------MAIN MENU------------+\n";
+	std::cout << "| ADD: to add a new contact       |\n";
+	std::cout << "| SEARCH: to search for a contact |\n";
+	std::cout << "| EXIT: to exit the phonebook     |\n";
+	std::cout << "+---------------------------------+\n";
+	std::cout << "\rEnter your command (ADD, SEARCH, EXIT): ";
 }
 
 std::string ft_toupper(std::string str)

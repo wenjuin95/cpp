@@ -18,7 +18,7 @@
 */
 
 /***************************CLASS FUNCTION************************************/
-void	Phonebook::add_contact(void)
+void	Phonebook::AddContact(void)
 {
 	Contact t_contact; //temporary "Contact" class to store the value
 	std::string input;
@@ -29,35 +29,38 @@ void	Phonebook::add_contact(void)
 	std::cout << "[ type BACK to return to main menu ]" << std::endl;
 	if (_index > 7) //check if the index is more than 8 then set the index to 0
 		_index = 0;
-	input = get_input("Enter first name: ", 1);
-	CheckExitOrReturn(input);
+	input = get_input("Enter first name: ", false);
+	if (CheckInput(input) == false)
+		return ;
 	t_contact.set_first_name(input);
 
-	input = get_input("Enter last name: ", 1);
-	CheckExitOrReturn(input);
+	input = get_input("Enter last name: ", false);
+	if (CheckInput(input) == false)
+		return ;
 	t_contact.set_last_name(input);
 	
-	input = get_input("Enter nick name: ", 1);
-	CheckExitOrReturn(input);
+	input = get_input("Enter nick name: ", false);
+	if (CheckInput(input) == false)
+		return ;
 	t_contact.set_nickname(input);
 	
-	input = get_input("Enter phone number: ", 2);
-	CheckExitOrReturn(input);
+	input = get_input("Enter phone number: ", true);
+	if (CheckInput(input) == false)
+		return ;
 	t_contact.set_phone_number(input);
 	
-	input = get_input("Enter dark secret: ", 3);
-	CheckExitOrReturn(input);
+	input = get_input("Enter dark secret: ", false);
+	if (CheckInput(input) == false)
+		return ;
 	t_contact.set_dark_secret(input);
 	
 	_contact[_index++] = t_contact; //each of the contact will be store in the array
 	std::cout << GREEN << "Contact added successfully" << RESET << std::endl;
 }
 
-void	Phonebook::search_contact(void)
+void	Phonebook::DisplayContactList(void)
 {
-	int	i;
-	std::string input;
-	int index;
+	int i;
 
 	std::cout << "+----------+----------+----------+----------+" << std::endl;
 	std::cout << "|" << std::setw(10) << "index";
@@ -74,25 +77,37 @@ void	Phonebook::search_contact(void)
 		i++;
 	}
 	std::cout << "+----------+----------+----------+----------+" << std::endl;
+}
 
+void	Phonebook::ReturnContact(int index)
+{
+	std::cout << "----------Contact ["<< index << "]----------" << std::endl;
+	std::cout << "First Name: "<< _contact[index - 1].get_first_name() << std::endl;
+	std::cout << "Last Name: "<< _contact[index - 1].get_last_name() << std::endl;
+	std::cout << "Nick Name: "<< _contact[index - 1].get_nickname() << std::endl;
+	std::cout << "Phone Number: "<< _contact[index - 1].get_phone_number() << std::endl;
+	std::cout << "Dark Secret: "<< _contact[index - 1].get_dark_secret() << std::endl << std::endl;
+}
+
+void	Phonebook::SearchContact(void)
+{
+	std::string input;
+	int index;
+
+	DisplayContactList();
 	while (1)
 	{
 		std::cout << "[ type BACK to return to main menu ]" << std::endl;
 		std::cout << "ENTER INDEX TO DISPLAY CONTACT [1 - 8]: ";
 		std::getline(std::cin, input);
-		if (input == "exit")
-		{
-			std::cout << GREEN << "EXIT PHONEBOOK" << RESET << std::endl;
-			exit(0);
-		}
-		if (input == "back")
+		if (CheckInput(input) == false)
 			return ;
-		if (input.empty()) //handle "enter"
+		if (input.empty())
 		{
 			std::cout << RED << "Input cannot be empty" << RESET << std::endl;
 			continue;
 		}
-		if (check_digit(input) == FALSE)
+		if (CheckDigit(input) == false)
 		{
 			std::cout << RED << "Only digit allow" << RESET << std::endl;
 			continue;
@@ -103,49 +118,27 @@ void	Phonebook::search_contact(void)
 			std::cout << RED << "Index out of range" << RESET << std::endl;
 			continue;
 		}
-		std::cout << "----------Contact ["<< index << "]----------" << std::endl;
-		std::cout << "First Name: "<< _contact[index - 1].get_first_name() << std::endl;
-		std::cout << "Last Name: "<< _contact[index - 1].get_last_name() << std::endl;
-		std::cout << "Nick Name: "<< _contact[index - 1].get_nickname() << std::endl;
-		std::cout << "Phone Number: "<< _contact[index - 1].get_phone_number() << std::endl;
-		std::cout << "Dark Secret: "<< _contact[index - 1].get_dark_secret() << std::endl << std::endl;
+		ReturnContact(index);
 	}
 }
 
 /*****************************FUNCTION****************************************/
 
 /*
-*	@brief check if the input is an alphabet
-*	@param str: input from the user
-*	@return TRUE: if the input is an alphabet, FALSE: if the input is not an alphabet
-*/
-int check_alpha(std::string str)
-{
-	int i = 0;
-	while (str[i])
-	{
-		if (isalpha(str[i]) == 0 && str[i] != ' ') // check if the character is not a letter and not a space
-			return (FALSE);
-		i++;
-	}
-	return (TRUE);
-}
-
-/*
 *	@brief check if the input is a digit
 *	@param str: input from the user
 *	@return TRUE: if the input is a digit, FALSE: if the input is not a digit
 */
-int check_digit(std::string str)
+bool CheckDigit(std::string str)
 {
 	int i = 0;
 	while (str[i])
 	{
 		if (isdigit(str[i]) == 0 && str[i] != ' ') // check if the character is not a digit and not a space
-			return (FALSE);
+			return (false);
 		i++;
 	}
-	return (TRUE);
+	return (true);
 }
 
 /*
@@ -154,7 +147,7 @@ int check_digit(std::string str)
 *	@param handle_alphanum: 1 = alphabet, 2 = digit, 3 = alphabet and digit
 *	@return input: return the input from the user input
 */
-std::string get_input(std::string message, int handle_alphanum)
+std::string get_input(std::string message, bool HandleDigit)
 {
 	std::string input;
 	while (1)
@@ -166,34 +159,17 @@ std::string get_input(std::string message, int handle_alphanum)
 		if (input == "back")
 		{
 			std::cout << RED << "Contact not added\n" << RESET;
-			return ("");
+			return ("back");
 		}
-		if (input.empty()) //handle "enter"
-		{
-			std::cout << RED << "Input cannot be empty\n" << RESET;
+		if (input.empty())
 			continue;
-		}
-		if (handle_alphanum == 1) //handle alphabet
+		if (HandleDigit == true) //handle digit
 		{
-			if (check_alpha(input) == FALSE)
-			{
-				std::cout << RED << "Only alphabet allow\n" << RESET;
-				continue;
-			}
-		}
-		else if (handle_alphanum == 2) //handle digit
-		{
-			if (check_digit(input) == FALSE)
+			if (CheckDigit(input) == false)
 			{
 				std::cout << RED << "Only digit allow\n" << RESET;
 				continue;
-			}
-		
-		}
-		else if (handle_alphanum == 3) //handle alphabet and digit
-		{
-			if (check_alpha(input) == TRUE && check_digit(input) == TRUE)
-				continue;
+			}	
 		}
 		break;
 	}
@@ -215,7 +191,7 @@ std::string	ft_truncated(std::string str)
 	return (str);
 }
 
-void CheckExitOrReturn(std::string input)
+bool CheckInput(std::string input)
 {
 	if (input == "exit")
 	{
@@ -223,10 +199,8 @@ void CheckExitOrReturn(std::string input)
 		exit(0);
 	}
 	if (input == "back")
-	{
-		std::cout << RED << "Contact not added\n" << RESET;
-		return ;
-	}
+		return (false);
+	return (true);
 }
 
 // //for input everything to it

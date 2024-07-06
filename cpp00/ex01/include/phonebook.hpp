@@ -37,14 +37,15 @@ class Phonebook
 		int _index; //index of the contact
 		// void backdoor(void); //show purpose
 	public:
-		void add_contact(void);
-		void search_contact(void);
+		void AddContact(void);
+		void DisplayContactList(void);
+		void ReturnContact(int index);
+		void SearchContact(void);
 };
 
-std::string	get_input(std::string message, int is_alpha);
+std::string	get_input(std::string message, bool HandleDigit);
 std::string	ft_truncated(std::string str);
-void 		CheckExitOrReturn(std::string input);
-int			check_alpha(std::string str);
-int			check_digit(std::string str);
+bool		CheckInput(std::string input);
+bool		CheckDigit(std::string str);
 
 #endif
