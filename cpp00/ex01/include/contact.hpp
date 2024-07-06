@@ -17,12 +17,12 @@
 /*
 * class: smilar to struct in c
 *
-* constructor :: purpose is to initialize the object of the class
+* constructor :: create an object of a class and initialize it
 * default constructor :: 1. constructor with no arguments
 *						 2. if no constructor is defined, the compiler provides 
 *							a default constructor
 *
-* destuctor :: purpose is to perform cleanup tasks, 
+* destuctor :: perform cleanup tasks, 
 * 	 		   such as releasing resources or deallocating memory, 
 * 			   associated with the object before it is destroyed
 * default destructor :: 1. destructor with no arguments
@@ -46,7 +46,9 @@ class Contact
 		std::string _darkSecret;
 	
 	public:
-	
+		Contact(void); //default constructor
+		~Contact(void); //default destructor
+
 		//setter :: set the value of the contact
 		void set_first_name(std::string firstName);
 		void set_last_name(std::string lastName);

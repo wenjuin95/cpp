@@ -16,13 +16,6 @@
 #include "includelib.hpp"
 #include "contact.hpp"
 
-# define RED "\033[0;31m"
-# define GREEN "\033[1;42m"
-# define YELLOW "\033[1;43m"
-# define RESET "\033[0m"
-# define TRUE 1
-# define FALSE 0
-
 /*
 *	phonebook class consist of:
 *	1. contact information
@@ -37,10 +30,13 @@ class Phonebook
 		int _index; //index of the contact
 		// void backdoor(void); //show purpose
 	public:
+		Phonebook(void); //default constructor
+		~Phonebook(void); //default destructor
 		void AddContact(void);
+		void SearchContact(void);
+		bool GetContactDetail(Contact t_contact);
 		void DisplayContactList(void);
 		void ReturnContact(int index);
-		void SearchContact(void);
 };
 
 std::string	get_input(std::string message, bool HandleDigit);

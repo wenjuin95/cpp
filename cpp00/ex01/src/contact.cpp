@@ -12,6 +12,16 @@
 
 #include "contact.hpp"
 
+Contact::Contact(void)
+{
+	// std::cout << yellow << "Contact created" << RESET << std::endl;
+}
+
+Contact::~Contact(void)
+{
+	// std::cout << yellow << "Contact destroyed" << RESET << std::endl;
+}
+
 /******************************SETTER*****************************************/
 // "this" is a pointer to the object that is calling the function (mean this object)
 void Contact::set_first_name(std::string firstName)

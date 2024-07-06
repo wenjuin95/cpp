@@ -18,4 +18,10 @@
 #include <iomanip> // std::setw :: set width of the next input/output field
 #include <cstdlib> //for atoi
 
+# define RED "\033[0;31m"
+# define GREEN "\033[1;42m"
+# define YELLOW "\033[1;43m"
+# define yellow "\033[0;33m"
+# define RESET "\033[0m"
+
 #endif
