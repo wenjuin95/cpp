@@ -12,40 +12,59 @@
 
 #include "phonebook.hpp"
 
-/*
-*	note: if you have nothing to define in constructor then you can remove it
-*		  because default constructor will be created automatically
-*/
+int	Phonebook::_index = 0;
 
 /***************************CONSTRUCTOR & DESTRUCTOR***************************/
+/*
+*	@brief constructor: means when function called, this contructor will
+*		   be created. if you not define it default the consturrctor with 
+*		   nothing
+*	@note 1. initialize the index to 0
+*/
 Phonebook::Phonebook(void)
 {
-	// std::cout << yellow << "Phonebook created" << RESET << std::endl;
+	std::cout << yellow << "Phonebook created" << RESET << std::endl;
 }
 
+/*
+*	@brief destructor: means when function end, this constructor will be 
+*		   destroy. if you not call or not define it, the default 
+*		   destructor will be created automatically
+*/
 Phonebook::~Phonebook(void) 
 {
-	// std::cout << yellow << "Phonebook destroyed" << RESET << std::endl;
+	std::cout << yellow << "Phonebook destroyed" << RESET << std::endl;
 }
 
-/***************************CLASS FUNCTION************************************/
+/****************************MAIN FUNCTION************************************/
+/*
+*	@brief add the contact to the phonebook
+*	@param t_contract: contact to be added to the phonebook
+*	@return contract added successfully
+*	@note 1. if the index is more than 8 then set the index to 0
+*	@note 2. each of the contact will be store in the array
+*/
 void	Phonebook::AddContact(void)
 {
-	Contact t_contact; //temporary "Contact" class to store the value
+	Contact t_contact;
 	std::string input;
 
-	_index = 0;
 	// back_door(); //for testing purpose
 	std::cout << "====================================" << std::endl;
 	std::cout << "[ type BACK to return to main menu ]" << std::endl;
-	if (_index > 7) //check if the index is more than 8 then set the index to 0
+	if (_index > 7)
 		_index = 0;
 	if (GetContactDetail(t_contact) == false)
 		return ;
-	_contact[_index++] = t_contact; //each of the contact will be store in the array
+	_contact[_index++] = t_contact; 
 	std::cout << GREEN << "Contact added successfully" << RESET << std::endl;
 }
 
+/*
+*	@brief list all the contact and search for the contact
+*	@return the number of contact that want to list
+*	@note 1. c_str(): string to char array
+*/
 void	Phonebook::SearchContact(void)
 {
 	std::string input;
@@ -69,7 +88,7 @@ void	Phonebook::SearchContact(void)
 			std::cout << RED << "Only digit allow" << RESET << std::endl;
 			continue;
 		}
-		index = atoi(input.c_str()); //c_str() string to char array
+		index = atoi(input.c_str());
 		if (index < 1 || index > 8)
 		{
 			std::cout << RED << "Index out of range" << RESET << std::endl;
@@ -79,12 +98,14 @@ void	Phonebook::SearchContact(void)
 	}
 }
 
+/*****************************FUNCTION****************************************/
+
 /*
 *	@brief get the contact detail from the input
-*	@param t_contact: temporary contact class to set the value
+*	@param &t_contact: get the reference of the contact
 *	@return TRUE: if the input is success, FALSE: if the input is fail
 */
-bool Phonebook::GetContactDetail(Contact t_contact)
+bool Phonebook::GetContactDetail(Contact &t_contact)
 {
 	std::string input;
 
@@ -149,10 +170,6 @@ void	Phonebook::ReturnContact(int index)
 	std::cout << "Dark Secret: "<< _contact[index - 1].get_dark_secret() << std::endl << std::endl;
 }
 
-
-
-/*****************************FUNCTION****************************************/
-
 /*
 *	@brief check if the input is a digit
 *	@param str: input from the user
@@ -163,7 +180,7 @@ bool CheckDigit(std::string str)
 	int i = 0;
 	while (str[i])
 	{
-		if (isdigit(str[i]) == 0 && str[i] != ' ') // check if the character is not a digit and not a space
+		if (isdigit(str[i]) == 0 && str[i] != ' ')
 			return (false);
 		i++;
 	}
@@ -195,7 +212,7 @@ std::string get_input(std::string message, bool HandleDigit)
 			std::cout << RED << "Input cannot be empty\n" << RESET;
 			continue;
 		}
-		if (HandleDigit == true) //handle digit
+		if (HandleDigit == true)
 		{
 			if (CheckDigit(input) == false)
 			{
@@ -212,13 +229,14 @@ std::string get_input(std::string message, bool HandleDigit)
 *	@brief function to truncated the string
 *	@param str: string to be truncated
 *	@return str: return the truncated string
+*	@note: if the string is more than 10 len, then the string will be resize to 9 and add "."
 */
 std::string	ft_truncated(std::string str)
 {
-	if (str.length() > 10) //if the string more than 10 len
+	if (str.length() > 10)
 	{
-		str.resize(9); //resize the string len to 9
-		str.append("."); //add "." at the end of the string
+		str.resize(9);
+		str.append(".");
 	}
 	return (str);
 }

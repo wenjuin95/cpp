@@ -29,11 +29,13 @@
 *						2. if no destructor is defined, the compiler provides 
 *						   a default destructor
 *
-* private :: not allow to access from outside the class
+* private: only able to access within the class not outside the class 
 * note: to access private member, use public member function (set & get)
+* EXAMPLE: _firstName only able to access by "set_first_name" 
+*		   and "get_first_name" function
 * 
-* public :: allow to access from outside the class
-* note: to access public member, use object of the class
+* public: able to access from outside the class and within the class
+* EXAMPLE: "set_first_name" and "get_first_name" use in main.cpp 
 */
 
 class Contact
@@ -46,8 +48,8 @@ class Contact
 		std::string _darkSecret;
 	
 	public:
-		Contact(void); //default constructor
-		~Contact(void); //default destructor
+		Contact(void);
+		~Contact(void); 
 
 		//setter :: set the value of the contact
 		void set_first_name(std::string firstName);

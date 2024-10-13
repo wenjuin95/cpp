@@ -42,7 +42,6 @@ int main(void)
 
 /*
 *	@brief display the main menu
-
 */
 void	MenuBar(void)
 {

@@ -17,24 +17,34 @@
 #include "contact.hpp"
 
 /*
-*	phonebook class consist of:
-*	1. contact information
-*	2. add contact
-*	3. search contact
-*	4. display contact
+*	@brief class Phonebook
+*	@note 1. class Phonebook is a class that store the contact
+*	@note 2. class Phonebook have the following function:
+*		- AddContact: add the contact to the phonebook
+*		- SearchContact: search the contact in the phonebook
+*		- GetContactDetail: get the contact detail from the input
+*		- DisplayContactList: display the contact list
+*		- ReturnContact: return the contact detail
+*/
+/*
+*	private: only able to access within the class not outside the class
+*	EXAMPLE: _contact only able to access by "AddContact", "SearchContact"
+*	         and "ReturnContact" function
+*	public: able to access from outside the class and within the class
+*	EXAMPLE: "AddContact" and "SearchContact" use in main.cpp
 */
 class Phonebook
 {
 	private:
-		Contact _contact[8]; //array of contact
-		int _index; //index of the contact
+		Contact _contact[8];
+		static int _index;
 		// void backdoor(void); //show purpose
 	public:
-		Phonebook(void); //default constructor
-		~Phonebook(void); //default destructor
+		Phonebook(void);
+		~Phonebook(void);
 		void AddContact(void);
 		void SearchContact(void);
-		bool GetContactDetail(Contact t_contact);
+		bool GetContactDetail(Contact &t_contact);
 		void DisplayContactList(void);
 		void ReturnContact(int index);
 };

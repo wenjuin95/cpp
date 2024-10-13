@@ -12,18 +12,30 @@
 
 #include "contact.hpp"
 
+/*
+*	@brief create a contact constructor
+*/
 Contact::Contact(void)
 {
-	// std::cout << yellow << "Contact created" << RESET << std::endl;
+	std::cout << yellow << "Contact created" << RESET << std::endl;
 }
 
+/*
+*	@brief create a contact destructor
+*/
 Contact::~Contact(void)
 {
-	// std::cout << yellow << "Contact destroyed" << RESET << std::endl;
+	std::cout << yellow << "Contact destroyed" << RESET << std::endl;
 }
 
 /******************************SETTER*****************************************/
-// "this" is a pointer to the object that is calling the function (mean this object)
+/*
+*	@brief set the first name to the private member (_firstName)
+*	@param firstName: the first name of the input
+*	@note 1. "this" is a pointer to the object that is calling the function
+			 means get this object from the class Contact
+*/ 
+//<data type> <class name>::<function name>(<parameter>)
 void Contact::set_first_name(std::string firstName)
 {
 	this->_firstName = firstName;
@@ -50,6 +62,10 @@ void Contact::set_dark_secret(std::string darkSecret)
 }
 
 /*******************************GETTER****************************************/
+/*
+*	@brief get the first name from the private member (_firstName)
+*	@return the first name of the contact
+*/
 std::string Contact::get_first_name(void)
 {
 	return (_firstName);
