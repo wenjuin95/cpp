@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Account.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wenjuin <wenjuin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: welow < welow@student.42kl.edu.my>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 15:32:50 by welow             #+#    #+#             */
-/*   Updated: 2024/10/13 21:37:09 by wenjuin          ###   ########.fr       */
+/*   Updated: 2024/10/14 15:19:17 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,56 @@ int Account::_totalAmount = 0;
 int Account::_totalNbDeposits = 0;
 int Account::_totalNbWithdrawals = 0;
 
-//to get these variable in private we use getter
+//to get these variable value in private we use getter
 int Account::getNbAccounts( void ) { return _nbAccounts; }
 int Account::getTotalAmount( void ) { return _totalAmount; }
 int Account::getNbDeposits( void ) { return _totalNbDeposits; }
 int Account::getNbWithdrawals( void ) { return _totalNbWithdrawals; }
 
 /*
+*   @brief when create a new account, display the timestamp and account index and amount
+*   @param initial_deposit user input the amount
+*	@note 1. get the account index for each of the account created and update the number of account
+*	@note 2. set the amount of user input
+*	@note 3. add the amount to the total_amount when new account created and they have amount
+*	@note 4. initialize the number of deposits and withdrawals
+*/
+Account::Account( int initial_deposit ) {
+    _accountIndex = getNbAccounts();
+    _nbAccounts++; 
+    _amount = initial_deposit; 
+    _totalAmount += initial_deposit; 
+    _nbDeposits = 0; 
+    _nbWithdrawals = 0; 
+    _displayTimestamp();
+    std::cout << "index:" << _accountIndex << ";" 
+                << "amount:" << checkAmount() << ";" 
+                << "created" << std::endl;
+}
+
+/*
+*   @brief close the account when finish
+*/
+Account::~Account( void ) {
+    _displayTimestamp(); // Display the timestamp
+    std::cout << "index:" << _accountIndex << ";" 
+                << "amount:" << checkAmount() << ";" 
+                << "closed" << std::endl;
+}
+
+/*
 *   @brief check the amount of the account
 *   @return the amount of the account
-*   @note this function is const because it does not modify the object
+*	@note const: class member in the function only able to read and can't modify
 */
 int	Account::checkAmount( void ) const {
     return _amount;
 }
 
+/*
+*	@brief display the account status
+*	@note const: class member in the function only able to read and can't modify
+*/
 void	Account::displayStatus( void ) const {
     Account::_displayTimestamp();
     std::cout << "index:" << _accountIndex << ";"
@@ -47,52 +82,29 @@ void	Account::displayStatus( void ) const {
 *   @brief display the account status
 */
 void Account::displayAccountsInfos( void ) {
-    _displayTimestamp(); // Display the timestamp
+    _displayTimestamp();
     std::cout << "accounts:" << Account::getNbAccounts() << ";"
                 << "total:" << Account::getTotalAmount() << ";"
                 << "deposits:" << Account::getNbDeposits() << ";"
                 << "withdrawals:" << Account::getNbWithdrawals() << std::endl;
 }
 
-/*
-*   @brief when create a new account, display the timestamp and account index and amount
-*   @param initial_deposit the initial deposit
-*/
-Account::Account( int initial_deposit ) {
-    _nbDeposits = 0;  //initialize the number of deposits
-    _nbWithdrawals = 0; //initialize the number of withdrawals
-    _nbAccounts++; // Increment the number of accounts each time a new account is created
-    _accountIndex = _nbAccounts - 1; //get the first account index start from 0
-    _amount = initial_deposit; // Set the initial deposit
-    _totalAmount += initial_deposit; // Increment the total amount each time a new account is created
-    _displayTimestamp(); // Display the timestamp
-    std::cout << "index:" << _accountIndex << ";" 
-                << "amount:" << _amount << ";" 
-                << "created" << std::endl;
-}
-
-/*
-*   @brief close the account when finish
-*/
-Account::~Account( void ) {
-    _displayTimestamp(); // Display the timestamp
-    std::cout << "index:" << _accountIndex << ";" 
-                << "amount:" << _amount << ";" 
-                << "closed" << std::endl;
-}
 
 /*
 *   @brief display the timestamp
+*	@note setw: set the width of the output to 2 (mean 2 digit)
+*	@note setfill: fill the empty space with '0'
+*	@note year start from 1900 so you get the total year not this year
 */
 void Account::_displayTimestamp( void ) {
     time_t  now;
     struct tm *tm;
 
-    now = time(0); // Get the current time
-    tm = localtime(&now); // Convert the current time to the local time
+    now = time(0);
+    tm = localtime(&now);
     std::cout << "["
-                << tm->tm_year + 1900 //year start from 1900 so you get the total year not this year
-                << std::setw(2) << std::setfill('0') << tm->tm_mon + 1 //+1 is because month start from 0
+                << tm->tm_year + 1900
+                << std::setw(2) << std::setfill('0') << tm->tm_mon + 1
                 << std::setw(2) << std::setfill('0') << tm->tm_mday
                 << "_"
                 << std::setw(2) << std::setfill('0') << tm->tm_hour
@@ -102,42 +114,46 @@ void Account::_displayTimestamp( void ) {
 }
 
 /*
-*   @brief display the amount of the account after deposit or withdrawal
+*   @brief display the amount of the account after deposit
+*   @param deposit the amount that user want to deposit
+*	@note 1. print the account previous amount
+*	@note 2. update the amount and total_amount with the "deposit"
+*	@note 3. update the number of deposits and total number of deposits
+*	@note 4. print the updated amount and number of deposits
 */
 void Account::makeDeposit( int deposit ) {
-    _nbDeposits++; // Increment the number of deposits
-    _amount += deposit; // Increment the amount
-    _totalNbDeposits++; // Increment the total number of deposits
-    _totalAmount += deposit; // Increment the total amount
     Account::_displayTimestamp();
-    std::cout << "index:" << _accountIndex << ";"
-                << "p_amount:" << _amount << ";"
-                << "deposit:" << deposit << ";"
-                << "amount:" << _amount + deposit << ";"
-                << "nb_deposits:" << _nbDeposits << std::endl;
+    std::cout << "index:" << _accountIndex << ";" << "p_amount:" << checkAmount() << ";" ;
+    _amount += deposit;
+    _totalAmount += deposit;
+    _nbDeposits++;
+    _totalNbDeposits++;
+    std::cout << "deposit:" << deposit << ";" << "amount:" << checkAmount() << ";" << "nb_deposits:" << _nbDeposits << std::endl;
 }
 
 /*
 *   @brief display the amount of the account after withdrawal 
+*   @param withdrawal the amount that user want to withdraw
 *   @return true with the amount that withdraw, false with print refused
+*	@note 1. if the amount was more then the amount user have, print refused and return "false"
+*	@note 2. if "true" the amount and total amount will decrease from the withdrawal amount
+*	@note 3. update the number of withdrawal and total number of withdrawal
+*	@note 4. print the updated amount and number of withdrawals and return "true"
 */
 bool	Account::makeWithdrawal( int withdrawal ) {
     Account::_displayTimestamp();
-    _nbWithdrawals++; // Increment the number of withdrawals
-    _totalNbWithdrawals++; // Increment the total number of withdrawals
-    std::cout << "index:" << _accountIndex << ";"
-                << "p_amount:" << _amount << ";"
-                << "withdrawal:" << withdrawal << ";";
-    if (withdrawal > _amount) // if the withdrawal is greater than the amount
+    std::cout << "index:" << _accountIndex << ";" << "p_amount:" << checkAmount() << ";" << "withdrawal:" ;
+    if (checkAmount() < withdrawal) 
     {
         std::cout << "refused" << std::endl;
         return false;
     }
-    // if the withdrawal is less than the amount
-     _amount -= withdrawal; // Decrement the amount
-     _totalAmount -= withdrawal; // Decrement the total amount
-     std::cout << "amount:" << _amount - withdrawal << ";"
-                 << "nb_withdrawals:" << _nbWithdrawals << std::endl;
+    
+     _amount -= withdrawal;
+     _totalAmount -= withdrawal;
+    _totalNbWithdrawals++;
+    _nbWithdrawals++;
+     std::cout << withdrawal << ";" << "amount:" << checkAmount() << ";" << "nb_withdrawals:" << _nbWithdrawals << std::endl;
      return true;
 }
 
