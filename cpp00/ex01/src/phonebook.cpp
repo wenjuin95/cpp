@@ -12,16 +12,16 @@
 
 #include "phonebook.hpp"
 
-int	Phonebook::_index = 0;
-
 /***************************CONSTRUCTOR & DESTRUCTOR***************************/
 /*
 *	@brief constructor: means when function called, this contructor will
 *		   be created. if you not define it default the consturrctor with 
 *		   nothing
 *	@note 1. initialize the index to 0
+*	@note 2. after constructor have ":", we called initializer list to initialize the variable
+*				<variable_name>(<value>) = variable_name initialize with value
 */
-Phonebook::Phonebook(void)
+Phonebook::Phonebook(void) : _index(0)
 {
 	std::cout << yellow << "Phonebook created" << RESET << std::endl;
 }
@@ -52,11 +52,11 @@ void	Phonebook::AddContact(void)
 	// back_door(); //for testing purpose
 	std::cout << "====================================" << std::endl;
 	std::cout << "[ type BACK to return to main menu ]" << std::endl;
-	if (_index > 7)
+	if (this->_index > 7)
 		_index = 0;
 	if (GetContactDetail(t_contact) == false)
 		return ;
-	_contact[_index++] = t_contact; 
+	_contact[this->_index++] = t_contact; 
 	std::cout << GREEN << "Contact added successfully" << RESET << std::endl;
 }
 
@@ -148,9 +148,9 @@ void	Phonebook::DisplayContactList(void)
 	while (i < 8)
 	{
 		std::cout << "|" << std::setw(10) << i + 1;
-		std::cout << "|" << std::setw(10) << ft_truncated(_contact[i]. get_first_name());
-		std::cout << "|" << std::setw(10) <<ft_truncated(_contact[i]. get_last_name());
-		std::cout << "|" << std::setw(10) << ft_truncated(_contact[i]. get_nickname()) << "|" << std::endl;
+		std::cout << "|" << std::setw(10) << ft_truncated(this->_contact[i]. get_first_name());
+		std::cout << "|" << std::setw(10) <<ft_truncated(this->_contact[i]. get_last_name());
+		std::cout << "|" << std::setw(10) << ft_truncated(this->_contact[i]. get_nickname()) << "|" << std::endl;
 		i++;
 	}
 	std::cout << "+----------+----------+----------+----------+" << std::endl;
@@ -163,11 +163,11 @@ void	Phonebook::DisplayContactList(void)
 void	Phonebook::ReturnContact(int index)
 {
 	std::cout << "----------Contact ["<< index << "]----------" << std::endl;
-	std::cout << "First Name: "<< _contact[index - 1].get_first_name() << std::endl;
-	std::cout << "Last Name: "<< _contact[index - 1].get_last_name() << std::endl;
-	std::cout << "Nick Name: "<< _contact[index - 1].get_nickname() << std::endl;
-	std::cout << "Phone Number: "<< _contact[index - 1].get_phone_number() << std::endl;
-	std::cout << "Dark Secret: "<< _contact[index - 1].get_dark_secret() << std::endl << std::endl;
+	std::cout << "First Name: "<< this->_contact[index - 1].get_first_name() << std::endl;
+	std::cout << "Last Name: "<< this->_contact[index - 1].get_last_name() << std::endl;
+	std::cout << "Nick Name: "<< this->_contact[index - 1].get_nickname() << std::endl;
+	std::cout << "Phone Number: "<< this->_contact[index - 1].get_phone_number() << std::endl;
+	std::cout << "Dark Secret: "<< this->_contact[index - 1].get_dark_secret() << std::endl << std::endl;
 }
 
 /*

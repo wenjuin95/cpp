@@ -37,7 +37,7 @@ class Phonebook
 {
 	private:
 		Contact _contact[8];
-		static int _index;
+		int _index;
 		// void backdoor(void); //show purpose
 	public:
 		Phonebook(void);
