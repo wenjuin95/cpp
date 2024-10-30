@@ -12,31 +12,6 @@
 
 #include "phonebook.hpp"
 
-/***************************CONSTRUCTOR & DESTRUCTOR***************************/
-/*
-*	@brief constructor: means when function called, this contructor will
-*		   be created. if you not define it default the consturrctor with 
-*		   nothing
-*	@note 1. initialize the index to 0
-*	@note 2. after constructor have ":", we called initializer list to initialize the variable
-*				<variable_name>(<value>) = variable_name initialize with value
-*/
-Phonebook::Phonebook(void) : _index(0)
-{
-	std::cout << yellow << "Phonebook created" << RESET << std::endl;
-}
-
-/*
-*	@brief destructor: means when function end, this constructor will be 
-*		   destroy. if you not call or not define it, the default 
-*		   destructor will be created automatically
-*/
-Phonebook::~Phonebook(void) 
-{
-	std::cout << yellow << "Phonebook destroyed" << RESET << std::endl;
-}
-
-/****************************MAIN FUNCTION************************************/
 /*
 *	@brief add the contact to the phonebook
 *	@param t_contract: contact to be added to the phonebook
@@ -49,14 +24,14 @@ void	Phonebook::AddContact(void)
 	Contact t_contact;
 	std::string input;
 
-	// back_door(); //for testing purpose
+	index = 0;
 	std::cout << "====================================" << std::endl;
 	std::cout << "[ type BACK to return to main menu ]" << std::endl;
-	if (this->_index > 7)
-		_index = 0;
-	if (GetContactDetail(t_contact) == false)
+	if (this->index > 7)
+		index = 0;
+	if (set_contact_detail(t_contact) == false)
 		return ;
-	_contact[this->_index++] = t_contact; 
+	_contact[this->index++] = t_contact; 
 	std::cout << GREEN << "Contact added successfully" << RESET << std::endl;
 }
 
@@ -68,7 +43,7 @@ void	Phonebook::AddContact(void)
 void	Phonebook::SearchContact(void)
 {
 	std::string input;
-	int index;
+	int nb;
 
 	DisplayContactList();
 	while (1)
@@ -76,7 +51,7 @@ void	Phonebook::SearchContact(void)
 		std::cout << "[ type BACK to return to main menu ]" << std::endl;
 		std::cout << "ENTER INDEX TO DISPLAY CONTACT [1 - 8]: ";
 		std::getline(std::cin, input);
-		if (CheckInput(input) == false)
+		if (check_back_or_exit(input) == false)
 			return ;
 		if (input.empty())
 		{
@@ -88,13 +63,13 @@ void	Phonebook::SearchContact(void)
 			std::cout << RED << "Only digit allow" << RESET << std::endl;
 			continue;
 		}
-		index = atoi(input.c_str());
-		if (index < 1 || index > 8)
+		nb = atoi(input.c_str());
+		if (nb < 1 || nb > 8)
 		{
 			std::cout << RED << "Index out of range" << RESET << std::endl;
 			continue;
 		}
-		ReturnContact(index);
+		get_detail(nb);
 	}
 }
 
@@ -105,28 +80,28 @@ void	Phonebook::SearchContact(void)
 *	@param &t_contact: get the reference of the contact
 *	@return TRUE: if the input is success, FALSE: if the input is fail
 */
-bool Phonebook::GetContactDetail(Contact &t_contact)
+bool Phonebook::set_contact_detail(Contact &t_contact)
 {
 	std::string input;
 
-	input = get_input("Enter first name: ", false);
-	if (CheckInput(input) == false)
+	input = check_input("Enter first name: ", false);
+	if (check_back_or_exit(input) == false)
 		return (false);
 	t_contact.set_first_name(input);
-	input = get_input("Enter last name: ", false);
-	if (CheckInput(input) == false)
+	input = check_input("Enter last name: ", false);
+	if (check_back_or_exit(input) == false)
 		return (false);
 	t_contact.set_last_name(input);
-	input = get_input("Enter nick name: ", false);
-	if (CheckInput(input) == false)
+	input = check_input("Enter nick name: ", false);
+	if (check_back_or_exit(input) == false)
 		return (false);
 	t_contact.set_nickname(input);
-	input = get_input("Enter phone number: ", true);
-	if (CheckInput(input) == false)
+	input = check_input("Enter phone number: ", true);
+	if (check_back_or_exit(input) == false)
 		return (false);
 	t_contact.set_phone_number(input);
-	input = get_input("Enter dark secret: ", false);
-	if (CheckInput(input) == false)
+	input = check_input("Enter dark secret: ", false);
+	if (check_back_or_exit(input) == false)
 		return (false);
 	t_contact.set_dark_secret(input);
 	return (true);
@@ -139,6 +114,7 @@ void	Phonebook::DisplayContactList(void)
 {
 	int i;
 
+	// back_door(); //for testing purpose
 	std::cout << "+----------+----------+----------+----------+" << std::endl;
 	std::cout << "|" << std::setw(10) << "index";
 	std::cout << "|" << std::setw(10) << "FirstName";
@@ -160,7 +136,7 @@ void	Phonebook::DisplayContactList(void)
 *	@brief display the contact detail
 *	@param index: index of the contact to display
 */
-void	Phonebook::ReturnContact(int index)
+void	Phonebook::get_detail(int index)
 {
 	std::cout << "----------Contact ["<< index << "]----------" << std::endl;
 	std::cout << "First Name: "<< this->_contact[index - 1].get_first_name() << std::endl;
@@ -193,7 +169,7 @@ bool CheckDigit(std::string str)
 *	@param HandleDigit: check if the input is a digit
 *	@return input: return the input from the user input
 */
-std::string get_input(std::string message, bool HandleDigit)
+std::string check_input(std::string message, bool HandleDigit)
 {
 	std::string input;
 	while (1)
@@ -246,7 +222,7 @@ std::string	ft_truncated(std::string str)
 *	@param input: input from the user
 *	@return TRUE: if the input is not "back" , FALSE: if the input is "back"
 */
-bool CheckInput(std::string input)
+bool check_back_or_exit(std::string input)
 {
 	if (input == "exit")
 	{
@@ -309,5 +285,5 @@ bool CheckInput(std::string input)
 // 	_contact[7].set_phone_number("0987654321");
 // 	_contact[7].set_dark_secret("I am a student at 42KL");
 
-// 	_index = 8;
+// 	index = 8;
 // }

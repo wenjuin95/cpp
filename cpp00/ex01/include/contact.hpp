@@ -48,8 +48,6 @@ class Contact
 		std::string _darkSecret;
 	
 	public:
-		Contact(void);
-		~Contact(void); 
 
 		//setter :: set the value of the contact
 		void set_first_name(std::string firstName);

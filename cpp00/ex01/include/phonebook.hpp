@@ -37,21 +37,19 @@ class Phonebook
 {
 	private:
 		Contact _contact[8];
-		int _index;
-		// void backdoor(void); //show purpose
 	public:
-		Phonebook(void);
-		~Phonebook(void);
+		// void backdoor(void); //show purpose
+		int index;
 		void AddContact(void);
 		void SearchContact(void);
-		bool GetContactDetail(Contact &t_contact);
+		bool set_contact_detail(Contact &t_contact);
 		void DisplayContactList(void);
-		void ReturnContact(int index);
+		void get_detail(int index);
 };
 
-std::string	get_input(std::string message, bool HandleDigit);
+std::string	check_input(std::string message, bool HandleDigit);
 std::string	ft_truncated(std::string str);
-bool		CheckInput(std::string input);
+bool		check_back_or_exit(std::string input);
 bool		CheckDigit(std::string str);
 
 #endif

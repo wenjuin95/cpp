@@ -12,22 +12,6 @@
 
 #include "contact.hpp"
 
-/*
-*	@brief create a contact constructor
-*/
-Contact::Contact(void)
-{
-	std::cout << yellow << "Contact created" << RESET << std::endl;
-}
-
-/*
-*	@brief create a contact destructor
-*/
-Contact::~Contact(void)
-{
-	std::cout << yellow << "Contact destroyed" << RESET << std::endl;
-}
-
 /******************************SETTER*****************************************/
 /*
 *	@brief set the first name to the private member (_firstName)
