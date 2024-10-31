@@ -8,7 +8,7 @@
 // ************************************************************************** //
 
 
-#pragma once
+#pragma once //this is to prevent more then two time include the header file 
 #ifndef __ACCOUNT_H__
 #define __ACCOUNT_H__
 
@@ -21,36 +21,42 @@ class Account {
 
 public:
 
-	typedef Account		t;
+	typedef Account		t; //name Account as t
 
-	static int	getNbAccounts( void );
-	static int	getTotalAmount( void );
-	static int	getNbDeposits( void );
-	static int	getNbWithdrawals( void );
-	static void	displayAccountsInfos( void );
+	//static: keep updating the value and shared by all instances of the class
+	static int	getNbAccounts( void ); //get the number of account
+	static int	getTotalAmount( void ); //get the total amount of all account
+	static int	getNbDeposits( void ); //get the total number of deposits
+	static int	getNbWithdrawals( void ); //get the total number of withdrawals
+	static void	displayAccountsInfos( void ); //display the account information
 
+	// constructor: when program execute, it auto create the member with all variable and function
 	Account( int initial_deposit );
+	
+	// destructor: after the program finish, it auto delete the member with all variable and function
 	~Account( void );
 
 	void	makeDeposit( int deposit );
 	bool	makeWithdrawal( int withdrawal );
-	int		checkAmount( void ) const;
-	void	displayStatus( void ) const;
+
+	//const: the function will not change the value of the variable
+	int		checkAmount( void ) const; //check the amount of the account
+	void	displayStatus( void ) const; //display the account status
 
 
 private:
 
-	static int	_nbAccounts;
-	static int	_totalAmount;
-	static int	_totalNbDeposits;
-	static int	_totalNbWithdrawals;
+	static int	_nbAccounts; //number of account
+	static int	_totalAmount; //total amount of all account
+	static int	_totalNbDeposits; //total number of deposit
+	static int	_totalNbWithdrawals; //total number of withdrawal
 
 	static void	_displayTimestamp( void );
 
-	int				_accountIndex;
-	int				_amount;
-	int				_nbDeposits;
-	int				_nbWithdrawals;
+	int				_accountIndex; //account index for each account
+	int				_amount; //amount of each account
+	int				_nbDeposits; //number of deposits of each account
+	int				_nbWithdrawals; //number of withdrawals of each account
 
 	Account( void );
 
