@@ -38,7 +38,7 @@ class Phonebook
 	private:
 		Contact _contact[8];
 	public:
-		// void backdoor(void); //show purpose
+		Phonebook(void);
 		int index;
 		void AddContact(void);
 		void SearchContact(void);

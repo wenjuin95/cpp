@@ -12,6 +12,8 @@
 
 #include "phonebook.hpp"
 
+Phonebook::Phonebook(void) : index(0) {}
+
 /*
 *	@brief add the contact to the phonebook
 *	@param t_contract: contact to be added to the phonebook
@@ -24,7 +26,6 @@ void	Phonebook::AddContact(void)
 	Contact t_contact;
 	std::string input;
 
-	index = 0;
 	std::cout << "====================================" << std::endl;
 	std::cout << "[ type BACK to return to main menu ]" << std::endl;
 	if (this->index > 7)
@@ -51,7 +52,7 @@ void	Phonebook::SearchContact(void)
 		std::cout << "[ type BACK to return to main menu ]" << std::endl;
 		std::cout << "ENTER INDEX TO DISPLAY CONTACT [1 - 8]: ";
 		std::getline(std::cin, input);
-		if (check_back_or_exit(input) == false)
+		if (check_back_or_exit(input) == true)
 			return ;
 		if (input.empty())
 		{
@@ -59,10 +60,7 @@ void	Phonebook::SearchContact(void)
 			continue;
 		}
 		if (CheckDigit(input) == false)
-		{
-			std::cout << RED << "Only digit allow" << RESET << std::endl;
 			continue;
-		}
 		nb = atoi(input.c_str());
 		if (nb < 1 || nb > 8)
 		{
@@ -85,23 +83,23 @@ bool Phonebook::set_contact_detail(Contact &t_contact)
 	std::string input;
 
 	input = check_input("Enter first name: ", false);
-	if (check_back_or_exit(input) == false)
+	if (check_back_or_exit(input) == true)
 		return (false);
 	t_contact.set_first_name(input);
 	input = check_input("Enter last name: ", false);
-	if (check_back_or_exit(input) == false)
+	if (check_back_or_exit(input) == true)
 		return (false);
 	t_contact.set_last_name(input);
 	input = check_input("Enter nick name: ", false);
-	if (check_back_or_exit(input) == false)
+	if (check_back_or_exit(input) == true)
 		return (false);
 	t_contact.set_nickname(input);
 	input = check_input("Enter phone number: ", true);
-	if (check_back_or_exit(input) == false)
+	if (check_back_or_exit(input) == true)
 		return (false);
 	t_contact.set_phone_number(input);
 	input = check_input("Enter dark secret: ", false);
-	if (check_back_or_exit(input) == false)
+	if (check_back_or_exit(input) == true)
 		return (false);
 	t_contact.set_dark_secret(input);
 	return (true);
@@ -114,7 +112,6 @@ void	Phonebook::DisplayContactList(void)
 {
 	int i;
 
-	// back_door(); //for testing purpose
 	std::cout << "+----------+----------+----------+----------+" << std::endl;
 	std::cout << "|" << std::setw(10) << "index";
 	std::cout << "|" << std::setw(10) << "FirstName";
@@ -139,11 +136,11 @@ void	Phonebook::DisplayContactList(void)
 void	Phonebook::get_detail(int index)
 {
 	std::cout << "----------Contact ["<< index << "]----------" << std::endl;
-	std::cout << "First Name: "<< this->_contact[index - 1].get_first_name() << std::endl;
-	std::cout << "Last Name: "<< this->_contact[index - 1].get_last_name() << std::endl;
-	std::cout << "Nick Name: "<< this->_contact[index - 1].get_nickname() << std::endl;
-	std::cout << "Phone Number: "<< this->_contact[index - 1].get_phone_number() << std::endl;
-	std::cout << "Dark Secret: "<< this->_contact[index - 1].get_dark_secret() << std::endl << std::endl;
+	std::cout << "First Name  :"<< this->_contact[index - 1].get_first_name() << std::endl;
+	std::cout << "Last Name   :"<< this->_contact[index - 1].get_last_name() << std::endl;
+	std::cout << "Nick Name   :"<< this->_contact[index - 1].get_nickname() << std::endl;
+	std::cout << "Phone Number:"<< this->_contact[index - 1].get_phone_number() << std::endl;
+	std::cout << "Dark Secret :"<< this->_contact[index - 1].get_dark_secret() << std::endl << std::endl;
 }
 
 /*
@@ -156,8 +153,11 @@ bool CheckDigit(std::string str)
 	int i = 0;
 	while (str[i])
 	{
-		if (isdigit(str[i]) == 0 && str[i] != ' ')
+		if (isdigit(str[i]) == 0)
+		{
+			std::cout << RED << "Only digit allow\n" << RESET;
 			return (false);
+		}
 		i++;
 	}
 	return (true);
@@ -191,10 +191,12 @@ std::string check_input(std::string message, bool HandleDigit)
 		if (HandleDigit == true)
 		{
 			if (CheckDigit(input) == false)
-			{
-				std::cout << RED << "Only digit allow\n" << RESET;
 				continue;
-			}	
+			else if (input.length() != 10)
+			{
+				std::cout << RED << "Phone number must be 10 digit\n" << RESET;
+				continue;
+			}
 		}
 		break;
 	}
@@ -230,60 +232,6 @@ bool check_back_or_exit(std::string input)
 		exit(0);
 	}
 	if (input == "back")
-		return (false);
-	return (true);
+		return (true);
+	return (false);
 }
-
-// //for input everything to it
-// void	Phonebook::backdoor(void)
-// {
-// 	_contact[0].set_first_name("Wesley");
-// 	_contact[0].set_last_name("Low");
-// 	_contact[0].set_nickname("welow");
-// 	_contact[0].set_phone_number("0123456789");
-// 	_contact[0].set_dark_secret("I am a student at 42KL");
-
-// 	_contact[1].set_first_name("John");
-// 	_contact[1].set_last_name("Doe");
-// 	_contact[1].set_nickname("johndoe");
-// 	_contact[1].set_phone_number("9876543210");
-// 	_contact[1].set_dark_secret("I am a student at 42KL");
-
-// 	_contact[2].set_first_name("Jane");
-// 	_contact[2].set_last_name("Doe");
-// 	_contact[2].set_nickname("janedoe");
-// 	_contact[2].set_phone_number("1234567890");
-// 	_contact[2].set_dark_secret("I am a student at 42KL");
-
-// 	_contact[3].set_first_name("John");
-// 	_contact[3].set_last_name("Smith");
-// 	_contact[3].set_nickname("johnsmith");
-// 	_contact[3].set_phone_number("0987654321");
-// 	_contact[3].set_dark_secret("I am a student at 42KL");
-
-// 	_contact[4].set_first_name("Jane");
-// 	_contact[4].set_last_name("Smith");
-// 	_contact[4].set_nickname("janesmith");
-// 	_contact[4].set_phone_number("1234567890");
-// 	_contact[4].set_dark_secret("I am a student at 42KL");
-
-// 	_contact[5].set_first_name("John");
-// 	_contact[5].set_last_name("Doe");
-// 	_contact[5].set_nickname("johndoe");
-// 	_contact[5].set_phone_number("9876543210");
-// 	_contact[5].set_dark_secret("I am a student at 42KL");
-
-// 	_contact[6].set_first_name("Jane");
-// 	_contact[6].set_last_name("Doe");
-// 	_contact[6].set_nickname("janedoe");
-// 	_contact[6].set_phone_number("1234567890");
-// 	_contact[6].set_dark_secret("I am a student at 42KL");
-
-// 	_contact[7].set_first_name("John");
-// 	_contact[7].set_last_name("Smith");
-// 	_contact[7].set_nickname("johnsmith");
-// 	_contact[7].set_phone_number("0987654321");
-// 	_contact[7].set_dark_secret("I am a student at 42KL");
-
-// 	index = 8;
-// }
