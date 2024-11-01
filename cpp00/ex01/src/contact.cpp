@@ -73,8 +73,11 @@ bool Contact::set_phone_number(std::string phoneNumber)
 
 bool Contact::set_dark_secret(std::string darkSecret)
 { 
-	if (check_only_alphanum(darkSecret) == false)
+	if (darkSecret.empty() || darkSecret == " ")
+	{
+		std::cout << RED << "Cannot be empty\n" << RESET;
 		return (false);
+	}
 	else
 	{
 		this->_darkSecret = darkSecret; 

@@ -17,19 +17,9 @@
 /*
 * class: smilar to struct in c
 *
-* constructor :: create an object of a class and initialize it
-* default constructor :: 1. constructor with no arguments
-*						 2. if no constructor is defined, the compiler provides 
-*							a default constructor
-*
-* destuctor :: perform cleanup tasks, 
-* 	 		   such as releasing resources or deallocating memory, 
-* 			   associated with the object before it is destroyed
-* default destructor :: 1. destructor with no arguments
-*						2. if no destructor is defined, the compiler provides 
-*						   a default destructor
-*
-* private: only able to access within the class not outside the class 
+* private: only able to access within the class not outside the class
+* EXAMPLE: you can set the private member of the class 
+*		   by using public member function 
 * note: to access private member, use public member function (set & get)
 * EXAMPLE: _firstName only able to access by "set_first_name" 
 *		   and "get_first_name" function
@@ -48,15 +38,11 @@ class Contact
 		std::string _darkSecret;
 	
 	public:
-
-		//setter :: set the value of the contact
 		bool set_first_name(std::string firstName);
 		bool set_last_name(std::string lastName);
 		bool set_nickname(std::string nickName);
 		bool set_phone_number(std::string phoneNumber);
 		bool set_dark_secret(std::string darkSecret);
-		
-		//getter :: get the value from the contact
 		std::string get_first_name(void) const;
 		std::string get_last_name(void) const;
 		std::string get_nickname(void) const;

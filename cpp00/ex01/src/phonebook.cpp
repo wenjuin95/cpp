@@ -12,8 +12,6 @@
 
 #include "phonebook.hpp"
 
-Phonebook::Phonebook(void) : index(0) {}
-
 /*
 *	@brief add the contact to the phonebook
 *	@param t_contract: contact to be added to the phonebook
@@ -34,6 +32,7 @@ void	Phonebook::AddContact(void)
 		return ;
 	_contact[this->index++] = t_contact; 
 	std::cout << GREEN << "Contact added successfully" << RESET << std::endl;
+	std::cout << "index: " << this->index << std::endl;
 }
 
 /*

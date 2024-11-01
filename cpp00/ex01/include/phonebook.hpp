@@ -38,7 +38,6 @@ class Phonebook
 	private:
 		Contact _contact[8];
 	public:
-		Phonebook(void);
 		int index;
 		void AddContact(void);
 		void SearchContact(void);

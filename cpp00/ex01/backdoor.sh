@@ -49,10 +49,8 @@ expect "Enter your command (ADD, SEARCH, EXIT):"
 send "search\r"
 expect "ENTER INDEX TO DISPLAY CONTACT \\[1 - 8\\]: "
 send "1\r"
-send "back\r"
-
-# Exit the program
-expect "Enter your command (ADD, SEARCH, EXIT):"
+expect "ENTER INDEX TO DISPLAY CONTACT \\[1 - 8\\]: "
 send "exit\r"
+expect eof
 
 EOF

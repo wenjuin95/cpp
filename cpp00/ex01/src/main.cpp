@@ -6,7 +6,7 @@
 /*   By: welow < welow@student.42kl.edu.my>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 19:06:03 by welow             #+#    #+#             */
-/*   Updated: 2024/10/31 21:37:37 by welow            ###   ########.fr       */
+/*   Updated: 2024/11/01 17:07:45 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int main(void)
 	Phonebook phonebook;
 	std::string input;
 	
+	phonebook.index = 0;
 	std::cout << std::endl << YELLOW << "\tWELCOME TO PHONEBOOK\t" << RESET;
 	while (1)
 	{
