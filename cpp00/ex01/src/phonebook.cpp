@@ -32,7 +32,6 @@ void	Phonebook::AddContact(void)
 		return ;
 	_contact[this->index++] = t_contact; 
 	std::cout << GREEN << "Contact added successfully" << RESET << std::endl;
-	std::cout << "index: " << this->index << std::endl;
 }
 
 /*
