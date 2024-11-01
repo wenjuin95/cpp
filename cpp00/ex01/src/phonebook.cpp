@@ -27,7 +27,7 @@ void	Phonebook::AddContact(void)
 	std::string input;
 
 	std::cout << "====================================" << std::endl;
-	std::cout << "[ type BACK to return to main menu ]" << std::endl;
+	std::cout << "[ type [ BACK ] to return to main menu ]" << std::endl;
 	if (this->index > 7)
 		index = 0;
 	if (set_contact_detail(t_contact) == false)
@@ -49,59 +49,82 @@ void	Phonebook::SearchContact(void)
 	DisplayContactList();
 	while (1)
 	{
-		std::cout << "[ type BACK to return to main menu ]" << std::endl;
+		std::cout << "[ type [ BACK ] to return to main menu ]" << std::endl;
 		std::cout << "ENTER INDEX TO DISPLAY CONTACT [1 - 8]: ";
 		std::getline(std::cin, input);
-		if (check_back_or_exit(input) == true)
-			return ;
 		if (input.empty())
-		{
 			std::cout << RED << "Input cannot be empty" << RESET << std::endl;
+		else if (check_back_or_exit(input) == true)
+			return ;
+		else if (check_digit(input) == false)
 			continue;
-		}
-		if (CheckDigit(input) == false)
-			continue;
-		nb = atoi(input.c_str());
-		if (nb < 1 || nb > 8)
+		else
 		{
-			std::cout << RED << "Index out of range" << RESET << std::endl;
-			continue;
+			nb = atoi(input.c_str());
+			if (nb < 1 || nb > 8)
+				std::cout << RED << "Index out of range" << RESET << std::endl;
+			else
+				get_detail(nb);
 		}
-		get_detail(nb);
 	}
 }
 
 /*****************************FUNCTION****************************************/
 
-/*
-*	@brief get the contact detail from the input
-*	@param &t_contact: get the reference of the contact
-*	@return TRUE: if the input is success, FALSE: if the input is fail
+/**
+ * @brief set the contact info
+ * @param t_contact: contact to be added
+ * @return TRUE: contact added successfully, FALSE: contact not added
 */
 bool Phonebook::set_contact_detail(Contact &t_contact)
 {
-	std::string input;
+	if (check_and_set_input("Enter first name: ", t_contact, &Contact::set_first_name) == false)
+		return (false);
+	if (check_and_set_input("Enter last name: ", t_contact, &Contact::set_last_name) == false)
+		return (false);
+	if (check_and_set_input("Enter nick name: ", t_contact, &Contact::set_nickname) == false)
+		return (false);
+	if (check_and_set_input("Enter phone number: ", t_contact, &Contact::set_phone_number) == false)
+		return (false);
+	if (check_and_set_input("Enter dark secret: ", t_contact, &Contact::set_dark_secret) == false)
+		return (false);
+	return (true);
+}
 
-	input = check_input("Enter first name: ", false);
-	if (check_back_or_exit(input) == true)
-		return (false);
-	t_contact.set_first_name(input);
-	input = check_input("Enter last name: ", false);
-	if (check_back_or_exit(input) == true)
-		return (false);
-	t_contact.set_last_name(input);
-	input = check_input("Enter nick name: ", false);
-	if (check_back_or_exit(input) == true)
-		return (false);
-	t_contact.set_nickname(input);
-	input = check_input("Enter phone number: ", true);
-	if (check_back_or_exit(input) == true)
-		return (false);
-	t_contact.set_phone_number(input);
-	input = check_input("Enter dark secret: ", false);
-	if (check_back_or_exit(input) == true)
-		return (false);
-	t_contact.set_dark_secret(input);
+/**
+ * @brief check the input from the user
+ * @param msg: message to be display
+ * @param t_contact: contact to be added
+ * @param func: function to be called
+ *  			<datatype>(function)(parameter of the function)
+ * @return TRUE: input will store in the contact, FALSE: input will not store in the contact
+ * 
+*/
+bool check_and_set_input(std::string msg, Contact &t_contact, bool (Contact::*func)(std::string))
+{
+	std::string input;
+	while (1)
+	{
+		std::cout << msg;
+		std::getline(std::cin, input);
+		if (input == "back" || input == "BACK")
+		{
+			std::cout << RED << "Contact not added" << RESET << std::endl;
+			return (false);
+		}
+		else if (input == "exit" || input == "EXIT")
+		{
+			std::cout << YELLOW << "\t--EXIT PHONEBOOK--\t" << RESET << std::endl;
+			exit(0);
+		}
+		else
+		{
+			if ((t_contact.*func)(input) == false)
+				continue;
+			else
+				break;
+		}
+	}
 	return (true);
 }
 
@@ -144,66 +167,6 @@ void	Phonebook::get_detail(int index)
 }
 
 /*
-*	@brief check if the input is a digit
-*	@param str: input from the user
-*	@return TRUE: if the input is a digit, FALSE: if the input is not a digit
-*/
-bool CheckDigit(std::string str)
-{
-	int i = 0;
-	while (str[i])
-	{
-		if (isdigit(str[i]) == 0)
-		{
-			std::cout << RED << "Only digit allow\n" << RESET;
-			return (false);
-		}
-		i++;
-	}
-	return (true);
-}
-
-/*
-*	@brief function to get the input from the user
-*	@param message: message to be set
-*	@param HandleDigit: check if the input is a digit
-*	@return input: return the input from the user input
-*/
-std::string check_input(std::string message, bool HandleDigit)
-{
-	std::string input;
-	while (1)
-	{
-		std::cout << message;
-		std::getline(std::cin, input);
-		if (input == "exit")
-			return ("exit");
-		if (input == "back")
-		{
-			std::cout << RED << "Contact not added\n" << RESET;
-			return ("back");
-		}
-		if (input.empty())
-		{
-			std::cout << RED << "Input cannot be empty\n" << RESET;
-			continue;
-		}
-		if (HandleDigit == true)
-		{
-			if (CheckDigit(input) == false)
-				continue;
-			else if (input.length() != 10)
-			{
-				std::cout << RED << "Phone number must be 10 digit\n" << RESET;
-				continue;
-			}
-		}
-		break;
-	}
-	return (input);
-}
-
-/*
 *	@brief function to truncated the string
 *	@param str: string to be truncated
 *	@return str: return the truncated string
@@ -226,12 +189,12 @@ std::string	ft_truncated(std::string str)
 */
 bool check_back_or_exit(std::string input)
 {
-	if (input == "exit")
+	if (input == "exit" || input == "EXIT")
 	{
 		std::cout << YELLOW << "\t--EXIT PHONEBOOK--\t" << RESET << std::endl;
 		exit(0);
 	}
-	if (input == "back")
+	if (input == "back" || input == "BACK")
 		return (true);
 	return (false);
 }

@@ -20,15 +20,67 @@
 			 means get this object from the class Contact
 */ 
 //<data type> <class name>::<function name>(<parameter>)
-void Contact::set_first_name(std::string firstName) { this->_firstName = firstName; }
+bool Contact::set_first_name(std::string firstName) 
+{ 
+	if (check_only_alphanum(firstName) == false)
+		return (false);
+	else
+	{
+		this->_firstName = firstName; 
+		return (true);
+	}
+}
 
-void Contact::set_last_name(std::string lastName) { this->_lastName = lastName; }
+bool Contact::set_last_name(std::string lastName) 
+{ 
+	if (check_only_alphanum(lastName) == false)
+		return (false);
+	else
+	{
+		this->_lastName = lastName; 
+		return (true);
+	}
+}
 
-void Contact::set_nickname(std::string nickName) { this->_nickName = nickName; }
+bool Contact::set_nickname(std::string nickName) 
+{
+	if (check_only_alphanum(nickName) == false)
+		return (false);
+	else
+	{
+		this->_nickName = nickName; 
+		return (true);
+	}
+}
 
-void Contact::set_phone_number(std::string phoneNumber) { this->_phoneNumber = phoneNumber; }
+bool Contact::set_phone_number(std::string phoneNumber) 
+{ 
+	if (check_only_alphanum(phoneNumber) == false)
+		return (false);
+	else if (check_digit(phoneNumber) == false)
+		return (false);
+	else if (phoneNumber.length() != 10)
+	{
+		std::cout << RED << "Phone number must be 10 digits\n" << RESET;
+		return (false);
+	}
+	else
+	{
+		this->_phoneNumber = phoneNumber; 
+		return (true);
+	}
+}
 
-void Contact::set_dark_secret(std::string darkSecret) { this->_darkSecret = darkSecret; }
+bool Contact::set_dark_secret(std::string darkSecret)
+{ 
+	if (check_only_alphanum(darkSecret) == false)
+		return (false);
+	else
+	{
+		this->_darkSecret = darkSecret; 
+		return (true);
+	}
+}
 
 /*******************************GETTER****************************************/
 /*
@@ -46,3 +98,50 @@ std::string Contact::get_phone_number(void) const { return (_phoneNumber); }
 
 std::string Contact::get_dark_secret(void) const { return (_darkSecret); }
 
+/**
+ * @brief check if the string is digit
+ * @param str string to check
+ * @return true if the string is digit, false for not string
+*/
+bool check_digit(std::string str)
+{
+	int i = 0;
+	while (str[i])
+	{
+		if (isdigit(str[i]) == 0)
+		{
+			std::cout << RED << "Only digit allow\n" << RESET;
+			return (false);
+		}
+		i++;
+	}
+	return (true);
+}
+
+/**
+ * @brief check only alphabet and number allow
+ * @param str string to check
+ * @return true if the string is alphabet and number, false for not alphabet and number
+ * 
+*/
+bool check_only_alphanum(std::string str)
+{
+	int	i;
+
+	i = 0;
+	if (str.empty() || str == " ")
+	{
+		std::cout << RED << "Cannot be empty\n" << RESET;
+		return (false);
+	}
+	while (str[i])
+	{
+		if (isalnum(str[i]) == 0)
+		{
+			std::cout << RED << "Only alphabet/number allow\n" << RESET;
+			return (false);
+		}
+		i++;
+	}
+	return (true);
+}

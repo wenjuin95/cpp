@@ -47,9 +47,9 @@ class Phonebook
 		void get_detail(int index);
 };
 
-std::string	check_input(std::string message, bool HandleDigit);
 std::string	ft_truncated(std::string str);
 bool		check_back_or_exit(std::string input);
-bool		CheckDigit(std::string str);
+bool		check_and_set_input(std::string input, Contact &t_contact,
+			bool(Contact::*func)(std::string));
 
 #endif

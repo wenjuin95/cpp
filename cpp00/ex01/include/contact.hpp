@@ -50,11 +50,11 @@ class Contact
 	public:
 
 		//setter :: set the value of the contact
-		void set_first_name(std::string firstName);
-		void set_last_name(std::string lastName);
-		void set_nickname(std::string nickName);
-		void set_phone_number(std::string phoneNumber);
-		void set_dark_secret(std::string darkSecret);
+		bool set_first_name(std::string firstName);
+		bool set_last_name(std::string lastName);
+		bool set_nickname(std::string nickName);
+		bool set_phone_number(std::string phoneNumber);
+		bool set_dark_secret(std::string darkSecret);
 		
 		//getter :: get the value from the contact
 		std::string get_first_name(void) const;
@@ -63,5 +63,9 @@ class Contact
 		std::string get_phone_number(void) const;
 		std::string get_dark_secret(void) const;
 };
+
+
+bool check_digit(std::string str);
+bool check_only_alphanum(std::string str);
 
 #endif
