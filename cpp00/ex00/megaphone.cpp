@@ -12,12 +12,33 @@
 
 #include <iostream>
 
-char ft_toupper(char c);
+using namespace std;
+
+namespace ft_toupper
+{
+	char convert(char c)
+	{
+		if (c >= 'a' && c <= 'z')
+			return (c - 32);
+		return (c);
+	}
+}
+
+namespace ft_default
+{
+	char convert(char c)
+	{
+		if (c >= 'A' && c <= 'Z')
+			return (c);
+		return (c);
+	}
+}
 
 int main(int ac, char **av)
 {
 	int i;
 	int j;
+	char c;
 
 	if (ac != 1)
 	{	
@@ -27,19 +48,20 @@ int main(int ac, char **av)
 			j = 0;
 			while (av[i][j])
 			{
-				std::cout << ft_toupper(av[i][j]);
+                c = av[i][j];
+                if (c >= 'a' && c <= 'z') {
+                    cout << ft_toupper::convert(c);
+                } else if (c >= 'A' && c <= 'Z') {
+                    cout << ft_default::convert(c);
+                } else {
+                    cout << c;
+                }
 				j++;
 			}
 			i++;
 		}
 	}
 	else
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *\n";
-}
-
-char ft_toupper(char c)
-{
-	if (c >= 'a' && c <= 'z')
-		return (c - 32);
-	return (c);
+		cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *\n";
+	return 0;
 }
