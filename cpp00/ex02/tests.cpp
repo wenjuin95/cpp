@@ -18,6 +18,9 @@ int		main( void ) {
 
 	/**
 	 * "std::vector" represents a dynamic array. It can grow in size dynamically
+	 * 	std::vector vs array:
+	 * 	- std::vector: can handle huge number of element and it can grow in size dynamically
+	 *  - array: can handle only a fixed number of element
 	 * EXAMPLE: std::vector<Account::t>	is to store a collection of Account objects in a dynamic array.
 	 * 
 	 * "std::pair" is a container that can store two values of different types.
