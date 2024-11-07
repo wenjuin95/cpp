@@ -38,20 +38,20 @@ class Contact
 		std::string _darkSecret;
 	
 	public:
-		bool set_first_name(std::string firstName);
-		bool set_last_name(std::string lastName);
-		bool set_nickname(std::string nickName);
-		bool set_phone_number(std::string phoneNumber);
-		bool set_dark_secret(std::string darkSecret);
-		std::string get_first_name(void) const;
-		std::string get_last_name(void) const;
-		std::string get_nickname(void) const;
-		std::string get_phone_number(void) const;
-		std::string get_dark_secret(void) const;
+		bool setFirstName(std::string firstName);
+		bool setLastName(std::string lastName);
+		bool setNickname(std::string nickName);
+		bool setPhoneNumber(std::string phoneNumber);
+		bool setDarkSecret(std::string darkSecret);
+		std::string getFirstName(void) const;
+		std::string getLastName(void) const;
+		std::string getNickname(void) const;
+		std::string getPhoneNumber(void) const;
+		std::string getDarkSecret(void) const;
 };
 
 
-bool check_digit(std::string str);
-bool check_only_alphanum(std::string str);
+bool checkDigit(std::string str);
+bool checkOnlyAlphanum(std::string str);
 
 #endif

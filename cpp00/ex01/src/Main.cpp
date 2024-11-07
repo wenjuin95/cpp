@@ -13,7 +13,7 @@
 #include "contact.hpp"
 #include "phonebook.hpp"
 
-std::string ft_toupper(std::string str);
+std::string ftToupper(std::string str);
 void MenuBar(void);
 
 int main(void)
@@ -27,12 +27,12 @@ int main(void)
 	{
 		MenuBar();
 		std::getline(std::cin, input); // get the input from the user
-		input = ft_toupper(input);
+		input = ftToupper(input);
 		if(input == "ADD")
 			phonebook.AddContact();
 		else if (input == "SEARCH")
 			phonebook.SearchContact();
-		else if (input == "EXIT")
+		else if (input == "EXIT")`
 		{
 			std::cout << YELLOW << "\t--EXIT PHONEBOOK--\t" << RESET << std::endl;
 			break;
@@ -60,7 +60,7 @@ void	MenuBar(void)
 *	@param: string
 *	@return: string in uppercase
 */
-std::string ft_toupper(std::string str)
+std::string ftToupper(std::string str)
 {
 	std::string res;
 	int i = 0;

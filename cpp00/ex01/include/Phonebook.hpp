@@ -41,14 +41,14 @@ class Phonebook
 		int index;
 		void AddContact(void);
 		void SearchContact(void);
-		bool set_contact_detail(Contact &t_contact);
+		bool setContactDetail(Contact &t_contact);
 		void DisplayContactList(void);
-		void get_detail(int index);
+		void getDetail(int index);
 };
 
-std::string	ft_truncated(std::string str);
-bool		check_back_or_exit(std::string input);
-bool		check_and_set_input(std::string input, Contact &t_contact,
+std::string	truncated(std::string str);
+bool		checkBackOrExit(std::string input);
+bool		checkAndSetInput(std::string input, Contact &t_contact,
 			bool(Contact::*func)(std::string));
 
 #endif
