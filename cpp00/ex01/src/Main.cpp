@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "contact.hpp"
-#include "phonebook.hpp"
+#include "Contact.hpp"
+#include "Phonebook.hpp"
 
 std::string ftToupper(std::string str);
 void MenuBar(void);
@@ -20,19 +20,21 @@ int main(void)
 {
 	Phonebook phonebook;
 	std::string input;
-	
+
 	phonebook.index = 0;
 	std::cout << std::endl << YELLOW << "\tWELCOME TO PHONEBOOK\t" << RESET;
 	while (1)
 	{
 		MenuBar();
 		std::getline(std::cin, input); // get the input from the user
+		if (std::cin.eof())
+			break;
 		input = ftToupper(input);
 		if(input == "ADD")
 			phonebook.AddContact();
 		else if (input == "SEARCH")
 			phonebook.SearchContact();
-		else if (input == "EXIT")`
+		else if (input == "EXIT")
 		{
 			std::cout << YELLOW << "\t--EXIT PHONEBOOK--\t" << RESET << std::endl;
 			break;

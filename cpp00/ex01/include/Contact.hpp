@@ -13,19 +13,19 @@
 #ifndef CONTACT_HPP
 # define CONTACT_HPP
 
-# include "includelib.hpp"
+# include "Includelib.hpp"
 /*
 * class: smilar to struct in c
 *
 * private: only able to access within the class not outside the class
-* EXAMPLE: you can set the private member of the class 
-*		   by using public member function 
+* EXAMPLE: you can set the private member of the class
+*		   by using public member function
 * note: to access private member, use public member function (set & get)
-* EXAMPLE: _firstName only able to access by "set_first_name" 
+* EXAMPLE: _firstName only able to access by "set_first_name"
 *		   and "get_first_name" function
-* 
+*
 * public: able to access from outside the class and within the class
-* EXAMPLE: "set_first_name" and "get_first_name" use in main.cpp 
+* EXAMPLE: "set_first_name" and "get_first_name" use in main.cpp
 */
 
 class Contact
@@ -36,7 +36,7 @@ class Contact
 		std::string _nickName;
 		std::string _phoneNumber;
 		std::string _darkSecret;
-	
+
 	public:
 		bool setFirstName(std::string firstName);
 		bool setLastName(std::string lastName);

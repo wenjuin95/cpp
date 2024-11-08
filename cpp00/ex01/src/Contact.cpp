@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "contact.hpp"
+#include "Contact.hpp"
 
 /******************************SETTER*****************************************/
 /*
@@ -18,43 +18,43 @@
 *	@param firstName: the first name of the input
 *	@note 1. "this" is a pointer to the object that is calling the function
 			 means get this object from the class Contact
-*/ 
+*/
 //<data type> <class name>::<function name>(<parameter>)
-bool Contact::setFirstName(std::string firstName) 
-{ 
+bool Contact::setFirstName(std::string firstName)
+{
 	if (checkOnlyAlphanum(firstName) == false)
 		return (false);
 	else
 	{
-		this->_firstName = firstName; 
+		this->_firstName = firstName;
 		return (true);
 	}
 }
 
-bool Contact::setLastName(std::string lastName) 
-{ 
+bool Contact::setLastName(std::string lastName)
+{
 	if (checkOnlyAlphanum(lastName) == false)
 		return (false);
 	else
 	{
-		this->_lastName = lastName; 
+		this->_lastName = lastName;
 		return (true);
 	}
 }
 
-bool Contact::setNickname(std::string nickName) 
+bool Contact::setNickname(std::string nickName)
 {
 	if (checkOnlyAlphanum(nickName) == false)
 		return (false);
 	else
 	{
-		this->_nickName = nickName; 
+		this->_nickName = nickName;
 		return (true);
 	}
 }
 
-bool Contact::setPhoneNumber(std::string phoneNumber) 
-{ 
+bool Contact::setPhoneNumber(std::string phoneNumber)
+{
 	if (checkOnlyAlphanum(phoneNumber) == false)
 		return (false);
 	else if (checkDigit(phoneNumber) == false)
@@ -66,13 +66,13 @@ bool Contact::setPhoneNumber(std::string phoneNumber)
 	}
 	else
 	{
-		this->_phoneNumber = phoneNumber; 
+		this->_phoneNumber = phoneNumber;
 		return (true);
 	}
 }
 
 bool Contact::setDarkSecret(std::string darkSecret)
-{ 
+{
 	if (darkSecret.empty() || darkSecret == " ")
 	{
 		std::cout << RED << "Cannot be empty\n" << RESET;
@@ -80,7 +80,7 @@ bool Contact::setDarkSecret(std::string darkSecret)
 	}
 	else
 	{
-		this->_darkSecret = darkSecret; 
+		this->_darkSecret = darkSecret;
 		return (true);
 	}
 }
@@ -125,7 +125,7 @@ bool checkDigit(std::string str)
  * @brief check only alphabet and number allow
  * @param str string to check
  * @return true if the string is alphabet and number, false for not alphabet and number
- * 
+ *
 */
 bool checkOnlyAlphanum(std::string str)
 {

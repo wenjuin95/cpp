@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "phonebook.hpp"
+#include "Phonebook.hpp"
 
 /*
 *	@brief add the contact to the phonebook
@@ -30,7 +30,7 @@ void	Phonebook::AddContact(void)
 		index = 0;
 	if (setContactDetail(t_contact) == false)
 		return ;
-	_contact[this->index++] = t_contact; 
+	_contact[this->index++] = t_contact;
 	std::cout << GREEN << "Contact added successfully" << RESET << std::endl;
 }
 
@@ -50,6 +50,8 @@ void	Phonebook::SearchContact(void)
 		std::cout << "[ type [ BACK ] to return to main menu ]" << std::endl;
 		std::cout << "ENTER INDEX TO DISPLAY CONTACT [1 - 8]: ";
 		std::getline(std::cin, input);
+		if (std::cin.eof())
+			exit(0);
 		if (input.empty())
 			std::cout << RED << "Input cannot be empty" << RESET << std::endl;
 		else if (checkBackOrExit(input) == true)
@@ -76,15 +78,15 @@ void	Phonebook::SearchContact(void)
 */
 bool Phonebook::setContactDetail(Contact &t_contact)
 {
-	if (checkAndSetInput("Enter first name: ", t_contact, &Contact::set_first_name) == false)
+	if (checkAndSetInput("Enter first name: ", t_contact, &Contact::setFirstName) == false)
 		return (false);
-	if (checkAndSetInput("Enter last name: ", t_contact, &Contact::set_last_name) == false)
+	if (checkAndSetInput("Enter last name: ", t_contact, &Contact::setLastName) == false)
 		return (false);
-	if (checkAndSetInput("Enter nick name: ", t_contact, &Contact::set_nickname) == false)
+	if (checkAndSetInput("Enter nick name: ", t_contact, &Contact::setNickname) == false)
 		return (false);
-	if (checkAndSetInput("Enter phone number: ", t_contact, &Contact::set_phone_number) == false)
+	if (checkAndSetInput("Enter phone number: ", t_contact, &Contact::setPhoneNumber) == false)
 		return (false);
-	if (checkAndSetInput("Enter dark secret: ", t_contact, &Contact::set_dark_secret) == false)
+	if (checkAndSetInput("Enter dark secret: ", t_contact, &Contact::setDarkSecret) == false)
 		return (false);
 	return (true);
 }
@@ -96,15 +98,20 @@ bool Phonebook::setContactDetail(Contact &t_contact)
  * @param func: function to be called
  *  			<datatype>(function)(parameter of the function)
  * @return TRUE: input will store in the contact, FALSE: input will not store in the contact
- * 
+ *
 */
-bool check_and_set_input(std::string msg, Contact &t_contact, bool (Contact::*func)(std::string))
+bool checkAndSetInput(std::string msg, Contact &t_contact, bool (Contact::*func)(std::string))
 {
 	std::string input;
 	while (1)
 	{
 		std::cout << msg;
 		std::getline(std::cin, input);
+		if (std::cin.eof())
+		{
+			exit(0);
+		}
+		else
 		if (input == "back" || input == "BACK")
 		{
 			std::cout << RED << "Contact not added" << RESET << std::endl;

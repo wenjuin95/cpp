@@ -13,8 +13,8 @@
 #ifndef PHONEBOOK_HPP
 # define PHONEBOOK_HPP
 
-#include "includelib.hpp"
-#include "contact.hpp"
+#include "Includelib.hpp"
+#include "Contact.hpp"
 
 /*
 *	@brief class Phonebook
