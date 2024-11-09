@@ -4,7 +4,7 @@ CC = g++
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRC = megaphone.cpp
+SRC = Megaphone.cpp
 
 all :
 	$(CC) $(CFLAGS) $(SRC) -o $(NAME)

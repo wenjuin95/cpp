@@ -10,27 +10,29 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "phonebook.hpp"
+#include "Phonebook.hpp"
 
-std::string ft_toupper(std::string str);
+std::string ftToupper(std::string str);
 void MenuBar(void);
 
 int main(void)
 {
 	Phonebook phonebook;
 	std::string input;
-	
+
 	phonebook.index = 0;
 	std::cout << std::endl << YELLOW << "\tWELCOME TO PHONEBOOK\t" << RESET;
 	while (1)
 	{
 		MenuBar();
-		std::getline(std::cin, input);
-		input = ft_toupper(input);
+		std::getline(std::cin, input); // get the input from the user
+		if (std::cin.eof())
+			break;
+		input = ftToupper(input);
 		if(input == "ADD")
-			phonebook.add_contact();
+			phonebook.AddContact();
 		else if (input == "SEARCH")
-			phonebook.search_contact();
+			phonebook.SearchContact();
 		else if (input == "EXIT")
 		{
 			std::cout << YELLOW << "\t--EXIT PHONEBOOK--\t" << RESET << std::endl;
@@ -51,7 +53,7 @@ void	MenuBar(void)
 	std::cout << "| SEARCH: to search for a contact |\n";
 	std::cout << "| EXIT: to exit the phonebook     |\n";
 	std::cout << "+---------------------------------+\n";
-	std::cout << "Enter your command (ADD, SEARCH, EXIT): ";
+	std::cout << "\rEnter your command (ADD, SEARCH, EXIT): ";
 }
 
 /*
@@ -59,7 +61,7 @@ void	MenuBar(void)
 *	@param: string
 *	@return: string in uppercase
 */
-std::string ft_toupper(std::string str)
+std::string ftToupper(std::string str)
 {
 	std::string res;
 	int i = 0;

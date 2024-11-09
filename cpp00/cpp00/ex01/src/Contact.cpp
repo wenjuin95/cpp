@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "phonebook.hpp"
+#include "Contact.hpp"
 
 /******************************SETTER*****************************************/
 /*
@@ -18,46 +18,46 @@
 *	@param firstName: the first name of the input
 *	@note 1. "this" is a pointer to the object that is calling the function
 			 means get this object from the class Contact
-*/ 
+*/
 //<data type> <class name>::<function name>(<parameter>)
-bool Contact::set_first_name(std::string firstName) 
-{ 
-	if (check_only_alphanum(firstName) == false)
-		return (false);
-	else
-	{
-		this->_firstName = firstName; 
-		return (true);
-	}
-}
-
-bool Contact::set_last_name(std::string lastName) 
-{ 
-	if (check_only_alphanum(lastName) == false)
-		return (false);
-	else
-	{
-		this->_lastName = lastName; 
-		return (true);
-	}
-}
-
-bool Contact::set_nickname(std::string nickName) 
+bool Contact::setFirstName(std::string firstName)
 {
-	if (check_only_alphanum(nickName) == false)
+	if (checkOnlyAlphanum(firstName) == false)
 		return (false);
 	else
 	{
-		this->_nickName = nickName; 
+		this->_firstName = firstName;
 		return (true);
 	}
 }
 
-bool Contact::set_phone_number(std::string phoneNumber) 
-{ 
-	if (check_only_alphanum(phoneNumber) == false)
+bool Contact::setLastName(std::string lastName)
+{
+	if (checkOnlyAlphanum(lastName) == false)
 		return (false);
-	else if (check_digit(phoneNumber) == false)
+	else
+	{
+		this->_lastName = lastName;
+		return (true);
+	}
+}
+
+bool Contact::setNickname(std::string nickName)
+{
+	if (checkOnlyAlphanum(nickName) == false)
+		return (false);
+	else
+	{
+		this->_nickName = nickName;
+		return (true);
+	}
+}
+
+bool Contact::setPhoneNumber(std::string phoneNumber)
+{
+	if (checkOnlyAlphanum(phoneNumber) == false)
+		return (false);
+	else if (checkDigit(phoneNumber) == false)
 		return (false);
 	else if (phoneNumber.length() != 10)
 	{
@@ -66,13 +66,13 @@ bool Contact::set_phone_number(std::string phoneNumber)
 	}
 	else
 	{
-		this->_phoneNumber = phoneNumber; 
+		this->_phoneNumber = phoneNumber;
 		return (true);
 	}
 }
 
-bool Contact::set_dark_secret(std::string darkSecret)
-{ 
+bool Contact::setDarkSecret(std::string darkSecret)
+{
 	if (darkSecret.empty() || darkSecret == " ")
 	{
 		std::cout << RED << "Cannot be empty\n" << RESET;
@@ -80,7 +80,7 @@ bool Contact::set_dark_secret(std::string darkSecret)
 	}
 	else
 	{
-		this->_darkSecret = darkSecret; 
+		this->_darkSecret = darkSecret;
 		return (true);
 	}
 }
@@ -91,22 +91,22 @@ bool Contact::set_dark_secret(std::string darkSecret)
 *	@return the first name of the contact
 *	@note 1. "const" keyword is used to make sure the function does not modify the object and just read
 */
-std::string Contact::get_first_name(void) const { return (this->_firstName); }
+std::string Contact::getFirstName(void) const { return (this->_firstName); }
 
-std::string Contact::get_last_name(void) const { return (this->_lastName); }
+std::string Contact::getLastName(void) const { return (this->_lastName); }
 
-std::string Contact::get_nickname(void) const { return (this->_nickName); }
+std::string Contact::getNickname(void) const { return (this->_nickName); }
 
-std::string Contact::get_phone_number(void) const { return (_phoneNumber); }
+std::string Contact::getPhoneNumber(void) const { return (_phoneNumber); }
 
-std::string Contact::get_dark_secret(void) const { return (_darkSecret); }
+std::string Contact::getDarkSecret(void) const { return (_darkSecret); }
 
 /**
  * @brief check if the string is digit
  * @param str string to check
  * @return true if the string is digit, false for not string
 */
-bool check_digit(std::string str)
+bool checkDigit(std::string str)
 {
 	int i = 0;
 	while (str[i])
@@ -125,9 +125,9 @@ bool check_digit(std::string str)
  * @brief check only alphabet and number allow
  * @param str string to check
  * @return true if the string is alphabet and number, false for not alphabet and number
- * 
+ *
 */
-bool check_only_alphanum(std::string str)
+bool checkOnlyAlphanum(std::string str)
 {
 	int	i;
 

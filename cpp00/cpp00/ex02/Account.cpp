@@ -15,7 +15,6 @@
 #include <iomanip>
 
 // "Account::" means the function or variable is in the class Account
-// if static member variable in private, we need to initialize it outside the class 
 int Account::_nbAccounts = 0;
 int Account::_totalAmount = 0;
 int Account::_totalNbDeposits = 0;
@@ -44,7 +43,7 @@ Account::Account( int initial_deposit )
     this->_totalAmount += initial_deposit;
     _displayTimestamp();
     std::cout << "index:" << this->_accountIndex << ";" 
-                << "amount:" << checkAmount() << ";" 
+                << "amount:" << _amount << ";" 
                 << "created" << std::endl;
 }
 
@@ -57,12 +56,12 @@ Account::~Account( void )
 {
     this->_displayTimestamp(); // Display the timestamp
     std::cout << "index:" << this->_accountIndex << ";" 
-                << "amount:" << this->checkAmount() << ";" 
+                << "amount:" << _amount << ";" 
                 << "closed" << std::endl;
 }
 
 /**
-*   @brief display the account status for before and after account created
+*   @brief display the account status (for all total account, total amount, total deposit, total withdrawal)
 *	@note 1. because this function is a non-member function, so we need to use 
 *			 the class name to access the static member and function
 *	@note 2. non-member function: does not have access the private member declared in the class
@@ -80,16 +79,7 @@ void Account::displayAccountsInfos( void )
 }
 
 /**
-*   @brief check the amount of the account
-*   @return the amount of the account
-*/
-int	Account::checkAmount( void ) const
-{
-    return this->_amount;
-}
-
-/**
-*	@brief display the account status in current update
+*	@brief display the account status in current update (for each account)
 */
 void	Account::displayStatus( void ) const
 {
@@ -99,6 +89,16 @@ void	Account::displayStatus( void ) const
                 << "deposits:" << this->_nbDeposits << ";"
                 << "withdrawals:" << this->_nbWithdrawals << std::endl;
 }
+
+/**
+*   @brief check the amount of the account
+*   @return the amount of the account
+*/
+int	Account::checkAmount( void ) const
+{
+    return this->_amount;
+}
+
 
 /**
 *   @brief display the timestamp
@@ -119,12 +119,12 @@ void Account::_displayTimestamp( void )
 void Account::makeDeposit( int deposit )
 {
     this->_displayTimestamp();
-    std::cout << "index:" << this->_accountIndex << ";" << "p_amount:" << this->checkAmount() << ";" ;
+    std::cout << "index:" << this->_accountIndex << ";" << "p_amount:" << _amount << ";" ;
     this->_amount += deposit;
     this->_totalAmount += deposit;
     this->_nbDeposits++;
     this->_totalNbDeposits++;
-    std::cout << "deposit:" << deposit << ";" << "amount:" << this->checkAmount() << ";" << "nb_deposits:" << this->_nbDeposits << std::endl;
+    std::cout << "deposit:" << deposit << ";" << "amount:" << _amount << ";" << "nb_deposits:" << this->_nbDeposits << std::endl;
 }
 
 /**
@@ -138,7 +138,7 @@ void Account::makeDeposit( int deposit )
 bool	Account::makeWithdrawal( int withdrawal )
 {
     Account::_displayTimestamp();
-    std::cout << "index:" << this->_accountIndex << ";" << "p_amount:" << this->checkAmount() << ";" << "withdrawal:" ;
+    std::cout << "index:" << this->_accountIndex << ";" << "p_amount:" << _amount << ";" << "withdrawal:" ;
     if (checkAmount() < withdrawal) 
     {
         std::cout << "refused" << std::endl;
@@ -148,7 +148,7 @@ bool	Account::makeWithdrawal( int withdrawal )
     this->_totalAmount -= withdrawal;
     this->_totalNbWithdrawals++;
     this->_nbWithdrawals++;
-     std::cout << withdrawal << ";" << "amount:" << this->checkAmount() << ";" << "nb_withdrawals:" << this->_nbWithdrawals << std::endl;
+     std::cout << withdrawal << ";" << "amount:" << _amount << ";" << "nb_withdrawals:" << this->_nbWithdrawals << std::endl;
      return true;
 }
 

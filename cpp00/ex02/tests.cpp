@@ -7,9 +7,9 @@
 //                                                                            //
 // ************************************************************************** //
 
-#include <vector>
-#include <algorithm>
-#include <functional>
+#include <vector> // vector
+#include <algorithm> //for_each
+#include <functional> //mem_fun_ref
 #include "Account.hpp"
 #include <iostream>
 
@@ -29,23 +29,19 @@ int		main( void ) {
 	 * "accounts_t::iterator" is to loop through the accounts vector.
 	 * "ints_t::iterator" is to loop through the deposits and withdrawals vector.
 	*/
-	typedef std::vector<Account::t>							  accounts_t; 
-	typedef std::vector<int>								  ints_t;
-	typedef std::pair<accounts_t::iterator, ints_t::iterator> acc_int_t;
+	typedef std::vector<Account::t>							  accounts_t; //vector of Account objects
+	typedef std::vector<int>								  ints_t; //vector of int
+	typedef std::pair<accounts_t::iterator, ints_t::iterator> acc_int_t; //pair of account with "vector of account" and "vector of int"
 
 	/**
-	 * "accounts( amounts, amounts + amounts_size );" initialize the accounts vector with the range of elements from the amount array
 	 * - amounts: a pointer to the first element in the array
-	 * - amounts + amounts_size: a pointer to the last element in the array
-	 * 
-	 * "accounts.begin()" is to get the iterator to the first element in the accounts vector.
-	 * "accounts.end()" is to get the iterator to the last element in the accounts vector. 
+	 * - amounts + amounts_size: a pointer to the last element in the array 
 	*/
-	int	const				amounts[]	= { 42, 54, 957, 432, 1234, 0, 754, 16576 }; 
-	size_t const			amounts_size( sizeof(amounts) / sizeof(int) );
-	accounts_t				accounts( amounts, amounts + amounts_size );
-	accounts_t::iterator	acc_begin	= accounts.begin(); 
-	accounts_t::iterator	acc_end		= accounts.end();
+	int	const				amounts[]	= { 42, 54, 957, 432, 1234, 0, 754, 16576 }; //array of amount
+	size_t const			amounts_size( sizeof(amounts) / sizeof(int) ); //size of the amount array
+	accounts_t				accounts( amounts, amounts + amounts_size ); //vector of Account objects
+	accounts_t::iterator	acc_begin	= accounts.begin(); //pointer of start in vector
+	accounts_t::iterator	acc_end		= accounts.end(); //pointer of end in vector
 
 	int	const			d[]			= { 5, 765, 564, 2, 87, 23, 9, 20 };
 	size_t const		d_size( sizeof(d) / sizeof(int) ); 
@@ -62,11 +58,12 @@ int		main( void ) {
 	//display the account information
 	Account::displayAccountsInfos();
 	/**
-	 * "std::for_each(....)" is to loop through the accounts vector
-	 * - first agument: the iterator to the first element in the accounts vector
-	 * - second argument: the iterator to the last element in the accounts vector
-	 * - third argument: the function to call for each element in the accounts vector
-	 * - std::mem_fun_ref is to call the member function of the Account object
+	 * "std::for_each(....)" is a loop through the accounts vector
+	 * - first agument: pointer of first element in the accounts vector
+	 * - second argument: pointer of last element in the accounts vector
+	 * - third argument: the function to call
+	 * 		- std::mem_fun_ref ::  convert a member function into a function object
+	 * 		(removed in C++ 17)
 	*/
 	std::for_each( acc_begin, acc_end, std::mem_fun_ref( &Account::displayStatus ) );
 

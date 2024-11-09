@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "phonebook.hpp"
+#include "Phonebook.hpp"
 
 /*
 *	@brief add the contact to the phonebook
@@ -19,7 +19,7 @@
 *	@note 1. if the index is more than 8 then set the index to 0
 *	@note 2. each of the contact will be store in the array
 */
-void	Phonebook::add_contact(void)
+void	Phonebook::AddContact(void)
 {
 	Contact t_contact;
 	std::string input;
@@ -28,9 +28,10 @@ void	Phonebook::add_contact(void)
 	std::cout << "[ type [ BACK ] to return to main menu ]" << std::endl;
 	if (this->index > 7)
 		index = 0;
-	if (set_contact_detail(t_contact) == false)
+	if (setContactDetail(t_contact) == false)
 		return ;
-	_contact[this->index++] = t_contact; 
+	_contact[this->index] = t_contact;
+	this->index++;
 	std::cout << GREEN << "Contact added successfully" << RESET << std::endl;
 }
 
@@ -38,23 +39,26 @@ void	Phonebook::add_contact(void)
 *	@brief list all the contact and search for the contact
 *	@return the number of contact that want to list
 *	@note 1. c_str(): string to char array
+*	@note 2. atoi(): only convert char array to integer
 */
-void	Phonebook::search_contact(void)
+void	Phonebook::SearchContact(void)
 {
 	std::string input;
 	int nb;
 
-	display_contact_list();
+	DisplayContactList();
 	while (1)
 	{
 		std::cout << "[ type [ BACK ] to return to main menu ]" << std::endl;
 		std::cout << "ENTER INDEX TO DISPLAY CONTACT [1 - 8]: ";
 		std::getline(std::cin, input);
+		if (std::cin.eof())
+			exit(0);
 		if (input.empty())
 			std::cout << RED << "Input cannot be empty" << RESET << std::endl;
-		else if (check_back_or_exit(input) == true)
+		else if (checkBackOrExit(input) == true)
 			return ;
-		else if (check_digit(input) == false)
+		else if (checkDigit(input) == false)
 			continue;
 		else
 		{
@@ -62,7 +66,7 @@ void	Phonebook::search_contact(void)
 			if (nb < 1 || nb > 8)
 				std::cout << RED << "Index out of range" << RESET << std::endl;
 			else
-				get_detail(nb);
+				getDetail(nb);
 		}
 	}
 }
@@ -74,17 +78,17 @@ void	Phonebook::search_contact(void)
  * @param t_contact: contact to be added
  * @return TRUE: contact added successfully, FALSE: contact not added
 */
-bool Phonebook::set_contact_detail(Contact &t_contact)
+bool Phonebook::setContactDetail(Contact &t_contact)
 {
-	if (check_and_set_input("Enter first name: ", t_contact, &Contact::set_first_name) == false)
+	if (checkAndSetInput("Enter first name: ", t_contact, &Contact::setFirstName) == false)
 		return (false);
-	if (check_and_set_input("Enter last name: ", t_contact, &Contact::set_last_name) == false)
+	if (checkAndSetInput("Enter last name: ", t_contact, &Contact::setLastName) == false)
 		return (false);
-	if (check_and_set_input("Enter nick name: ", t_contact, &Contact::set_nickname) == false)
+	if (checkAndSetInput("Enter nick name: ", t_contact, &Contact::setNickname) == false)
 		return (false);
-	if (check_and_set_input("Enter phone number: ", t_contact, &Contact::set_phone_number) == false)
+	if (checkAndSetInput("Enter phone number: ", t_contact, &Contact::setPhoneNumber) == false)
 		return (false);
-	if (check_and_set_input("Enter dark secret: ", t_contact, &Contact::set_dark_secret) == false)
+	if (checkAndSetInput("Enter dark secret: ", t_contact, &Contact::setDarkSecret) == false)
 		return (false);
 	return (true);
 }
@@ -92,20 +96,24 @@ bool Phonebook::set_contact_detail(Contact &t_contact)
 /**
  * @brief check the input from the user
  * @param msg: message to be display
- * @param t_contact: contact to be added
- * @param func: function to be called
+ * @param t_contact: contact to be added (reference for the function)
+ * @param func: function to be called (function pointer means which function to be called)
  *  			<datatype>(function)(parameter of the function)
  * @return TRUE: input will store in the contact, FALSE: input will not store in the contact
- * @note 1. "std::getline(std::cin, input)" get the input from the user with space
- * 
+ *
 */
-bool check_and_set_input(std::string msg, Contact &t_contact, bool (Contact::*func)(std::string))
+bool checkAndSetInput(std::string msg, Contact &t_contact, bool (Contact::*func)(std::string))
 {
 	std::string input;
 	while (1)
 	{
 		std::cout << msg;
 		std::getline(std::cin, input);
+		if (std::cin.eof())
+		{
+			exit(0);
+		}
+		else
 		if (input == "back" || input == "BACK")
 		{
 			std::cout << RED << "Contact not added" << RESET << std::endl;
@@ -129,24 +137,23 @@ bool check_and_set_input(std::string msg, Contact &t_contact, bool (Contact::*fu
 
 /*
 *	@brief display the contact list
-*	@note 1. if the string more then 10 character, then the string will be truncated
 */
-void	Phonebook::display_contact_list(void)
+void	Phonebook::DisplayContactList(void)
 {
 	int i;
 
 	std::cout << "+----------+----------+----------+----------+" << std::endl;
-	std::cout << "|" << std::setw(10) << "index"
-				<< "|" << std::setw(10) << "FirstName"
-				<< "|" << std::setw(10) << "LastName"
-				<< "|" << std::setw(10) << "NickName" << "|" << std::endl;
+	std::cout << "|" << std::setw(10) << "index";
+	std::cout << "|" << std::setw(10) << "FirstName";
+	std::cout << "|" << std::setw(10) << "LastName";
+	std::cout << "|" << std::setw(10) << "NickName" << "|" << std::endl;
 	i = 0;
 	while (i < 8)
 	{
-		std::cout << "|" << std::setw(10) << i + 1
-					<< "|" << std::setw(10) << ft_truncated(this->_contact[i]. get_first_name())
-					<< "|" << std::setw(10) <<ft_truncated(this->_contact[i]. get_last_name())
-					<< "|" << std::setw(10) << ft_truncated(this->_contact[i]. get_nickname()) << "|" << std::endl;
+		std::cout << "|" << std::setw(10) << i + 1;
+		std::cout << "|" << std::setw(10) << truncated(this->_contact[i]. getFirstName());
+		std::cout << "|" << std::setw(10) <<truncated(this->_contact[i]. getLastName());
+		std::cout << "|" << std::setw(10) << truncated(this->_contact[i]. getNickname()) << "|" << std::endl;
 		i++;
 	}
 	std::cout << "+----------+----------+----------+----------+" << std::endl;
@@ -156,23 +163,23 @@ void	Phonebook::display_contact_list(void)
 *	@brief display the contact detail
 *	@param index: index of the contact to display
 */
-void	Phonebook::get_detail(int index)
+void	Phonebook::getDetail(int index)
 {
-	std::cout << "----------Contact [" << index << "]----------" << std::endl;
-	std::cout << "First Name  :" << this->_contact[index - 1].get_first_name() << std::endl;
-	std::cout << "Last Name   :" << this->_contact[index - 1].get_last_name() << std::endl;
-	std::cout << "Nick Name   :" << this->_contact[index - 1].get_nickname() << std::endl;
-	std::cout << "Phone Number:" << this->_contact[index - 1].get_phone_number() << std::endl;
-	std::cout << "Dark Secret :" << this->_contact[index - 1].get_dark_secret() << std::endl << std::endl;
+	std::cout << "----------Contact ["<< index << "]----------" << std::endl;
+	std::cout << "First Name  :"<< this->_contact[index - 1].getFirstName() << std::endl;
+	std::cout << "Last Name   :"<< this->_contact[index - 1].getLastName() << std::endl;
+	std::cout << "Nick Name   :"<< this->_contact[index - 1].getNickname() << std::endl;
+	std::cout << "Phone Number:"<< this->_contact[index - 1].getPhoneNumber() << std::endl;
+	std::cout << "Dark Secret :"<< this->_contact[index - 1].getDarkSecret() << std::endl << std::endl;
 }
 
 /*
 *	@brief function to truncated the string
 *	@param str: string to be truncated
-*	@return str: return the truncated string
+*	@return return the truncated string
 *	@note: if the string is more than 10 len, then the string will be resize to 9 and add "."
 */
-std::string	ft_truncated(std::string str)
+std::string	truncated(std::string str)
 {
 	if (str.length() > 10)
 	{
@@ -185,9 +192,9 @@ std::string	ft_truncated(std::string str)
 /*
 *	@brief check the input from the user
 *	@param input: input from the user
-*	@return TRUE: if the input is not "back" , FALSE: if the input is "back"
+*	@return TRUE: if the input is not "back" or "exit" , FALSE: if the input is "back" or "exit"
 */
-bool check_back_or_exit(std::string input)
+bool checkBackOrExit(std::string input)
 {
 	if (input == "exit" || input == "EXIT")
 	{
