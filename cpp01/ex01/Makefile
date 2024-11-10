@@ -1,8 +1,8 @@
-NAME = zombie
+NAME = zombieHorde
 
 CC = g++
 
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+CFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 
 SRC = main.cpp Zombie.cpp zombieHorde.cpp
 
@@ -35,4 +35,7 @@ fclean : clean
 
 re : fclean all
 
-.PHONY: all clean fclean re
+leak :
+	valgrind --leak-check=full ./$(NAME)
+
+.PHONY: all clean fclean re leak
