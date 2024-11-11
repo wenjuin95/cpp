@@ -12,14 +12,15 @@
 
 #include <iostream>
 
+char ftToupper(char c);
+
 int main(int ac, char **av)
 {
 	int i;
 	int j;
-	char c;
 
 	if (ac != 1)
-	{	
+	{
 		i = 1;
 		while (av[i])
 		{

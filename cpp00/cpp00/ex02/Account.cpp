@@ -30,7 +30,7 @@ int Account::getNbWithdrawals( void ) { return Account::_totalNbWithdrawals; }
 *   @brief create a new account with timestamp, account index and amount
 *   @param initial_deposit user input the amount
 *	@note 1. initialize can be done after the constructor parameter
-*	@note 2. because is astatic so when "_nbAccounts" and "_totalAmount" update, 
+*	@note 2. because is astatic so when "_nbAccounts" and "_totalAmount" update,
 			 it will update the value when create another account
 */
 Account::Account( int initial_deposit )
@@ -39,30 +39,30 @@ Account::Account( int initial_deposit )
 	_nbDeposits(0),
 	_nbWithdrawals(0)
 {
-    this->_nbAccounts++; 
+    this->_nbAccounts++;
     this->_totalAmount += initial_deposit;
     _displayTimestamp();
-    std::cout << "index:" << this->_accountIndex << ";" 
-                << "amount:" << _amount << ";" 
+    std::cout << "index:" << this->_accountIndex << ";"
+                << "amount:" << checkAmount() << ";"
                 << "created" << std::endl;
 }
 
-/** 
+/**
 *   @brief delete the account with timestamp, account index and amount
 *	@note 1. this is a destructor, so it will delete the account after
 *			 the program finish
 */
 Account::~Account( void )
 {
-    this->_displayTimestamp(); // Display the timestamp
-    std::cout << "index:" << this->_accountIndex << ";" 
-                << "amount:" << _amount << ";" 
+    this->_displayTimestamp();
+    std::cout << "index:" << this->_accountIndex << ";"
+                << "amount:" << checkAmount() << ";"
                 << "closed" << std::endl;
 }
 
 /**
 *   @brief display the account status (for all total account, total amount, total deposit, total withdrawal)
-*	@note 1. because this function is a non-member function, so we need to use 
+*	@note 1. because this function is a non-member function, so we need to use
 *			 the class name to access the static member and function
 *	@note 2. non-member function: does not have access the private member declared in the class
 *            EXAMPLE: this function doesn't get private member variable
@@ -119,16 +119,16 @@ void Account::_displayTimestamp( void )
 void Account::makeDeposit( int deposit )
 {
     this->_displayTimestamp();
-    std::cout << "index:" << this->_accountIndex << ";" << "p_amount:" << _amount << ";" ;
+    std::cout << "index:" << this->_accountIndex << ";" << "p_amount:" << checkAmount() << ";" ;
     this->_amount += deposit;
     this->_totalAmount += deposit;
     this->_nbDeposits++;
     this->_totalNbDeposits++;
-    std::cout << "deposit:" << deposit << ";" << "amount:" << _amount << ";" << "nb_deposits:" << this->_nbDeposits << std::endl;
+    std::cout << "deposit:" << deposit << ";" << "amount:" << checkAmount() << ";" << "nb_deposits:" << this->_nbDeposits << std::endl;
 }
 
 /**
-*   @brief display the amount of the account after withdrawal 
+*   @brief display the amount of the account after withdrawal
 *   @param withdrawal the amount that user want to withdraw
 *   @return true with the amount that withdraw, false with print refused
 *	@note 1. decrease the amount and total_amount value with the "withdraw" value
@@ -138,8 +138,8 @@ void Account::makeDeposit( int deposit )
 bool	Account::makeWithdrawal( int withdrawal )
 {
     Account::_displayTimestamp();
-    std::cout << "index:" << this->_accountIndex << ";" << "p_amount:" << _amount << ";" << "withdrawal:" ;
-    if (checkAmount() < withdrawal) 
+    std::cout << "index:" << this->_accountIndex << ";" << "p_amount:" << checkAmount() << ";" << "withdrawal:" ;
+    if (checkAmount() < withdrawal)
     {
         std::cout << "refused" << std::endl;
         return false;
@@ -148,7 +148,7 @@ bool	Account::makeWithdrawal( int withdrawal )
     this->_totalAmount -= withdrawal;
     this->_totalNbWithdrawals++;
     this->_nbWithdrawals++;
-     std::cout << withdrawal << ";" << "amount:" << _amount << ";" << "nb_withdrawals:" << this->_nbWithdrawals << std::endl;
+     std::cout << withdrawal << ";" << "amount:" << checkAmount() << ";" << "nb_withdrawals:" << this->_nbWithdrawals << std::endl;
      return true;
 }
 
