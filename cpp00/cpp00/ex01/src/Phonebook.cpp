@@ -75,12 +75,12 @@ void	Phonebook::SearchContact(void)
 
 /**
  * @brief set the contact info
- * @param t_contact: contact to be added
+ * @param t_contact: contact to be added (make it reference because we want to change the value)
  * @return TRUE: contact added successfully, FALSE: contact not added
 */
 bool Phonebook::setContactDetail(Contact &t_contact)
 {
-	if (checkAndSetInput("Enter first name: ", t_contact, &Contact::setFirstName) == false)
+	if (checkAndSetInput("Enter first name: ", t_contact, Contact::setFirstName) == false)
 		return (false);
 	if (checkAndSetInput("Enter last name: ", t_contact, &Contact::setLastName) == false)
 		return (false);
@@ -96,7 +96,7 @@ bool Phonebook::setContactDetail(Contact &t_contact)
 /**
  * @brief check the input from the user
  * @param msg: message to be display
- * @param t_contact: contact to be added (reference for the function)
+ * @param t_contact: contact to be added (reference for modify the value)
  * @param func: function to be called (function pointer means which function to be called)
  *  			<datatype>(function)(parameter of the function)
  * @return TRUE: input will store in the contact, FALSE: input will not store in the contact
