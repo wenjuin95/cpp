@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: welow < welow@student.42kl.edu.my>         +#+  +:+       +#+        */
+/*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 06:57:45 by welow             #+#    #+#             */
-/*   Updated: 2024/11/16 22:16:24 by welow            ###   ########.fr       */
+/*   Updated: 2024/12/20 18:24:46 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ int main(int ac, char **av)
     if (ac != 4)
     {
         std::cout << "wrong argument number" << std::endl;
+		std::cout << "Usage: ./replace [filename] [string to replace] [string to replace with]" << std::endl;
         return (1);
     }
     else
