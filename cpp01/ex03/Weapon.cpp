@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Weapon.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
+/*   By: welow < welow@student.42kl.edu.my>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 15:59:25 by welow             #+#    #+#             */
-/*   Updated: 2024/11/15 18:28:21 by welow            ###   ########.fr       */
+/*   Updated: 2025/01/01 23:44:20 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@ Weapon::~Weapon(void)
 
 /**
  * @brief get the weapon type with the object reference
+ * @return weapon type
+ * @note 1. "const &" is to get the value of the object without changing it
+ * @note 2. if you remove & from the Weapon parameter, it will call the copy constructor
  */
 std::string const	&Weapon::getType(void) const
 {
