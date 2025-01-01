@@ -6,7 +6,7 @@
 /*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 18:39:45 by welow             #+#    #+#             */
-/*   Updated: 2024/12/27 13:24:59 by welow            ###   ########.fr       */
+/*   Updated: 2025/01/01 18:11:29 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,16 +60,13 @@ void	Harl::complain( std::string level )
 			{
 				case 0:
 					this->_debug();
-					break ;
 				case 1:
 					this->_info();
-					break ;
 				case 2:
 					this->_warning();
-					break ;
 				case 3:
 					this->_error();
-					break ;
+					break;
 			}
 			return ;
 		}
