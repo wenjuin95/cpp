@@ -6,7 +6,7 @@
 /*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 17:27:27 by welow             #+#    #+#             */
-/*   Updated: 2025/01/02 18:44:40 by welow            ###   ########.fr       */
+/*   Updated: 2025/01/03 19:36:25 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,16 @@ Fixed::Fixed() : _raw(0)
 
 Fixed::Fixed( int const nb )
 {
-	std::cout << "Int constructor called" << std::endl;
+	std::cout << "Int constructor called"<< std::endl;
 	this->_raw = nb << Fixed::_bit;
+	std::cout << "int :" << this->_raw << std::endl << std::endl;
 }
 
 Fixed::Fixed( float const nb )
 {
 	std::cout << "Float constructor called" << std::endl;
 	this->_raw = roundf(nb * (1 << Fixed::_bit));
+	std::cout << "float :" << this->_raw << std::endl << std::endl;
 }
 
 /**
@@ -85,6 +87,7 @@ int	Fixed::getRawBits( void ) const
 float	Fixed::toFloat( void ) const
 {
 	//1 << 8 = 256
+	std::cout << (float)this->_raw  << "/" << (1 << Fixed::_bit) << " = ";
 	return ((float)this->_raw / (1 << Fixed::_bit));
 }
 
@@ -94,6 +97,7 @@ float	Fixed::toFloat( void ) const
 */
 int	Fixed::toInt( void ) const
 {
+	std::cout << this->_raw << ">>" << Fixed::_bit << " = ";
 	return this->_raw >> Fixed::_bit;
 }
 
