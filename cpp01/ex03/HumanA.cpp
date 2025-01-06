@@ -6,7 +6,7 @@
 /*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 16:14:49 by welow             #+#    #+#             */
-/*   Updated: 2024/11/15 18:26:42 by welow            ###   ########.fr       */
+/*   Updated: 2025/01/06 11:47:58 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ HumanA::~HumanA(void)
  */
 void	HumanA::attack(void)
 {
-	std::cout << GREEN << this->_name << " attacks with thier [ "<< RED << this->_weapon.getType() << RESET <<  GREEN << " ]" << RESET << std::endl;
+	std::cout << GREEN << "[ "<< this->_name << " ] attacks with thier [ "<< RED << this->_weapon.getType() << RESET <<  GREEN << " ]" << RESET << std::endl;
 }
 
 

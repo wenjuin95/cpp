@@ -12,27 +12,29 @@ class student
 
 		student(int id, std::string name)
 		{
+			std::cout << "Constructor called" << std::endl;
 			this->id = id;
 			this->name = name;
-			std::cout << "Constructor" << std::endl;
 		};
 
+		//assignment operator overloading
 		student &operator=(const student &src)
 		{
-			std::cout << "Copy assignment operator" << std::endl;
+			std::cout << "Copy assignment operator called" << std::endl;
 			this->id = src.id + 1;
-			this->name = src.name + "1";
+			this->name = "hello " + src.name;
 			return (*this);
 		};
-
 };
 
 int main()
 {
 	student a(1, "jack");
-	student b(2, "alice");
+	std::cout << "id: " << a.id << std::endl;
+	std::cout << a.name << std::endl;
 	student c;
-	c = a = b;
+	c = a;
+	std::cout << "id: " << c.id << std::endl;
 	std::cout << c.name << std::endl;
 	return 0;
 }

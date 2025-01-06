@@ -6,7 +6,7 @@
 /*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 17:27:27 by welow             #+#    #+#             */
-/*   Updated: 2025/01/03 19:36:25 by welow            ###   ########.fr       */
+/*   Updated: 2025/01/06 19:58:28 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,17 @@ Fixed::Fixed() : _raw(0)
 Fixed::Fixed( int const nb )
 {
 	std::cout << "Int constructor called"<< std::endl;
-	this->_raw = nb << Fixed::_bit;
-	std::cout << "int :" << this->_raw << std::endl << std::endl;
+	//std::cout << "nb :" << nb << std::endl; //visualize
+	this->_raw = nb << Fixed::_bit; //convert the integer to fixed point
+	//std::cout << "fixed point nb: " << this->_raw << std::endl << std::endl; //visualize
 }
 
 Fixed::Fixed( float const nb )
 {
 	std::cout << "Float constructor called" << std::endl;
-	this->_raw = roundf(nb * (1 << Fixed::_bit));
-	std::cout << "float :" << this->_raw << std::endl << std::endl;
+	//std::cout << "nb :" << nb << std::endl; //visualize
+	this->_raw = roundf(nb * (1 << Fixed::_bit)); //convert the float to fixed point
+	//std::cout << "fixed point nb: " << this->_raw << std::endl << std::endl; //visualize
 }
 
 /**
@@ -51,8 +53,7 @@ Fixed::Fixed(const Fixed &src)
 Fixed &Fixed::operator=( Fixed const &src)
 {
 	std::cout << "Copy assignment operator called" << std::endl;
-	if (this != &src)
-		this->_raw = src.getRawBits();
+	this->_raw = src.getRawBits();
 	return *this;
 }
 
@@ -76,37 +77,38 @@ void	Fixed::setRawBits( int const raw )
 */
 int	Fixed::getRawBits( void ) const
 {
-	std::cout << "getRawBits member function called" << std::endl;
 	return this->_raw;
 }
 
 /**
- * @brief convert the fixed point value to float
+ * @brief convert value to float
  * @return float value of the fixed point value
 */
 float	Fixed::toFloat( void ) const
 {
 	//1 << 8 = 256
-	std::cout << (float)this->_raw  << "/" << (1 << Fixed::_bit) << " = ";
+	//std::cout << "toFloat member function called" << std::endl; //visualize
+	//std::cout << (float)this->_raw  << "/" << (1 << Fixed::_bit) << " = "; //visualize
 	return ((float)this->_raw / (1 << Fixed::_bit));
 }
 
 /**
- * @brief convert the fixed point value to int
+ * @brief convert value to int
  * @return integer value of the fixed point value
 */
 int	Fixed::toInt( void ) const
 {
-	std::cout << this->_raw << ">>" << Fixed::_bit << " = ";
+	//std::cout << "toInt member function called" << std::endl; //visualize
+	//std::cout << this->_raw << ">>" << Fixed::_bit << " = "; //visualize
 	return this->_raw >> Fixed::_bit;
 }
 
 /**
- * @brief output the fixed point value to the output stream
+ * @brief when "std::cout" is called, this function will be called
  * @param output output stream
- * @param src copy of the fixed point value
+ * @param src copy of the value
  * @return output stream
- * @note output the float value of the fixed point value
+ * @note output the float value
 */
 std::ostream	&operator<<(std::ostream &output, Fixed const &src)
 {

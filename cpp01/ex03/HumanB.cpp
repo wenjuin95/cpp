@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   HumanB.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: welow < welow@student.42kl.edu.my>         +#+  +:+       +#+        */
+/*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 16:23:58 by welow             #+#    #+#             */
-/*   Updated: 2025/01/01 23:41:02 by welow            ###   ########.fr       */
+/*   Updated: 2025/01/06 13:56:31 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,9 @@ HumanB::~HumanB(void)
 	std::cout << BLUE << this->_name << " destroyed" << RESET << std::endl;
 }
 
-
 /**
  * @brief set the weapon with object reference
  * @param weapon weapon object reference
- * @note if you remove & from the Weapon parameter, it will call the copy constructor
  */
 void	HumanB::setWeapon(Weapon &weapon)
 {
@@ -46,5 +44,5 @@ void	HumanB::setWeapon(Weapon &weapon)
  */
 void	HumanB::attack(void)
 {
-	std::cout << BLUE << this->_name << " attacks with their [ " << RED << this->_weapon->getType() << BLUE << " ]" << RESET << std::endl;
+	std::cout << BLUE << "[ "<< this->_name << " ] attacks with their [ " << RED << this->_weapon->getType() << BLUE << " ]" << RESET << std::endl;
 }

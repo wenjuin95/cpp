@@ -6,7 +6,7 @@
 /*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 16:28:27 by welow             #+#    #+#             */
-/*   Updated: 2024/11/15 18:45:17 by welow            ###   ########.fr       */
+/*   Updated: 2025/01/06 13:04:24 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int main()
 	std::cout << "----------REFERENCE----------" << std::endl;
 	{
 		Weapon club = Weapon("crude spiked club");
+
 		HumanA bob("Bob", club);
 		bob.attack();
 		club.setType("some other type of club");
@@ -37,6 +38,7 @@ int main()
 	std::cout << std::endl << "----------POINTER----------" << std::endl;
 	{
 		Weapon club = Weapon("crude spiked club");
+
 		HumanB jim("Jim");
 		jim.setWeapon(club);
 		jim.attack();
