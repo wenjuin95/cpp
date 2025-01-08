@@ -6,7 +6,7 @@
 /*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 16:28:27 by welow             #+#    #+#             */
-/*   Updated: 2025/01/06 13:04:24 by welow            ###   ########.fr       */
+/*   Updated: 2025/01/08 21:00:36 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,9 @@
 
 int main()
 {
-	/*
-	* 1. When you want to ensure that the HumanA object always has a valid Weapon object.
-	* 2. The reference cannot be null, so it guarantees that HumanA always has a weapon.
-	* NOTE :: when the Weapon object is guaranteed to exist for the lifetime.
+	/**
+	 * 1. Alway valid :: must be initialize when the "HumanA" is created and cannot be null.
+	 * ensure
 	*/
 	std::cout << "----------REFERENCE----------" << std::endl;
 	{
@@ -40,6 +39,7 @@ int main()
 		Weapon club = Weapon("crude spiked club");
 
 		HumanB jim("Jim");
+		jim.attack();
 		jim.setWeapon(club);
 		jim.attack();
 		club.setType("some other type of club");

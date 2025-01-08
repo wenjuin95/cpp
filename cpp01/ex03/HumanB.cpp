@@ -6,7 +6,7 @@
 /*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 16:23:58 by welow             #+#    #+#             */
-/*   Updated: 2025/01/06 13:56:31 by welow            ###   ########.fr       */
+/*   Updated: 2025/01/08 17:21:00 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,11 @@
 /**
  * @brief create human name without weapon
  * @param name human name
+ * @note 1. in pdf humanB constructor should not have a weapon and not armed
  */
-HumanB::HumanB(std::string name) : _name(name)
+HumanB::HumanB(std::string name) : _name(name), _weapon(NULL)
 {
-	std::cout << BLUE << "HumanB: [ " << this->_name << " ] created without a weapon" << RESET << std::endl;
+	std::cout << BLUE << "constructor HumanB: [ " << this->_name << " ] created without a weapon" << RESET << std::endl;
 }
 
 /**
@@ -26,7 +27,7 @@ HumanB::HumanB(std::string name) : _name(name)
  */
 HumanB::~HumanB(void)
 {
-	std::cout << BLUE << this->_name << " destroyed" << RESET << std::endl;
+	std::cout << BLUE << "destuctor HumanB: [ " << this->_name << " ] destroyed" << RESET << std::endl;
 }
 
 /**
@@ -44,5 +45,8 @@ void	HumanB::setWeapon(Weapon &weapon)
  */
 void	HumanB::attack(void)
 {
-	std::cout << BLUE << "[ "<< this->_name << " ] attacks with their [ " << RED << this->_weapon->getType() << BLUE << " ]" << RESET << std::endl;
+	if (this->_weapon == NULL)
+		std::cout << BLUE << "[ " << this->_name << " ] can't attack" << RESET << std::endl;
+	else
+		std::cout << BLUE << "[ "<< this->_name << " ] attacks with his [ " << RED << this->_weapon->getType() << BLUE << " ]" << RESET << std::endl;
 }

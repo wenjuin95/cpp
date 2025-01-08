@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Weapon.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: welow < welow@student.42kl.edu.my>         +#+  +:+       +#+        */
+/*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 15:59:25 by welow             #+#    #+#             */
-/*   Updated: 2025/01/01 23:44:20 by welow            ###   ########.fr       */
+/*   Updated: 2025/01/08 16:50:17 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
  */
 Weapon::Weapon(std::string type) : _type(type)
 {
-	std::cout << RED << "[ "<< this->_type << " ] created" << RESET << std::endl;
+	std::cout << RED << "constructor weapon: [ "<< this->_type << " ] created" << RESET << std::endl;
 }
 
 /**
@@ -26,7 +26,7 @@ Weapon::Weapon(std::string type) : _type(type)
  */
 Weapon::~Weapon(void)
 {
-	std::cout << RED << "[ " << this->_type << " ] destroyed" << RESET << std::endl;
+	std::cout << RED << "destructor weapon: [ " << this->_type << " ] destroyed" << RESET << std::endl;
 }
 
 /**
