@@ -6,7 +6,7 @@
 /*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 18:49:01 by welow             #+#    #+#             */
-/*   Updated: 2025/01/09 19:10:09 by welow            ###   ########.fr       */
+/*   Updated: 2025/01/10 15:13:00 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@
 */
 Fixed::Fixed() : _raw(0)
 {
-	std::cout << "Default constructor called" << std::endl;
+	if (CALL == 1)
+		std::cout << "Default constructor called" << std::endl;
 }
 
 /**
@@ -26,7 +27,8 @@ Fixed::Fixed() : _raw(0)
 */
 Fixed::Fixed( int const nb ) : _raw(nb << Fixed::_bit)
 {
-	std::cout << "Int constructor called"<< std::endl;
+	if (CALL == 1)
+		std::cout << "Int constructor called"<< std::endl;
 }
 
 /**
@@ -35,7 +37,8 @@ Fixed::Fixed( int const nb ) : _raw(nb << Fixed::_bit)
 */
 Fixed::Fixed( float const nb ) : _raw(roundf(nb * (1 << Fixed::_bit)))
 {
-	std::cout << "Float constructor called" << std::endl;
+	if (CALL == 1)
+		std::cout << "Float constructor called" << std::endl;
 }
 
 /**
@@ -45,7 +48,8 @@ Fixed::Fixed( float const nb ) : _raw(roundf(nb * (1 << Fixed::_bit)))
 */
 Fixed::Fixed(const Fixed &src)
 {
-	std::cout << "Copy constructor called" << std::endl;
+	if (CALL == 1)
+		std::cout << "Copy constructor called" << std::endl;
 	*this = src;
 }
 
@@ -57,7 +61,8 @@ Fixed::Fixed(const Fixed &src)
 */
 Fixed &Fixed::operator=( Fixed const &src)
 {
-	std::cout << "Copy assignment operator called" << std::endl;
+	if (CALL == 1)
+		std::cout << "Copy assignment operator called" << std::endl;
 	this->_raw = src.getRawBits();
 	return *this;
 }
@@ -67,7 +72,8 @@ Fixed &Fixed::operator=( Fixed const &src)
 */
 Fixed::~Fixed()
 {
-	std::cout << "Destructor called" << std::endl;
+	if (CALL == 1)
+		std::cout << "Destructor called" << std::endl;
 }
 
 /**
@@ -94,6 +100,7 @@ int	Fixed::getRawBits( void ) const
 */
 float	Fixed::toFloat( void ) const
 {
+	//std::cout << this->_raw << "/" << (1 << Fixed::_bit) << std::endl;
 	return ((float)this->_raw / (1 << Fixed::_bit));
 }
 
@@ -184,6 +191,48 @@ Fixed	Fixed::operator++(int)
 	return tmp;
 }
 
+Fixed	&Fixed::operator--(void)
+{
+	this->_raw--;
+	return *this;
+}
+
+Fixed	Fixed::operator--(int)
+{
+	Fixed tmp(*this);
+	operator--();
+	return tmp;
+}
+
+/////////////////////////////////compare operators////////////////////////////////////////
+Fixed &Fixed::min(Fixed &a, Fixed &b)
+{
+	if (a <= b)
+		return a;
+	return b;
+}
+
+Fixed const &Fixed::min(Fixed const &a, Fixed const &b)
+{
+	if (a <= b)
+		return a;
+	return b;
+}
+
+Fixed &Fixed::max(Fixed &a, Fixed &b)
+{
+	if (a >= b)
+		return a;
+	return b;
+}
+
+Fixed const &Fixed::max(Fixed const &a, Fixed const &b)
+{
+	if (a >= b)
+		return a;
+	return b;
+}
+
 /////////////////////////////////Output operators////////////////////////////////////////
 /**
  * @brief when "std::cout" is called, this function will be called
@@ -194,6 +243,8 @@ Fixed	Fixed::operator++(int)
 */
 std::ostream	&operator<<(std::ostream &output, Fixed const &src)
 {
+	if (CALL == 1)
+		std::cout << "output operator called" << std::endl;
 	output << src.toFloat();
 	return output;
 }

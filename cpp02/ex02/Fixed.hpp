@@ -6,7 +6,7 @@
 /*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 17:27:35 by welow             #+#    #+#             */
-/*   Updated: 2025/01/09 18:48:42 by welow            ###   ########.fr       */
+/*   Updated: 2025/01/10 15:13:11 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 #include <iostream>
 #include <cmath>
+
+# define CALL 0
 
 class Fixed
 {
