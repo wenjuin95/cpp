@@ -1,6 +1,30 @@
 #include <iostream>
 #include <string>
 
+//syntax for memory allocation
+// <new> <data_type>;
+// new : keyword to allocate memory
+// data_type : data type of the variable
+
+//<delete> <data_type>;
+// delete : keyword to deallocate memory
+// data_type : data type of the variable
+
+//delete [] <data_type>;
+// delete : keyword to deallocate memory
+// [] : deallocate memory for array
+// data_type : data type of the variable
+
+int main()
+{
+	std::string *str = new std::string("Hello");
+	std::cout << *str << std::endl;
+	delete str;
+}
+
+/********************************************************************************************/
+
+////memory allocation with array
 // int main()
 // {
 //     char *str;
@@ -15,30 +39,30 @@
 //     return 0;
 // }
 
-/******************************************************************************************* */
+/********************************************************************************************/
 
-//memory management for object
-class Student {
-    public:
-        std::string name;
-        int age;
-};
+////memory management for object
+//class Student {
+//    public:
+//        std::string name;
+//        int age;
+//};
 
-int main()
-{
-    Student *s = new Student[2];
-    
-    s[0].name = "John";
-    s[0].age = 20;
-    s[1].name = "Jane";
-    s[1].age = 22;
+//int main()
+//{
+//    Student *s = new Student[2];
 
-    for (int i = 0; i < 2; i++)
-    {
-        std::cout << "Name: " << s[i].name << std::endl
-                    << " Age: " << s[i].age << std::endl;
-    }
+//    s[0].name = "John";
+//    s[0].age = 20;
+//    s[1].name = "Jane";
+//    s[1].age = 22;
 
-    delete []s;
-    return 0;
-}
+//    for (int i = 0; i < 2; i++)
+//    {
+//        std::cout << "Name: " << s[i].name << std::endl
+//                    << " Age: " << s[i].age << std::endl;
+//    }
+
+//    delete []s;
+//    return 0;
+//}

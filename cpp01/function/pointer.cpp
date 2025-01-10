@@ -22,6 +22,7 @@ int main()
 		// when you need an alias for an existing variable and do not
 		// need to change the reference itself.
 		std::string str = "hello, world!";
+		std::string str2 = "cpp1";
 		std::cout << "str  : " << str << "( "<< &str << " )" << std::endl;
 		std::string &str_r = str;
 		//str_r = "cpp!"; //if you can change value with reference word without "&"
@@ -30,3 +31,46 @@ int main()
 		std::cout << "str_r: " << str_r << "( "<< &str_r << " )" << std::endl;
 	}
 }
+
+/**
+ * POINTER :: hold memory address of the variable. need to use * to get the value
+ * REFERENCE :: an alias for the variable.
+ *
+ * REASSIGNING
+ * ===========
+ * POINTER :: can be reasign
+ * example: int a = 5;
+ * 			int b = 10;
+ * 			int *p = &a;
+ * 			p = &b;
+ *
+ * REFERENCE :: cannot be reassign
+ * example: int a = 5;
+ * 			int b = 10;
+ * 			int &r = a;
+ * 			&r = b; //get error
+ * 			r = b; //get value of "r" (is a) and change the value of a
+ *
+ * NULL
+ * ====
+ * POINTER :: can be assigned to NULL
+ * REFERENCE :: cannot be assigned to NULL
+ *
+ * INDIRECTION
+ * ===========
+ * POINTER :: can have pointer to pointer
+ * example: int a = 5;
+ * 			int *p = &a;
+ * 			int **pp = &p;
+ * REFERENCE :: cannot have reference to reference
+ * example: int a = 5;
+ * 			int &r = a;
+ * 			int &rr = r; //get error
+ *
+ * WHICH TO USE
+ * ============
+ * POINTER :: more for memory allocation or reassigning
+ * REFERENCE :: safer from null pointer and more readable
+ * 				without unitialization
+ * 1.
+*/
