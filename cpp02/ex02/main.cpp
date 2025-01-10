@@ -6,7 +6,7 @@
 /*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 12:49:29 by welow             #+#    #+#             */
-/*   Updated: 2025/01/10 15:28:16 by welow            ###   ########.fr       */
+/*   Updated: 2025/01/10 19:08:04 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,27 @@ int main( void )
 
 	std::cout <<std::endl;
 
-	std::cout << "get biggest in" << a << " : " << b << std::endl;
+	std::cout << "get biggest in " << a << " : " << b << std::endl;
 	std::cout << Fixed::max( a, b ) << std::endl; //compare operator -> output operator
 
-	std::cout << "get smallest"<< std::endl;
+	std::cout <<std::endl;
+
+	std::cout << "get smallest in "<< a << " : " << b << std::endl;
 	std::cout << Fixed::min( a, b ) << std::endl; //compare operator -> output operator
 
+	std::cout << std::endl;
 
+	std::cout << "a: " << a << " + b: " << b << std::endl;
+	std::cout << a + b << std::endl; //add operator -> output operator
+
+	std::cout << std::endl;
+
+	std::cout << "a: " << a << " - b: " << b << std::endl;
+	std::cout << a - b << std::endl; //substract operator -> output operator
+
+	std::cout << std::endl;
+
+	std::cout << "a: " << a << " * b: " << b << std::endl;
+	std::cout << a * b << std::endl; //multiply operator -> output operator
 	return 0;
 }

@@ -6,7 +6,7 @@
 /*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 18:49:01 by welow             #+#    #+#             */
-/*   Updated: 2025/01/10 15:13:00 by welow            ###   ########.fr       */
+/*   Updated: 2025/01/10 19:05:30 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,12 +178,20 @@ Fixed	Fixed::operator/(Fixed const &src) const
 }
 
 //////////////////////////////increament/decreament operators//////////////////////////////////////
+/**
+ * @brief pre-increament operator
+ * @return *this
+*/
 Fixed	&Fixed::operator++(void)
 {
 	this->_raw++;
 	return *this;
 }
 
+/**
+ * @brief post-increament operator
+ * @return tmp
+*/
 Fixed	Fixed::operator++(int)
 {
 	Fixed tmp(*this);
@@ -191,12 +199,20 @@ Fixed	Fixed::operator++(int)
 	return tmp;
 }
 
+/**
+ * @brief pre-decreament operator
+ * @return *this
+*/
 Fixed	&Fixed::operator--(void)
 {
 	this->_raw--;
 	return *this;
 }
 
+/**
+ * @brief post-decreament operator
+ * @return tmp
+*/
 Fixed	Fixed::operator--(int)
 {
 	Fixed tmp(*this);
@@ -205,6 +221,12 @@ Fixed	Fixed::operator--(int)
 }
 
 /////////////////////////////////compare operators////////////////////////////////////////
+/**
+ * @brief look for the smallest value
+ * @param a first value
+ * @param b second value
+ * @return the smallest value
+*/
 Fixed &Fixed::min(Fixed &a, Fixed &b)
 {
 	if (a <= b)
@@ -212,6 +234,12 @@ Fixed &Fixed::min(Fixed &a, Fixed &b)
 	return b;
 }
 
+/**
+ * @brief look for the smallest value (not changable)
+ * @param a first value
+ * @param b second value
+ * @return the smallest value
+*/
 Fixed const &Fixed::min(Fixed const &a, Fixed const &b)
 {
 	if (a <= b)
@@ -219,6 +247,12 @@ Fixed const &Fixed::min(Fixed const &a, Fixed const &b)
 	return b;
 }
 
+/**
+ * @brief look for the biggest value
+ * @param a first value
+ * @param b second value
+ * @return the biggest value
+*/
 Fixed &Fixed::max(Fixed &a, Fixed &b)
 {
 	if (a >= b)
@@ -226,6 +260,12 @@ Fixed &Fixed::max(Fixed &a, Fixed &b)
 	return b;
 }
 
+/**
+ * @brief look for the biggest value (not changable)
+ * @param a first value
+ * @param b second value
+ * @return the biggest value
+*/
 Fixed const &Fixed::max(Fixed const &a, Fixed const &b)
 {
 	if (a >= b)
