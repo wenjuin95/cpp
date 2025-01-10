@@ -6,7 +6,7 @@
 /*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 12:49:29 by welow             #+#    #+#             */
-/*   Updated: 2025/01/10 15:23:40 by welow            ###   ########.fr       */
+/*   Updated: 2025/01/10 15:27:32 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,9 @@ int main( void )
 
 	std::cout << "get biggest"<< std::endl;
 	std::cout << Fixed::max( a, b ) << std::endl; //compare operator -> output operator
+
+	std::cout << "get smallest"<< std::endl;
+	std::cout << Fixed::min( a, b ) << std::endl; //compare operator -> output operator
 
 
 	return 0;
