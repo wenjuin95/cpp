@@ -6,7 +6,7 @@
 /*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 18:39:45 by welow             #+#    #+#             */
-/*   Updated: 2025/01/09 17:59:19 by welow            ###   ########.fr       */
+/*   Updated: 2025/01/15 12:03:41 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	Harl::_error(void)
 void	Harl::complain( std::string level )
 {
 	//function pointer array
-	void	(Harl::*func_ptr[4])() = { &Harl::_debug, &Harl::_info,
+	void	(Harl::*func_ptr[])() = { &Harl::_debug, &Harl::_info,
 		&Harl::_warning, &Harl::_error };
 
 	//string pointer array

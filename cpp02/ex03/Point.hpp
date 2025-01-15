@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Point.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/09 09:18:51 by welow             #+#    #+#             */
-/*   Updated: 2025/01/14 11:34:56 by welow            ###   ########.fr       */
+/*   Created: 2025/01/13 16:02:35 by welow             #+#    #+#             */
+/*   Updated: 2025/01/15 13:06:53 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef POINT_HPP
+# define POINT_HPP
 
-int main()
+# include "Fixed.hpp"
+
+class Point
 {
-    //have memory allocation
-    Zombie  *zombie1 = newZombie("Zombie1 (with memory)");
-    zombie1->announce();
-    delete zombie1;
-	std::cout << std::endl;
-    //no memory allocation
-    randomChump("Zombie1 (no memory)");
+	private:
+		Fixed const	_x;
+		Fixed const	_y;
+	public:
+		Point(void);
+		Point(Fixed const x, Fixed const y);
+		Point(Point const &src);
+		~Point(void);
 
-    return 0;
-}
+		Point &operator=(Point const &src);
+		Fixed const &getY(void) const;
+		Fixed const &getX(void) const;
+};
+
+# endif

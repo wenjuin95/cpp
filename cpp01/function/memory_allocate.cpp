@@ -17,7 +17,7 @@
 
 int main()
 {
-	std::string *str = new std::string("Hello");
+	std::string *str = new std::string("Hello World");
 	std::cout << *str << std::endl;
 	delete str;
 }

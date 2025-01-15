@@ -6,7 +6,7 @@
 /*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 12:49:29 by welow             #+#    #+#             */
-/*   Updated: 2025/01/10 19:08:04 by welow            ###   ########.fr       */
+/*   Updated: 2025/01/13 15:18:14 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,55 +14,85 @@
 
 int main( void )
 {
-	Fixed a; //create default constructor
+	{
+		std::cout << "----------test 1----------" << std::endl;
+		Fixed a;
+		Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
+		std::cout << a << std::endl;
+		std::cout << ++a << std::endl;
+		std::cout << a << std::endl;
+		std::cout << a++ << std::endl;
+		std::cout << a << std::endl;
+		std::cout << b << std::endl;
+		std::cout << Fixed::max( a, b ) << std::endl;
+	}
 
-	//create float constructor(create float constructor, create int constructor)
-	//after multiple then destroy the int constructor and float constructor
-	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
+	{
+		std::cout << std::endl << "----------comparison operator----------" << std::endl;
+		Fixed a(20);
+		Fixed b(10);
 
-	std::cout << "original a" << std::endl;
-	std::cout << a << std::endl;
+		bool res = a > b;
+		if (res == 0)
+			std::cout << "a is not greater than b" << std::endl;
+		else
+			std::cout << "a is greater than b" << std::endl;
 
-	std::cout << std::endl;
+		res = a >= b;
+		if (res == 0)
+			std::cout << "a is not greater or equal to b" << std::endl;
+		else
+			std::cout << "a is greater or equal to b" << std::endl;
 
-	std::cout << "pre-increament" << std::endl;
-	std::cout << ++a << std::endl; //increament operator -> output operator
-	std::cout << a << std::endl;
+		res = a == b;
+		if (res == 0)
+			std::cout << "a is not equal to b" << std::endl;
+		else
+			std::cout << "a is equal to b" << std::endl;
 
-	std::cout << std::endl;
+	}
 
-	std::cout << "post-increament" << std::endl;
-	std::cout << a++ << std::endl; //increament operator -> output operator
-	std::cout << a << std::endl;
+	{
+		std::cout << std::endl << "----------arithmetic operator----------" << std::endl;
+		Fixed a(20);
+		Fixed b(10);
 
-	std::cout << std::endl;
+		Fixed c = a + b;
+		std::cout << a << " + " << b << " = " << c << std::endl;
 
-	std::cout << "original b" << std::endl;
-	std::cout << b << std::endl;
+		c = a - b;
+		std::cout << a << " - " << b << " = " << c << std::endl;
 
-	std::cout <<std::endl;
+		c = a * b;
+		std::cout << a << " * " << b << " = " << c << std::endl;
 
-	std::cout << "get biggest in " << a << " : " << b << std::endl;
-	std::cout << Fixed::max( a, b ) << std::endl; //compare operator -> output operator
+		c = a / b;
+		std::cout << a << " / " << b << " = " << c << std::endl;
+	}
 
-	std::cout <<std::endl;
+	{
+		std::cout << std::endl << "----------min/max operator----------" << std::endl;
+		Fixed a(20);
+		Fixed b(10);
 
-	std::cout << "get smallest in "<< a << " : " << b << std::endl;
-	std::cout << Fixed::min( a, b ) << std::endl; //compare operator -> output operator
+		std::cout << "a: " << a << std::endl;
+		std::cout << "b: " << b << std::endl;
+		Fixed c = Fixed::min(a, b);
+		std::cout << "min(a, b) = " << c << std::endl;
 
-	std::cout << std::endl;
+		c = Fixed::max(a, b);
+		std::cout << "max(a, b) = " << c << std::endl;
+	}
 
-	std::cout << "a: " << a << " + b: " << b << std::endl;
-	std::cout << a + b << std::endl; //add operator -> output operator
+	{
+		std::cout << std::endl << "----------increament/decreament operator----------" << std::endl;
+		Fixed a(20); //this will convert to fixed point 20.0
 
-	std::cout << std::endl;
-
-	std::cout << "a: " << a << " - b: " << b << std::endl;
-	std::cout << a - b << std::endl; //substract operator -> output operator
-
-	std::cout << std::endl;
-
-	std::cout << "a: " << a << " * b: " << b << std::endl;
-	std::cout << a * b << std::endl; //multiply operator -> output operator
+		std::cout << "ori a: " << a << std::endl;
+		a++;
+		std::cout << "increament a: " << a << std::endl;
+		a--;
+		std::cout << "decreament a: " << a << std::endl;
+	}
 	return 0;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: welow <welow@student.42kl.edu.my>          #+#  +:+       +#+        */
+/*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024-11-10 11:09:33 by welow             #+#    #+#             */
-/*   Updated: 2024-11-10 11:09:33 by welow            ###   ########.fr       */
+/*   Created: 2024/11/10 11:09:33 by welow             #+#    #+#             */
+/*   Updated: 2025/01/15 12:10:17 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ Zombie::Zombie(void)
 /**
  * @brief a destructor
  * @note 1. this will be called when the object is destroyed
- * @note 2. when object use "delete" keyword, it will call the destructor 
+ * @note 2. when object use "delete" keyword, it will call the destructor
  */
 Zombie::~Zombie(void)
 {

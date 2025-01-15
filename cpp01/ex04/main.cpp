@@ -6,7 +6,7 @@
 /*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 06:57:45 by welow             #+#    #+#             */
-/*   Updated: 2024/12/27 16:19:27 by welow            ###   ########.fr       */
+/*   Updated: 2025/01/15 12:01:47 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static void	process_line(std::ofstream &WriteFile, std::ifstream &ReadFile, std:
 		// 	std::cout << "[ line: " << line << " ] + ";//visualize
 		// std::cout << "[ s2: " << s2 << " ] + ";//visualize
 		// std::cout << "[ tempLine: " << tempLine << " ]" << std::endl;//visualize
-		//line = line + s2 + tempLine;
+		line = line + s2 + tempLine;
 		// std::cout << "Modified line: " << line << std::endl << std::endl;//visualize
 
 		//update the position
@@ -102,7 +102,7 @@ static void	ft_replace_line(std::string fileName, std::string s1, std::string s2
 	if (ReadFile.peek() == std::ifstream::traits_type::eof() && s1 == "")
 	{
 		std::cout << "The input file is empty" << std::endl;
-		WriteFile << s2;
+		WriteFile << s1;
 	}
 
     /****************************************************/

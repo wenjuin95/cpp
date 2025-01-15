@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/09 18:49:01 by welow             #+#    #+#             */
-/*   Updated: 2025/01/13 16:43:03 by welow            ###   ########.fr       */
+/*   Created: 2025/01/13 15:22:14 by welow             #+#    #+#             */
+/*   Updated: 2025/01/13 15:22:29 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ Fixed::Fixed( int const nb ) : _raw(nb << Fixed::_bit)
 }
 
 /**
- *
  * @brief call constructor with init the "_raw" with the value of "nb"
  * @param nb value in float
 */

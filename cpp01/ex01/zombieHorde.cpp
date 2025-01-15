@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   zombieHorde.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: welow <welow@student.42kl.edu.my>          #+#  +:+       +#+        */
+/*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024-11-10 11:05:41 by welow             #+#    #+#             */
-/*   Updated: 2024-11-10 11:05:41 by welow            ###   ########.fr       */
+/*   Created: 2024/11/10 11:05:41 by welow             #+#    #+#             */
+/*   Updated: 2025/01/15 12:08:17 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
  * @brief Create a horde of zombies
  * @param N Number of zombies
  * @param name Name of the zombies
- * @return Zombie* 
+ * @return Zombie*
  */
 Zombie* zombieHorde(int N, std::string name)
 {
