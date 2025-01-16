@@ -35,24 +35,25 @@ static void	process_line(std::ofstream &WriteFile, std::ifstream &ReadFile, std:
     /* "find(s, position)" returns the position of the substring (like strchr in C) */
     /* s : the substring to be searched                                             */
     /* position : the position from where the search should start                   */
-    /* "std::string::npos" means the end of the string                              */
+    /* "std::string::npos" means null or not found                                  */
     /* this function returns the position of the first occurrence of the substring  */
     /********************************************************************************/
-	//std::cout << "orignal line: " << line << std::endl;//visualize
+	// std::cout << "orignal line: " << line << std::endl;//visualize
 	while ((linePosition = line.find(s1, position)) != std::string::npos)
 	{
-
-		//remove the string that you want to replace and get the unwanted string
         /************************************************************************/
         /* "substr(position, length)" returns a new string which is a substring */
         /* position : the starting position of the substring                    */
         /* length : the length of the substring                                 */
         /* "linePosition + s1.size()"                                           */
         /************************************************************************/
+		//return the string after the string that you want to replace
+		//example abc (find b) -> c
 		tempLine = line.substr(linePosition + s1.size());
-		//std::cout << std::endl << "after remove with s1: " << tempLine << std::endl;//visualize
+		// std::cout << std::endl << "after remove with s1: " << tempLine << std::endl;//visualize
 
 		//get the string with the position the rest will be removed
+		//example abc (find b) -> a
 		line.resize(linePosition);
 		// if (line == "") //visualize
 		// 	std::cout << "[ line: \"\"" << " ] + ";//visualize
@@ -63,7 +64,7 @@ static void	process_line(std::ofstream &WriteFile, std::ifstream &ReadFile, std:
 		line = line + s2 + tempLine;
 		// std::cout << "Modified line: " << line << std::endl << std::endl;//visualize
 
-		//update the position
+		//move the position to the next character after the string that you want to replace
 		position = linePosition + s2.size();
 	}
 
