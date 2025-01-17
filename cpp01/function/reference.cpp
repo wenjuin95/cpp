@@ -5,18 +5,18 @@
 //     std::string name;
 //     int id;
 
-//     // Constructor
+    // Constructor
 //     Student(const std::string &name, int id) : name(name), id(id) {
 //         std::cout << "Student constructor called" << std::endl;
 //     }
 
-//     // Copy constructor
+    // Copy constructor
 //     Student(const Student &other) : name(other.name), id(other.id) {
 //         std::cout << "Student copy constructor called" << std::endl;
 //     }
 // };
 
-// //if you remove & from the Student parameter, it will call the copy constructor
+//if you remove & from the Student parameter, it will call the copy constructor
 // void print_student(Student &student) {
 //     std::cout << student.name << " " << student.id << std::endl;
 // }
@@ -27,7 +27,7 @@
 //     return 0;
 // }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////
+/********************************************************************************************/
 
 class Student
 {
