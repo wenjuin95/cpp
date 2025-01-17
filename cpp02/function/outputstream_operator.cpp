@@ -1,5 +1,14 @@
 #include <iostream>
 
+/**
+ * operator overloading allow you to define the way how the operator should work with the class
+ *
+ * why we need operator overloading?
+ * 1. to make the code more readable
+ * 2. to make the code more maintainable
+ * 3. to make the code more reusable
+*/
+
 class student
 {
 	public:

@@ -1,5 +1,7 @@
 #include <iostream>
 
+//example of "+" operator for class ( if you remove the operator overloading function, it will give error)
+
 class math
 {
 	public:

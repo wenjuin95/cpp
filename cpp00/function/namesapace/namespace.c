@@ -6,10 +6,10 @@
  *       2. mostly use for "std" namespace for predefined functions
  *          EXAMPLE: before namespace -> std::cout, std::cin
  *                  after namespace -> cout, cin
- * 
+ *
 */
 
-using namespace std; //remove the "std::" from cout and cin //sample 3
+//using namespace std; //remove the "std::" from cout and cin //sample 3
 
 namespace say_hello //sample 1
 {
@@ -32,7 +32,7 @@ using namespace say_hello; //sample 1
 int main()
 {
     msg(); //sample 1
-    say_goodbye::msg(); //sample 2
-    cout << "say something without \"std\"" << endl; //sample 3
+	//say_goodbye::msg(); //sample 2
+    std::cout << "say something without \"std\"" << endl; //sample 3
     return 0;
 }
