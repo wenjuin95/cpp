@@ -1,0 +1,28 @@
+1. different with "C" and "C++"
+    - C and C++ are the same. C++ support classes and object but C not
+    - provide more structured and organize way to write code
+
+2. what is OOP (object-oriented programming)
+    - use object in programming
+   way to organizing code to make it:
+   a. reusable
+   b. easy to maintain
+   c. easier to understand
+
+3. concept of OOP
+    class:
+        - like a blueprint for creating object
+    object:
+        - just a object
+    encapsulation:
+        - binding code and data together into single unit
+        - this protect the data from accidental modify
+        - EXAMPLE: encapsulate data properties and method of the data ( function )
+    inheritance: (C03)
+        - when one object acquire all the properties of the parent object
+        - EXAMPLE: you need all properties from class "car" -> name, brand, year
+                   for you class "motor"
+    polymorphism: (C02)
+        - one task is performed by different way
+        - EXAMPLE: to tell the oeprator do other thing then do the original thing
+            - like "+" is to add but you can tell it to do other thing
