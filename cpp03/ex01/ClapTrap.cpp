@@ -6,7 +6,7 @@
 /*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:55:01 by welow             #+#    #+#             */
-/*   Updated: 2025/01/22 14:23:53 by welow            ###   ########.fr       */
+/*   Updated: 2025/01/23 18:44:44 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,13 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &src)
 {
 	if (CALL == 1)
 		std::cout << "ClapTrap (assignment operator) called" << std::endl;
-	this->_name = src._name;
-	this->_hitPoint = src._hitPoint;
-	this->_energyPoint = src._energyPoint;
-	this->_attackDamage = src._attackDamage;
+	if (this != &src)
+	{
+		this->_name = src._name;
+		this->_hitPoint = src._hitPoint;
+		this->_energyPoint = src._energyPoint;
+		this->_attackDamage = src._attackDamage;
+	}
 	return (*this);
 }
 
@@ -80,7 +83,7 @@ void ClapTrap::takeDamage(unsigned int amount)
 
 void ClapTrap::beRepaired(unsigned int amount)
 {
-	if (this->_hitPoint == 10)
+	if (this->_hitPoint >= 10)
 	{
 		std::cout << "[" << this->_name << "] already have full hit point" << std::endl;
 		return ;

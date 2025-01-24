@@ -6,7 +6,7 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 
 D_CFLAG = -Wall -Wextra -Werror -std=c++98 -g -DCALL=1
 
-SRC = main.cpp ClapTrap.cpp
+SRC = main.cpp ClapTrap.cpp ScavTrap.cpp
 
 OBJ_FOLDER = object_files
 
@@ -39,6 +39,7 @@ re : fclean all
 
 debug: fclean
 	$(CC) $(D_CFLAG) $(SRC) -o $(NAME)
+	@echo "${GREEN}-----DEBUG DONE-----\n${RESET}"
 
 leak :
 	valgrind --leak-check=full ./$(NAME)
