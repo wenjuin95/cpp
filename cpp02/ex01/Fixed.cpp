@@ -17,20 +17,26 @@ Fixed::Fixed() : _raw(0)
 	std::cout << "Default constructor called" << std::endl;
 }
 
+/**
+ * @brief convert the integer to fixed point
+ * @param nb integer value to convert
+ * @note 1. EXAMPLE : [ 10 << 8 ] => [ 10 * 2^8 ] => [ 10 * 256 = 2560 ]
+*/
 Fixed::Fixed( int const nb )
 {
 	std::cout << "Int constructor called"<< std::endl;
-	//std::cout << "nb :" << nb << std::endl; //visualize
-	this->_raw = nb << Fixed::_bit; //convert the integer to fixed point
-	//std::cout << "fixed point nb: " << this->_raw << std::endl << std::endl; //visualize
+	this->_raw = nb << Fixed::_bit;
 }
 
+/**
+ * @brief convert the float to fixed point
+ * @param nb float value to convert
+ * @note 1. EXAMPLE : [ roundf(42.42 * (1 << 8)) ] => [ roundf(42.42 * 2^8) ] => [ roundf(42.42 * 256) = 10837 ]
+*/
 Fixed::Fixed( float const nb )
 {
 	std::cout << "Float constructor called" << std::endl;
-	//std::cout << "nb :" << nb << std::endl; //visualize
-	this->_raw = roundf(nb * (1 << Fixed::_bit)); //convert the float to fixed point
-	//std::cout << "fixed point nb: " << this->_raw << std::endl << std::endl; //visualize
+	this->_raw = roundf(nb * (1 << Fixed::_bit));
 }
 
 /**
@@ -81,8 +87,8 @@ int	Fixed::getRawBits( void ) const
 }
 
 /**
- * @brief convert value to float
- * @return float value of the fixed point value
+ * @brief convert fixed point value to floating point value 
+ * @return floating point value
 */
 float	Fixed::toFloat( void ) const
 {
@@ -93,8 +99,8 @@ float	Fixed::toFloat( void ) const
 }
 
 /**
- * @brief convert value to int
- * @return integer value of the fixed point value
+ * @brief convert fixed point value to integer value
+ * @return integer value
 */
 int	Fixed::toInt( void ) const
 {
@@ -104,11 +110,11 @@ int	Fixed::toInt( void ) const
 }
 
 /**
- * @brief when "std::cout" is called, this function will be called
+ * @brief when "std::cout" is called, this function will be called to do other operation
  * @param output output stream
  * @param src copy of the value
  * @return output stream
- * @note output the float value
+ * @note it convert output to floating point value
 */
 std::ostream	&operator<<(std::ostream &output, Fixed const &src)
 {

@@ -4,25 +4,44 @@
 
 2. what is OOP (object-oriented programming)
     - use object in programming
+    - help programmer create complex programs by grouping together
+      related data and function
    way to organizing code to make it:
    a. reusable
    b. easy to maintain
    c. easier to understand
-
-3. concept of OOP
+    
     class:
         - like a blueprint for creating object
     object:
         - just a object
-    encapsulation:
-        - binding code and data together into single unit
-        - this protect the data from accidental modify
+
+3. OOP using four main principle
+
+    encapsulation: (CPP00)
+        - bundling data with method (function) that can operate on
+          that data within a class
+        - this hiding data within a class, preventing anything outside
+          that class from directly interacting with it
+        - member of other classes can interact with the attribute of another
+          object through its method
+          (by using "GETTER" and "SETTER")
         - EXAMPLE: encapsulate data properties and method of the data ( function )
-    inheritance: (C03)
-        - when one object acquire all the properties of the parent object
-        - EXAMPLE: you need all properties from class "car" -> name, brand, year
-                   for you class "motor"
-    polymorphism: (C02)
+        NOTE:
+            + hiding or keeping data from external class, helps you
+              keep control of your program and prevent it from becoming too
+              complicated 
+
+    polymorphism: (CPP02)
         - one task is performed by different way
         - EXAMPLE: to tell the oeprator do other thing then do the original thing
             - like "+" is to add but you can tell it to do other thing
+
+   inheritance: (CPP03)
+        - when one object acquire all the properties of the parent object
+        - EXAMPLE: you need all properties from class "car" -> name, brand, year
+                   for you class "motor"
+   
+    abstraction: (CPP04)
+        - only show essential details and keeping everything hidden
+        
