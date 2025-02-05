@@ -14,6 +14,14 @@
 # define SCAVTRAP_HPP
 
 #include "ClapTrap.hpp"
+#include <iomanip>
+
+#define GREEN "\033[32m"
+#define BLUE "\033[34m"
+#define RED "\033[31m"
+#define YELLOW "\033[33m"
+#define CYAN "\033[36m"
+#define RESET "\033[0m"
 
 class ScavTrap : public ClapTrap
 {
@@ -24,7 +32,6 @@ class ScavTrap : public ClapTrap
 		ScavTrap(const ScavTrap &src);
 		ScavTrap &operator=(const ScavTrap &src);
 		~ScavTrap(void);
-		void attack(const std::string &target);
 		void guardGate(void);
 };
 

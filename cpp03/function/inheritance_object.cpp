@@ -9,7 +9,7 @@ class Menu
 	public:
 		Menu( void )
 		{
-			std::cout << "Menu ddefault constructor" << std::endl;
+			std::cout << "Menu default constructor" << std::endl;
 		}
 
 		Menu(std::string name, int price)
@@ -41,7 +41,7 @@ class Drink : public Menu
 	private:
 		bool hot;
 	public:
-		Drink( void )
+		Drink( void ) : Menu()
 		{
 			std::cout << "Drink default constructor" << std::endl;
 		}

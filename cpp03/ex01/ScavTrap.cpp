@@ -18,7 +18,7 @@
 ScavTrap::ScavTrap(void) : ClapTrap()
 {
 	if (CALL == 1)
-		std::cout << VIOLET << "ScavTrap default constructor called" << RESET << std::endl;
+		std::cout << VIOLET << "ScavTrap (default constructor) called" << RESET << std::endl;
 	this->_name = "";
 	this->_hitPoint = 100;
 	this->_energyPoint = 50;
@@ -28,7 +28,7 @@ ScavTrap::ScavTrap(void) : ClapTrap()
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
 	if (CALL == 1)
-		std::cout << VIOLET << "ScavTrap constructor called" << RESET << std::endl;
+		std::cout << VIOLET << "ScavTrap (constructor) called" << RESET << std::endl;
 	this->_name = name;
 	this->_hitPoint = 100;
 	this->_energyPoint = 50;
@@ -38,14 +38,14 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 ScavTrap::ScavTrap(const ScavTrap &src) : ClapTrap(src)
 {
 	if (CALL == 1)
-		std::cout << VIOLET << "ScavTrap copy constructor called" << RESET << std::endl;
+		std::cout << VIOLET << "ScavTrap (copy constructor) called" << RESET << std::endl;
 	*this = src;
 }
 
 ScavTrap &ScavTrap::operator=(const ScavTrap &src)
 {
 	if (CALL == 1)
-		std::cout << VIOLET << "ScavTrap assignment operator called" << RESET << std::endl;
+		std::cout << VIOLET << "ScavTrap (assignment operator) called" << RESET << std::endl;
 	if (this != &src)
 	{
 		this->_name = src._name;
@@ -59,22 +59,7 @@ ScavTrap &ScavTrap::operator=(const ScavTrap &src)
 ScavTrap::~ScavTrap(void)
 {
 	if (CALL == 1)
-		std::cout << VIOLET << "ScavTrap destructor called" << RESET << std::endl;
-}
-
-void ScavTrap::attack(const std::string &target)
-{
-	if ( this->_energyPoint > 0 && this->_hitPoint > 0)
-	{
-		this->_energyPoint--;
-		std::cout << "ScavTrap [" << this->_name << "] attacks [" << target
-				<< "], causing [" << this->_attackDamage
-				<< "] point of damage!" << std::endl;
-	}
-	else if (this->_energyPoint == 0)
-		std::cout <<  "ScavTrap [" << this->_name << "] can't attack because [" << this->_energyPoint << "] energy point" << std::endl;
-	else if (this->_hitPoint == 0)
-		std::cout <<  "ScavTrap [" << this->_name << "] already dead, can't attack" << std::endl;
+		std::cout << VIOLET << "ScavTrap (destructor) called" << RESET << std::endl;
 }
 
 void ScavTrap::guardGate(void)

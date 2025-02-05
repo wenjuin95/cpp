@@ -11,14 +11,6 @@
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
-#include <iomanip>
-
-#define GREEN "\033[32m"
-#define BLUE "\033[34m"
-#define RED "\033[31m"
-#define YELLOW "\033[33m"
-#define CYAN "\033[36m"
-#define RESET "\033[0m"
 
 void display_bot(ClapTrap &bot1, ClapTrap &bot2)
 {
@@ -43,49 +35,49 @@ void display_bot(ClapTrap &bot1, ClapTrap &bot2)
 
 int main(void)
 {
+	//these both create one "Claptrap" constructor each
 	ClapTrap botA("C-1");
-	ScavTrap botB("S-1");
+	ScavTrap botB("S-1"); //then this create "Scavtrap" constructor
 
 	{
-		//ClapTrap claptrap(Cbot);
-		//ScavTrap scavtrap(Sbot);
-
+		//this copy the "Claptrap" constructor to "Claptrap" constructor for each
 		ClapTrap claptrap = botA;
-		ScavTrap scavtrap = botB;
+		ScavTrap scavtrap = botB; //this copy the "Scavtrap" constructor to "Scavtrap" constructor 
 
 		std::cout << "CLAPTRAP                     SCAVTRAP" << std::endl;
 		display_bot(claptrap, scavtrap);
 		std::cout << std::endl;
-
+		std::cout << "---------- start ---------" << std::endl;
 		claptrap.attack("S-1");
 		display_bot(claptrap, scavtrap);
 		std::cout << std::endl;
-		//scavtrap.takeDamage(0);
-		//display_bot(claptrap, scavtrap);
-		//std::cout << std::endl;
-		//scavtrap.beRepaired(5);
-		//display_bot(claptrap, scavtrap);
-		//std::cout << std::endl;
+		scavtrap.takeDamage(0);
+		display_bot(claptrap, scavtrap);
+		std::cout << std::endl;
+		scavtrap.beRepaired(5);
+		display_bot(claptrap, scavtrap);
+		std::cout << std::endl;
 
 		std::cout << "==========================================================" << std::endl << std::endl;
 
-		//ClapTrap claptrap2 = botA;
-		//ScavTrap scavtrap2 = botB;
+		// this copy the "Claptrap" constructor to "Claptrap" constructor for each
+		ClapTrap claptrap2 = botA;
+		ScavTrap scavtrap2 = botB; //this copy the "Scavtrap" constructor to "Scavtrap" constructor
 
-		//scavtrap2.attack(Cbot);
-		//display_bot(claptrap2, scavtrap2);
-		//std::cout << std::endl;
-		//claptrap2.takeDamage(20);
-		//display_bot(claptrap2, scavtrap2);
-		//std::cout << std::endl;
-		//claptrap2.beRepaired(5);
-		//display_bot(claptrap2, scavtrap2);
-		//std::cout << std::endl;
-		//scavtrap2.guardGate();
-		//display_bot(claptrap2, scavtrap2);
-		//std::cout << std::endl;
+		scavtrap2.attack("C-1");
+		display_bot(claptrap2, scavtrap2);
+		std::cout << std::endl;
+		claptrap2.takeDamage(20);
+		display_bot(claptrap2, scavtrap2);
+		std::cout << std::endl;
+		claptrap2.beRepaired(5);
+		display_bot(claptrap2, scavtrap2);
+		std::cout << std::endl;
+		scavtrap2.guardGate();
+		display_bot(claptrap2, scavtrap2);
+		std::cout << std::endl;
 
-		//std::cout << "=======================================================================" << std::endl;
+		std::cout << "=======================================================================" << std::endl;
 	}
 	//{
 	//	std::cout << std::endl << "========== WHEN A-1 keep hit B-2" << std::endl;
