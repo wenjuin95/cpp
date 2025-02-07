@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: welow <welow@student.42kl.edu.my>          #+#  +:+       +#+        */
+/*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-02-06 07:37:00 by welow             #+#    #+#             */
-/*   Updated: 2025-02-06 07:37:00 by welow            ###   ########.fr       */
+/*   Created: 2025/02/06 07:37:00 by welow             #+#    #+#             */
+/*   Updated: 2025/02/07 14:19:45 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,12 @@
 #include "FragTrap.hpp"
 #include "ScavTrap.hpp"
 
-#define MAGENTA "\033[0;47m"
+#define BLUE_H "\033[44m"
 #define RESET "\033[0m"
 
-class DiamondTrap : public FragTrap, public ScavTrap
+class DiamondTrap
+	: public ScavTrap,
+	public FragTrap
 {
     private:
         std::string _name;

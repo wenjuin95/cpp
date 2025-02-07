@@ -6,13 +6,13 @@
 /*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:55:01 by welow             #+#    #+#             */
-/*   Updated: 2025/01/23 18:44:44 by welow            ###   ########.fr       */
+/*   Updated: 2025/02/07 14:09:14 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(void) : _name(""), _hitPoint(10), _energyPoint(10), _attackDamage(0)
+ClapTrap::ClapTrap(void) : _name("C-DEFAULT"), _hitPoint(10), _energyPoint(10), _attackDamage(0)
 {
 	if (CALL == 1)
 		std::cout << "ClapTrap (default constructor) called" << std::endl;
@@ -21,7 +21,7 @@ ClapTrap::ClapTrap(void) : _name(""), _hitPoint(10), _energyPoint(10), _attackDa
 ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoint(10), _energyPoint(10), _attackDamage(0)
 {
 	if (CALL == 1)
-		std::cout << this->_name << " (constructor) called" << std::endl;
+		std::cout  << "ClapTrap (constructor) called" << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &src)
@@ -83,19 +83,19 @@ void ClapTrap::takeDamage(unsigned int amount)
 
 void ClapTrap::beRepaired(unsigned int amount)
 {
-	if (this->_hitPoint >= 10)
+	if (this->_hitPoint >= 100)
 	{
 		std::cout << "[" << this->_name << "] already have full hit point" << std::endl;
 		return ;
 	}
-	if (this->_energyPoint > 0 && this->_hitPoint > 0 && this->_hitPoint + amount <= 10)
+	if (this->_energyPoint > 0 && this->_hitPoint > 0 && this->_hitPoint + amount <= 100)
 	{
 		this->_hitPoint += amount;
 		std::cout << "[" << this->_name << "] use an energy point to repaired and gain [" << amount
 				<< "] of hit point!" << std::endl;
 		this->_energyPoint--;
 	}
-	else if (this->_hitPoint + amount > 10 && this->_hitPoint <= 10)
+	else if (this->_hitPoint + amount > 100 && this->_hitPoint <= 100)
 		std::cout << "[" << this->_name << "] can't be repair because " << amount << " is too big (must be "
 				<< amount - this->_hitPoint << ")" << std::endl;
 	else if (this->_hitPoint == 0)

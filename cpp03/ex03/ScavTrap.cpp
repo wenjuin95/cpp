@@ -6,7 +6,7 @@
 /*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 15:51:23 by welow             #+#    #+#             */
-/*   Updated: 2025/01/24 11:51:45 by welow            ###   ########.fr       */
+/*   Updated: 2025/02/07 13:10:38 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 ScavTrap::ScavTrap(void) : ClapTrap()
 {
 	if (CALL == 1)
-		std::cout << VIOLET << "ScavTrap (default constructor) called" << RESET << std::endl;
-	this->_name = "";
+		std::cout << RED_H << "ScavTrap (default constructor) called" << RESET << std::endl;
+	this->_name = "C-DEFAULT";
 	this->_hitPoint = 100;
 	this->_energyPoint = 50;
 	this->_attackDamage = 20;
@@ -25,7 +25,7 @@ ScavTrap::ScavTrap(void) : ClapTrap()
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
 	if (CALL == 1)
-		std::cout << VIOLET << "ScavTrap (constructor) called" << RESET << std::endl;
+		std::cout << RED_H << "ScavTrap (constructor) called" << RESET << std::endl;
 	this->_name = name;
 	this->_hitPoint = 100;
 	this->_energyPoint = 50;
@@ -35,14 +35,14 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 ScavTrap::ScavTrap(const ScavTrap &src) : ClapTrap(src)
 {
 	if (CALL == 1)
-		std::cout << VIOLET << "ScavTrap (copy constructor) called" << RESET << std::endl;
+		std::cout << RED_H << "ScavTrap (copy constructor) called" << RESET << std::endl;
 	*this = src;
 }
 
 ScavTrap &ScavTrap::operator=(const ScavTrap &src)
 {
 	if (CALL == 1)
-		std::cout << VIOLET << "ScavTrap (assignment operator) called" << RESET << std::endl;
+		std::cout << RED_H << "ScavTrap (assignment operator) called" << RESET << std::endl;
 	if (this != &src)
 	{
 		this->_name = src._name;
@@ -56,7 +56,7 @@ ScavTrap &ScavTrap::operator=(const ScavTrap &src)
 ScavTrap::~ScavTrap(void)
 {
 	if (CALL == 1)
-		std::cout << VIOLET << "ScavTrap (destructor) called" << RESET << std::endl;
+		std::cout << RED_H << "ScavTrap (destructor) called" << RESET << std::endl;
 }
 
 void ScavTrap::guardGate(void)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   DiamondTrap.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: welow <welow@student.42kl.edu.my>          #+#  +:+       +#+        */
+/*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-02-06 07:51:45 by welow             #+#    #+#             */
-/*   Updated: 2025-02-06 07:51:45 by welow            ###   ########.fr       */
+/*   Created: 2025/02/06 07:51:45 by welow             #+#    #+#             */
+/*   Updated: 2025/02/07 13:50:19 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,36 +14,37 @@
 
 /**
  * 1. DiamondTrap inherits from both ScavTrap and FragTrap.
- * 2. Both ScavTrap and FragTrap inherit from ClapTrap, so two copies of 
+ * 2. Both ScavTrap and FragTrap inherit from ClapTrap, so two copies of
  *    ClapTrap exist in DiamondTrap.
- * 3. Now, DiamondTrap has two separate _hitPoint variables, one from ScavTrap 
+ * 3. Now, DiamondTrap has two separate _hitPoint variables, one from ScavTrap
  *    and one from FragTrap.
- * 
- * When you try to access _hitPoint in DiamondTrap, the compiler does not know 
+ *
+ * When you try to access _hitPoint in DiamondTrap, the compiler does not know
  * which one you mean, leading to the "ambiguous" error.
- * 
+ *
  * SOLVE: implement "virtual inheritance" in FragTrap and ScavTrap class
  * "virtual inheritance" : Only one shared copy of ClapTrap
 */
 DiamondTrap::DiamondTrap(void)
-    : ClapTrap(), 
-    FragTrap(), 
-    ScavTrap()
+    : ClapTrap(),
+    ScavTrap(),
+    FragTrap()
 {
     if (CALL == 1)
-        std::cout << MAGENTA << "DiamondTrap (default constructor) called" << RESET << std::endl;
-    this->_hitPoint = FragTrap::_hitPoint;
+        std::cout << BLUE_H << "DiamondTrap (default constructor) called" << RESET << std::endl;
+    this->_name = "D-default";
+	this->_hitPoint = FragTrap::_hitPoint;
     this->_energyPoint = ScavTrap::_energyPoint;
     this->_attackDamage = FragTrap::_attackDamage;
 }
 
 DiamondTrap::DiamondTrap(std::string name)
-    : ClapTrap(name + "_clap_name"), 
-    FragTrap(name),
-    ScavTrap(name) 
+    : ClapTrap(name + "_clap_name"),
+    ScavTrap(name + "_clap2_name"),
+    FragTrap(name + "_clap3_name")
 {
     if (CALL == 1)
-        std::cout << MAGENTA << "DiamondTrap (constructor) called" << RESET << std::endl;
+        std::cout << BLUE_H << "DiamondTrap (constructor) called" << RESET << std::endl;
     this->_name = name;
     this->_hitPoint = FragTrap::_hitPoint;
     this->_energyPoint = ScavTrap::_energyPoint;
@@ -52,18 +53,18 @@ DiamondTrap::DiamondTrap(std::string name)
 
 DiamondTrap::DiamondTrap(const DiamondTrap &src)
     : ClapTrap(src),
-    FragTrap(src),
-    ScavTrap(src)
+    ScavTrap(src),
+    FragTrap(src)
 {
     if (CALL == 1)
-        std::cout << MAGENTA << "DiamondTrap (copy constructor) called" << RESET << std::endl;
+        std::cout << BLUE_H << "DiamondTrap (copy constructor) called" << RESET << std::endl;
     *this = src;
 }
 
 DiamondTrap &DiamondTrap::operator=(const DiamondTrap &src)
 {
     if (CALL == 1)
-		std::cout << MAGENTA << "DiamondTrap (assignment operator) called" << RESET << std::endl;
+		std::cout << BLUE_H << "DiamondTrap (assignment operator) called" << RESET << std::endl;
 	if (this != &src)
 	{
 		this->_name = src._name;
@@ -77,7 +78,7 @@ DiamondTrap &DiamondTrap::operator=(const DiamondTrap &src)
 DiamondTrap::~DiamondTrap(void)
 {
     if (CALL == 1)
-        std::cout << MAGENTA << "DiamondTrap (destructor) called" << RESET << std::endl;
+        std::cout << BLUE_H << "DiamondTrap (destructor) called" << RESET << std::endl;
 }
 
 

@@ -2,11 +2,13 @@ NAME = a.out
 
 CC = c++
 
+INC = include
+
 CFLAGS = -Wall -Wextra -Werror -Wno-shadow -std=c++98 -g
 
 D_CFLAG = -Wall -Wextra -Werror -Wno-shadow -std=c++98 -g -DCALL=1
 
-SRC = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp
+SRC =
 
 OBJ_FOLDER = object_files
 

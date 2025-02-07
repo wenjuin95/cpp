@@ -6,16 +6,26 @@
 /*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 15:58:45 by welow             #+#    #+#             */
-/*   Updated: 2025/01/24 13:01:11 by welow            ###   ########.fr       */
+/*   Updated: 2025/02/07 14:12:35 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "DiamondTrap.hpp"
 
+#include <iomanip>
+#define GREEN "\033[32m"
+#define BLUE "\033[34m"
+#define RED "\033[31m"
+#define CYAN "\033[36m"
+
 void display_bot(DiamondTrap &bot1, DiamondTrap &bot2)
 {
-    std::cout << std::left << CYAN << "Name: " << RESET << bot1.getName()
+	if (bot1.getName().length() < 10)
+    	std::cout << std::left << CYAN << "Name: " << RESET << bot1.getName()
               << std::setw(25) << CYAN << "Name: " << RESET << bot2.getName() << std::endl;
+	else
+		std::cout << std::left << CYAN << "Name: " << RESET << bot1.getName()
+              << std::setw(14) << CYAN << "Name: " << RESET << bot2.getName() << std::endl;
 
     std::cout << std::left << GREEN << "Hit Point: " << RESET << bot1.getHitPoint();
 	if (bot1.getHitPoint() >= 10)
@@ -46,13 +56,16 @@ int main(void)
 		std::cout << "diamondtrap1                 diamondtrap2" << std::endl;
 		display_bot(diamondtrap1, diamondtrap2);
 		std::cout << std::endl;
+
 		std::cout << "---------- diamondtrap1 vs diamondtrap2 ---------" << std::endl;
-		diamondtrap1.attack("d-2");
+		diamondtrap1.attack(diamondtrap2.getName());
 		display_bot(diamondtrap1, diamondtrap2);
 		std::cout << std::endl;
-		diamondtrap2.takeDamage(20);
+
+		diamondtrap2.takeDamage(diamondtrap1.getAttackDamage());
 		display_bot(diamondtrap1, diamondtrap2);
 		std::cout << std::endl;
+
 		std::cout << "---------- diamondtrap ability ---------" << std::endl;
 		diamondtrap1.whoAmI();
 		diamondtrap2.whoAmI();

@@ -6,7 +6,7 @@
 /*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 15:58:45 by welow             #+#    #+#             */
-/*   Updated: 2025/01/23 17:50:08 by welow            ###   ########.fr       */
+/*   Updated: 2025/02/07 14:13:46 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,56 +58,36 @@ int main(void)
 		std::cout << "CLAPTRAP1                    CLAPTRAP2" << std::endl;
 		display_bot(claptrap1, claptrap2);
 		std::cout << std::endl;
-		claptrap1.attack(bot2);
+
+		claptrap1.attack(claptrap2.getName());
 		display_bot(claptrap1, claptrap2);
 		std::cout << std::endl;
-		claptrap2.takeDamage(0);
+
+		claptrap2.takeDamage(claptrap1.getAttackDamage());
 		display_bot(claptrap1, claptrap2);
 		std::cout << std::endl;
+
 		claptrap2.beRepaired(5);
 		display_bot(claptrap1, claptrap2);
 		std::cout << std::endl;
 
-		std::cout << "==========================================================" << std::endl << std::endl;
-
-		ClapTrap claptrap3(botA);
-		ClapTrap claptrap4(botB);
-
-		claptrap4.attack(bot1);
-		display_bot(claptrap3, claptrap4);
-		std::cout << std::endl;
-		claptrap4.takeDamage(20);
-		display_bot(claptrap3, claptrap4);
-		std::cout << std::endl;
-		claptrap4.beRepaired(5);
-		display_bot(claptrap3, claptrap4);
-		std::cout << std::endl;
-
-		std::cout << "=======================================================================" << std::endl;
 	}
-	//{
-	//	std::cout << std::endl << "========== WHEN A-1 keep hit B-2" << std::endl;
+	std::cout << "==========================================================" << std::endl << std::endl;
+	{
+		ClapTrap claptrap1(botA);
+		ClapTrap claptrap2(botB);
 
-	//	ClapTrap a(botA);
-	//	ClapTrap b(botB);
+		claptrap2.attack(claptrap1.getName());
+		display_bot(claptrap1, claptrap2);
+		std::cout << std::endl;
 
-	//	display_bot(a, b);
-	//	std::cout << std::endl;
-	//	for ( int i = 0; i <= 10; i++)
-	//	{
-	//		std::cout << "round " << i << std::endl;
-	//		a.attack(bot2);
-	//		display_bot(a, b);
-	//		std::cout << std::endl;
-	//	}
-	//	a.takeDamage(10);
-	//	display_bot(a, b);
-	//	std::cout << std::endl;
+		claptrap2.takeDamage(claptrap2.getAttackDamage());
+		display_bot(claptrap1, claptrap2);
+		std::cout << std::endl;
 
-	//	a.beRepaired(5);
-	//	display_bot(a, b);
-	//	std::cout << std::endl;
-
-	//	std::cout << "=======================================================================" << std::endl << std::endl;
-	//}
+		claptrap2.beRepaired(5);
+		display_bot(claptrap1, claptrap2);
+		std::cout << std::endl;
+	}
+	std::cout << "=======================================================================" << std::endl;
 }

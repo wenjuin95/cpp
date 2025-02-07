@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   FragTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: welow <welow@student.42kl.edu.my>          #+#  +:+       +#+        */
+/*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-02-06 04:36:46 by welow             #+#    #+#             */
-/*   Updated: 2025-02-06 04:36:46 by welow            ###   ########.fr       */
+/*   Created: 2025/02/06 04:36:46 by welow             #+#    #+#             */
+/*   Updated: 2025/02/07 13:55:18 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 FragTrap::FragTrap(void) : ClapTrap()
 {
     if (CALL == 1)
-        std::cout << YELLOW << "FragTrap (default constructor) called" << RESET << std::endl;
-    this->_name = "";
+        std::cout << YELLOW_H << "FragTrap (default constructor) called" << RESET << std::endl;
+    this->_name = "F-DEFAULT";
     this->_hitPoint = 100;
     this->_energyPoint = 100;
     this->_attackDamage = 30;
@@ -25,7 +25,7 @@ FragTrap::FragTrap(void) : ClapTrap()
 FragTrap::FragTrap(std::string name) : ClapTrap(name)
 {
     if (CALL == 1)
-        std::cout << YELLOW << "FragTrap (constructor) called" << RESET << std::endl;
+        std::cout << YELLOW_H << "FragTrap (constructor) called" << RESET << std::endl;
     this->_name = name;
     this->_hitPoint = 100;
     this->_energyPoint = 100;
@@ -35,14 +35,14 @@ FragTrap::FragTrap(std::string name) : ClapTrap(name)
 FragTrap::FragTrap(const FragTrap &src) : ClapTrap(src)
 {
     if (CALL == 1)
-        std::cout << YELLOW << "FragTrap (copy constructor) called" << RESET << std::endl;
+        std::cout << YELLOW_H << "FragTrap (copy constructor) called" << RESET << std::endl;
     *this = src;
 }
 
 FragTrap &FragTrap::operator=(const FragTrap &src)
 {
     if (CALL == 1)
-        std::cout << YELLOW << "FragTrap (assignment operator) called" << RESET << std::endl;
+        std::cout << YELLOW_H << "FragTrap (assignment operator) called" << RESET << std::endl;
     if (this != &src)
     {
         this->_name = src._name;
@@ -56,7 +56,7 @@ FragTrap &FragTrap::operator=(const FragTrap &src)
 FragTrap::~FragTrap(void)
 {
     if (CALL == 1)
-        std::cout << YELLOW << "FragTrap (destructor) called" << RESET << std::endl;
+        std::cout << YELLOW_H << "FragTrap (destructor) called" << RESET << std::endl;
 }
 
 void    FragTrap::highFiveGuys(void)

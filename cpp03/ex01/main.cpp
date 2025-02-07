@@ -6,13 +6,19 @@
 /*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 15:58:45 by welow             #+#    #+#             */
-/*   Updated: 2025/01/24 13:01:11 by welow            ###   ########.fr       */
+/*   Updated: 2025/02/07 14:13:08 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
-void display_bot(ClapTrap &bot1, ScavTrap &bot2)
+#include <iomanip>
+#define GREEN "\033[32m"
+#define BLUE "\033[34m"
+#define RED "\033[31m"
+#define CYAN "\033[36m"
+
+void display_bot(ScavTrap &bot1, ScavTrap &bot2)
 {
     std::cout << std::left << CYAN << "Name: " << RESET << bot1.getName()
               << std::setw(25) << CYAN << "Name: " << RESET << bot2.getName() << std::endl;
@@ -47,8 +53,9 @@ int main(void)
 		std::cout << "SACVTRAP1                     SCAVTRAP2" << std::endl;
 		display_bot(scavtrap, scavtrap2);
 		std::cout << std::endl;
+
 		std::cout << "---------- start ---------" << std::endl;
-		scavtrap.attack("S-2");
+		scavtrap.attack(scavtrap2.getName());
 		display_bot(scavtrap, scavtrap2);
 		std::cout << std::endl;
 
@@ -59,9 +66,9 @@ int main(void)
 		scavtrap2.beRepaired(5);
 		display_bot(scavtrap, scavtrap2);
 		std::cout << std::endl;
+
 		std::cout << "---------- sravtrap ability ---------" << std::endl;
 		scavtrap.guardGate();
-
 	}
 	std::cout << "=======================================================================" << std::endl;
 }

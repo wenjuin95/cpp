@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: welow <welow@student.42kl.edu.my>          #+#  +:+       +#+        */
+/*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-02-06 04:28:37 by welow             #+#    #+#             */
-/*   Updated: 2025-02-06 04:28:37 by welow            ###   ########.fr       */
+/*   Created: 2025/02/06 04:28:37 by welow             #+#    #+#             */
+/*   Updated: 2025/02/07 14:19:36 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include "ScavTrap.hpp"
 
-#define YELLOW "\033[43m"
+#define YELLOW_H "\033[43m"
 #define RESET "\033[0m"
 
 class FragTrap : virtual public ClapTrap

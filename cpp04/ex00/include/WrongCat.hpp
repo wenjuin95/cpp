@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   WrongCat.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/22 15:40:46 by welow             #+#    #+#             */
-/*   Updated: 2025/02/07 14:19:34 by welow            ###   ########.fr       */
+/*   Created: 2025/02/07 20:35:51 by welow             #+#    #+#             */
+/*   Updated: 2025/02/07 20:40:19 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAVTRAP_HPP
-#define SCAVTRAP_HPP
+#ifndef WRONG_CAT_HPP
+#define WRONG_CAT_HPP
 
-#include "ClapTrap.hpp"
+#include "WrongAnimal.hpp"
 
-#define RED_H "\033[41m"
-#define RESET "\033[0m"
-
-class ScavTrap : virtual public ClapTrap
+class WrongCat : public WrongAnimal
 {
 	public:
-		ScavTrap(void);
-		ScavTrap(std::string name);
-		ScavTrap(const ScavTrap &src);
-		ScavTrap &operator=(const ScavTrap &src);
-		~ScavTrap(void);
-		void guardGate(void);
+		WrongCat(void);
+		WrongCat(std::string type);
+		WrongCat(const WrongCat &src);
+		WrongCat &operator=(const WrongCat &src);
+		~WrongCat(void);
+		void makeSound(void) const;
 };
 
 #endif
