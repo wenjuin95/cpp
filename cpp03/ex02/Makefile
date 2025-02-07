@@ -6,7 +6,7 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 
 D_CFLAG = -Wall -Wextra -Werror -std=c++98 -g -DCALL=1
 
-SRC = main.cpp ClapTrap.cpp
+SRC = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
 
 OBJ_FOLDER = object_files
 

@@ -10,16 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#include "DiamondTrap.hpp"
 
-void display_bot(ClapTrap &bot1, ScavTrap &bot2)
+void display_bot(DiamondTrap &bot1, DiamondTrap &bot2)
 {
     std::cout << std::left << CYAN << "Name: " << RESET << bot1.getName()
               << std::setw(25) << CYAN << "Name: " << RESET << bot2.getName() << std::endl;
 
     std::cout << std::left << GREEN << "Hit Point: " << RESET << bot1.getHitPoint();
 	if (bot1.getHitPoint() >= 10)
-		std::cout << std::setw(21) << GREEN << "Hit Point: " << RESET << bot2.getHitPoint() << std::endl;
+		std::cout << std::setw(20) << GREEN << "Hit Point: " << RESET << bot2.getHitPoint() << std::endl;
 	else
 		std::cout << std::setw(22) << GREEN << "Hit Point: " << RESET << bot2.getHitPoint() << std::endl;
 
@@ -30,38 +30,32 @@ void display_bot(ClapTrap &bot1, ScavTrap &bot2)
 		std::cout << std::setw(19) << BLUE << "Energy Point: " << RESET << bot2.getEnergyPoint() << std::endl;
 
     std::cout << std::left << RED << "Attack Damage: " << RESET << bot1.getAttackDamage()
-              << std::setw(18) << RED << "Attack Damage: " << RESET << bot2.getAttackDamage() << std::endl;
+              << std::setw(17) << RED << "Attack Damage: " << RESET << bot2.getAttackDamage() << std::endl;
 }
 
 int main(void)
 {
-	//these both create one "Claptrap" constructor each
-	ScavTrap botA("S-1");
-	ScavTrap botB("S-2"); //Claptrap constructor -> Scavtrap constructor
+	DiamondTrap bot1("d-1");
+	DiamondTrap bot2("d-2");
 
+	std::cout << "=============================================================================" << std::endl << std::endl;
 	{
-		//this copy the "Claptrap" constructor to "Claptrap" constructor for each
-		ScavTrap scavtrap = botA;
-		ScavTrap scavtrap2 = botB; //Claptrap copy constuctor -> Scavtrap copy constructor
+		DiamondTrap diamondtrap1(bot1);
+		DiamondTrap diamondtrap2(bot2);
 
-		std::cout << "SACVTRAP1                     SCAVTRAP2" << std::endl;
-		display_bot(scavtrap, scavtrap2);
+		std::cout << "diamondtrap1                 diamondtrap2" << std::endl;
+		display_bot(diamondtrap1, diamondtrap2);
 		std::cout << std::endl;
-		std::cout << "---------- start ---------" << std::endl;
-		scavtrap.attack("S-2");
-		display_bot(scavtrap, scavtrap2);
+		std::cout << "---------- diamondtrap1 vs diamondtrap2 ---------" << std::endl;
+		diamondtrap1.attack("d-2");
+		display_bot(diamondtrap1, diamondtrap2);
 		std::cout << std::endl;
-
-		scavtrap2.takeDamage(scavtrap.getAttackDamage());
-		display_bot(scavtrap, scavtrap2);
+		diamondtrap2.takeDamage(20);
+		display_bot(diamondtrap1, diamondtrap2);
 		std::cout << std::endl;
-
-		scavtrap2.beRepaired(5);
-		display_bot(scavtrap, scavtrap2);
-		std::cout << std::endl;
-		std::cout << "---------- sravtrap ability ---------" << std::endl;
-		scavtrap.guardGate();
-
+		std::cout << "---------- diamondtrap ability ---------" << std::endl;
+		diamondtrap1.whoAmI();
+		diamondtrap2.whoAmI();
 	}
-	std::cout << "=======================================================================" << std::endl;
+	std::cout << "=============================================================================" << std::endl << std::endl;
 }

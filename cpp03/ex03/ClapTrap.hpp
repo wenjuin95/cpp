@@ -10,9 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CLAPTRAP_HPP
-#define CLAPTRAP_HPP
-
 #include <iostream>
 #include <string>
 
@@ -43,5 +40,3 @@ class ClapTrap
 		unsigned int	getEnergyPoint(void) const;
 		unsigned int	getAttackDamage(void) const;
 };
-
-#endif

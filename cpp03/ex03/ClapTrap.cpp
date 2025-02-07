@@ -83,19 +83,19 @@ void ClapTrap::takeDamage(unsigned int amount)
 
 void ClapTrap::beRepaired(unsigned int amount)
 {
-	if (this->_hitPoint >= 100)
+	if (this->_hitPoint >= 10)
 	{
 		std::cout << "[" << this->_name << "] already have full hit point" << std::endl;
 		return ;
 	}
-	if (this->_energyPoint > 0 && this->_hitPoint > 0 && this->_hitPoint + amount <= 100)
+	if (this->_energyPoint > 0 && this->_hitPoint > 0 && this->_hitPoint + amount <= 10)
 	{
 		this->_hitPoint += amount;
 		std::cout << "[" << this->_name << "] use an energy point to repaired and gain [" << amount
 				<< "] of hit point!" << std::endl;
 		this->_energyPoint--;
 	}
-	else if (this->_hitPoint + amount > 100 && this->_hitPoint <= 100)
+	else if (this->_hitPoint + amount > 10 && this->_hitPoint <= 10)
 		std::cout << "[" << this->_name << "] can't be repair because " << amount << " is too big (must be "
 				<< amount - this->_hitPoint << ")" << std::endl;
 	else if (this->_hitPoint == 0)

@@ -1,6 +1,6 @@
 NAME = a.out
 
-CC = c++
+CC = clang++
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 
@@ -37,11 +37,8 @@ fclean : clean
 
 re : fclean all
 
-debug: fclean
+debug:
 	$(CC) $(D_CFLAG) $(SRC) -o $(NAME)
 	@echo "${GREEN}-----DEBUG DONE-----\n${RESET}"
-
-leak :
-	valgrind --leak-check=full ./$(NAME)
 
 .PHONY: all clean fclean re debug leak
