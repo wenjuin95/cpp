@@ -10,31 +10,31 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "./include/Animal.hpp"
 
-Animal::Animal(void) : _type("Default type")
+Animal::Animal(void) : _type("Animal")
 {
 	if (CALL == 1)
-		std::cout << "Anime (default constructor) called" << std::endl;
+		std::cout << BLUE_H << "Animal (default constructor) called" << RESET << std::endl;
 }
 
 Animal::Animal(std::string type) : _type(type)
 {
 	if (CALL == 1)
-		std::cout << "Anime (constructor) called" << std::endl;
+		std::cout << BLUE_H << "Animal (constructor) called" << RESET << std::endl;
 }
 
 Animal::Animal(const Animal &src)
 {
 	if (CALL == 1)
-		std::cout << "Anime (copy constructor) called" << std::endl;
+		std::cout << BLUE_H << "Animal (copy constructor) called" << RESET << std::endl;
 	*this = src;
 }
 
 Animal &Animal::operator=(const Animal &src)
 {
 	if (CALL == 1)
-		std::cout << "Anime (assignment operator) called" << std::endl;
+		std::cout << BLUE_H << "Animal (assignment operator) called" << RESET << std::endl;
 	if (this != &src)
 		this->_type = src._type;
 	return (*this);
@@ -43,7 +43,7 @@ Animal &Animal::operator=(const Animal &src)
 Animal::~Animal(void)
 {
 	if (CALL == 1)
-		std::cout << "Anime (destructor) called" << std::endl;
+		std::cout << BLUE_H << "Animal (destructor) called" << RESET << std::endl;
 }
 
 std::string Animal::getType(void) const
@@ -53,5 +53,5 @@ std::string Animal::getType(void) const
 
 void Animal::makeSound(void) const
 {
-	std::cout << this->_type << " sound" << std::endl;
+	std::cout << this->_type << ": no sound" << std::endl;
 }

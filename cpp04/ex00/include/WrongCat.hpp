@@ -15,6 +15,9 @@
 
 #include "WrongAnimal.hpp"
 
+#define PURPLE_H "\033[45m"
+#define RESET "\033[0m"
+
 class WrongCat : public WrongAnimal
 {
 	public:

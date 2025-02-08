@@ -20,6 +20,9 @@
 #include <iostream>
 #include <string>
 
+#define BLUE_H "\033[1;44m"
+#define RESET "\033[0m"
+
 class Animal
 {
 	protected:

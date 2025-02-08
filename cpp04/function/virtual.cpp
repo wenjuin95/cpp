@@ -12,43 +12,43 @@
  * 4. class may have a vertual destructor but it cannot have a virtual constructor
 */
 
-//class A
-//{
-//	public:
-//		virtual void print(void)const
-//		{
-//			std::cout << "print A" << std::endl;
-//		}
+class A
+{
+	public:
+		void print(void)const
+		{
+			std::cout << "print A" << std::endl;
+		}
 
-//		void show(void)const
-//		{
-//			std::cout << "show A" << std::endl;
-//		}
-//};
+		void show(void)const
+		{
+			std::cout << "show A" << std::endl;
+		}
+};
 
-//class B : public A
-//{
-//	public:
-//		void print(void)const
-//		{
-//			std::cout << "print B" << std::endl;
-//		}
+class B : public A
+{
+	public:
+		void print(void)const
+		{
+			std::cout << "print B" << std::endl;
+		}
 
-//		void show(void)const
-//		{
-//			std::cout << "show B" << std::endl;
-//		}
-//};
+		void show(void)const
+		{
+			std::cout << "show B" << std::endl;
+		}
+};
 
-//int main()
-//{
-//	A *a;
-//	B b;
-//	a = &b;
+int main()
+{
+	A *a;
+	B b;
+	a = &b;
 
-//	a->print();
-//	a->show();
-//}
+	a->print();
+	a->show();
+}
 /**********************************************************************************************/
 
 /**
@@ -56,26 +56,26 @@
  *
 */
 
-using namespace std;
+// using namespace std;
 
-class base {
-  public:
-    base()
-    	{ cout << "base constuctor\n"; }
-    ~base()
-    	{ cout<< "base destructor\n"; }
-};
+// class base {
+//   public:
+//     base()
+//     	{ cout << "base constuctor\n"; }
+//     ~base()
+//     	{ cout<< "base destructor\n"; }
+// };
 
-class derived: public base {
-  public:
-    derived()
-		{ cout << "derived constructor\n"; }
-    ~derived()
-    	{ cout << "derived destructor\n"; }
-};
+// class derived: public base {
+//   public:
+//     derived()
+// 		{ cout << "derived constructor\n"; }
+//     ~derived()
+//     	{ cout << "derived destructor\n"; }
+// };
 
-int main()
-{
-  base *b = new derived();
-  delete b;
-}
+// int main()
+// {
+//   base *b = new derived();
+//   delete b;
+// }

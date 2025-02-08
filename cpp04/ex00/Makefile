@@ -1,14 +1,14 @@
 NAME = a.out
 
-CC = c++
+CC = clang++
 
-INC = include
+INC = -Iinclude
 
 CFLAGS = -Wall -Wextra -Werror -Wno-shadow -std=c++98 -g
 
 D_CFLAG = -Wall -Wextra -Werror -Wno-shadow -std=c++98 -g -DCALL=1
 
-SRC =
+SRC = Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp main.cpp
 
 OBJ_FOLDER = object_files
 
@@ -21,11 +21,11 @@ RESET = \033[0m
 all : $(NAME)
 
 $(NAME) : $(OBJ_SRC)
-	$(CC) $(CFLAGS) $(OBJ_SRC) -o $@
+	$(CC) $(CFLAGS) $(OBJ_SRC) $(INC) -o $@
 	@echo "${GREEN}-----COMPILED DONE-----\n${RESET}"
 
 $(OBJ_FOLDER)/%.o : %.cpp | $(OBJ_FOLDER)
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
 $(OBJ_FOLDER):
 	@mkdir -p $(OBJ_FOLDER)
@@ -40,7 +40,7 @@ fclean : clean
 re : fclean all
 
 debug:
-	$(CC) $(D_CFLAG) $(SRC) -o $(NAME)
+	$(CC) $(D_CFLAG) $(SRC) $(INC) -o $(NAME)
 	@echo "${GREEN}-----DEBUG DONE-----\n${RESET}"
 
 .PHONY: all clean fclean re debug leak

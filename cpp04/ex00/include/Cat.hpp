@@ -15,6 +15,9 @@
 
 #include "Animal.hpp"
 
+#define RED_H "\033[1;41m"
+#define RESET "\033[0m"
+
 class Cat : public Animal
 {
 	public:

@@ -11,15 +11,22 @@
 /* ************************************************************************** */
 
 #ifndef WRONG_ANIMAL_HPP
-#define Wrong_ANIMAL_HPP
+#define WRONG_ANIMAL_HPP
+
+#ifndef CALL
+#define CALL 0
+#endif
 
 #include <iostream>
 #include <string>
 
+#define GREEN_H "\033[0;42m"
+#define RESET "\033[0m"
+
 class WrongAnimal
 {
 	protected:
-		std::string type;
+		std::string _type;
 	public:
 		WrongAnimal(void);
 		WrongAnimal(std::string type);
