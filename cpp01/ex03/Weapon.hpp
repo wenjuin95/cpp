@@ -6,7 +6,7 @@
 /*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 15:52:07 by welow             #+#    #+#             */
-/*   Updated: 2024/11/15 18:29:17 by welow            ###   ########.fr       */
+/*   Updated: 2025/02/11 14:40:49 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,9 @@
 # include <string>
 # include <iostream>
 
-# define BLUE "\033[0;34m"
-# define RED "\033[0;31m"
-# define GREEN "\033[0;32m"
-# define RESET "\033[0m"
+#define RED_H "\033[0;41m"
+#define RED "\033[0;31m"
+#define RESET "\033[0m"
 
 class Weapon
 {

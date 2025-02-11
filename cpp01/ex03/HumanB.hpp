@@ -6,7 +6,7 @@
 /*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 16:18:52 by welow             #+#    #+#             */
-/*   Updated: 2025/01/08 16:46:58 by welow            ###   ########.fr       */
+/*   Updated: 2025/02/11 14:40:58 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define HUMANB_HPP
 
 #include "Weapon.hpp"
+#define BLUE "\033[0;34m"
 
 class HumanB
 {

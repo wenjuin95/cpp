@@ -6,7 +6,7 @@
 /*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 16:23:58 by welow             #+#    #+#             */
-/*   Updated: 2025/01/08 17:21:00 by welow            ###   ########.fr       */
+/*   Updated: 2025/02/11 14:39:06 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,12 @@
  */
 HumanB::HumanB(std::string name) : _name(name), _weapon(NULL)
 {
-	std::cout << BLUE << "constructor HumanB: [ " << this->_name << " ] created without a weapon" << RESET << std::endl;
+	std::cout << "constructor HumanB: [ " << BLUE << this->_name << RESET << " ] created" << std::endl;
+	if (this->_weapon == NULL || this->_weapon->getType().empty())
+		std::cout << BLUE << "[ " << this->_name << " ] no weapon equip" << RESET << std::endl;
+	else
+		std::cout << BLUE << "[ " << this->_name << " ] equip [ "
+			<< RED_H << this->_weapon->getType() << RESET <<  BLUE << " ] weapon" << RESET << std::endl;
 }
 
 /**
@@ -27,7 +32,7 @@ HumanB::HumanB(std::string name) : _name(name), _weapon(NULL)
  */
 HumanB::~HumanB(void)
 {
-	std::cout << BLUE << "destuctor HumanB: [ " << this->_name << " ] destroyed" << RESET << std::endl;
+	std::cout << "destuctor HumanB: [ " << BLUE << this->_name << RESET << " ] destroyed" << std::endl;
 }
 
 /**
@@ -37,7 +42,7 @@ HumanB::~HumanB(void)
 void	HumanB::setWeapon(Weapon &weapon)
 {
 	this->_weapon = &weapon;
-	std::cout << BLUE << this->_name << " is now equipped with a [ " << RED << this->_weapon->getType() << BLUE << " ]" << RESET << std::endl;
+	std::cout << BLUE << this->_name << " is now equipped with a [ " << RED_H << this->_weapon->getType() << BLUE << " ] weapon" << RESET << std::endl;
 }
 
 /**
@@ -45,8 +50,8 @@ void	HumanB::setWeapon(Weapon &weapon)
  */
 void	HumanB::attack(void)
 {
-	if (this->_weapon == NULL)
-		std::cout << BLUE << "[ " << this->_name << " ] can't attack" << RESET << std::endl;
+	if (this->_weapon == NULL || this->_weapon->getType().empty())
+		std::cout << BLUE << "[ " << this->_name << " ] has no weapon can't attack" << RESET << std::endl;
 	else
-		std::cout << BLUE << "[ "<< this->_name << " ] attacks with his [ " << RED << this->_weapon->getType() << BLUE << " ]" << RESET << std::endl;
+		std::cout << BLUE << "[ "<< this->_name << " ] attacks with his [ " << RED_H << this->_weapon->getType() << BLUE << " ]" << RESET << std::endl;
 }

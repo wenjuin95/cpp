@@ -6,13 +6,18 @@
 /*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 20:34:35 by welow             #+#    #+#             */
-/*   Updated: 2024/12/27 13:19:23 by welow            ###   ########.fr       */
+/*   Updated: 2025/02/11 14:43:01 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
 
-static char *ft_toupper(char *str)
+/**
+ * @brief Convert all lowercase characters in a string to uppercase
+ * @param str The string to convert
+ * @return The converted string
+*/
+static char *ftToupper(char *str)
 {
 	int i = 0;
 

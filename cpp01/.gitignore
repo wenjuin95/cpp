@@ -1,6 +1,15 @@
 /ex00/object_files
 /ex01/object_files
 /ex02/object_files
+/ex03/object_files
+/ex04/object_files
+/ex05/object_files
+/ex06/object_files
 
 /ex00/zombie
 /ex01/zombieHorde
+/ex02/ptr
+/ex03/weapon
+/ex04/replace
+/ex05/Harl
+/ex06/harlFilter

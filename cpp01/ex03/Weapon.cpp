@@ -6,7 +6,7 @@
 /*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 15:59:25 by welow             #+#    #+#             */
-/*   Updated: 2025/01/08 16:50:17 by welow            ###   ########.fr       */
+/*   Updated: 2025/02/11 14:40:22 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
  */
 Weapon::Weapon(std::string type) : _type(type)
 {
-	std::cout << RED << "constructor weapon: [ "<< this->_type << " ] created" << RESET << std::endl;
+	std::cout << "constructor weapon: [ " << RED_H << this->_type << RESET << " ] created" << std::endl;
 }
 
 /**
@@ -26,7 +26,7 @@ Weapon::Weapon(std::string type) : _type(type)
  */
 Weapon::~Weapon(void)
 {
-	std::cout << RED << "destructor weapon: [ " << this->_type << " ] destroyed" << RESET << std::endl;
+	std::cout << "destructor weapon: [ " << RED_H << this->_type << RESET << " ] destroyed" << std::endl;
 }
 
 /**
@@ -46,6 +46,7 @@ std::string const	&Weapon::getType(void) const
  */
 void	Weapon::setType(std::string type)
 {
+	std::cout << RED << "[ " << RED_H << this->_type << RESET << RED << " ] changed to [ " << RESET;
 	this->_type = type;
-	std::cout << "[ " << RED << this->_type << RESET << " ] changed" << std::endl;
+	std::cout <<  RED_H << this->_type << RESET << RED << " ]" << RESET << std::endl;
 }

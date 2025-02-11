@@ -6,7 +6,7 @@
 /*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 16:11:39 by welow             #+#    #+#             */
-/*   Updated: 2024/11/15 17:12:21 by welow            ###   ########.fr       */
+/*   Updated: 2025/02/11 14:41:06 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define HUMANA_HPP
 
 #include "Weapon.hpp"
+
+#define GREEN "\033[0;32m"
 
 class HumanA
 {
