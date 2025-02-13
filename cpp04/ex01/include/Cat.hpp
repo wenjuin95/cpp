@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
+/*   By: welow < welow@student.42kl.edu.my>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 20:29:23 by welow             #+#    #+#             */
-/*   Updated: 2025/02/07 20:34:26 by welow            ###   ########.fr       */
+/*   Updated: 2025/02/13 13:42:22 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,9 @@ class Cat : public Animal
 		Cat &operator=(const Cat &src);
 		~Cat(void);
 		void makeSound(void) const;
-		Brain *getBrain(void) const;
+		const std::string &getIdea(int index) const;
+		void setIdea(int index, std::string idea);
+		void compareBoth(const Cat &other) const;
 };
 
 #endif

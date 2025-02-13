@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Animal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
+/*   By: welow < welow@student.42kl.edu.my>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 20:40:24 by welow             #+#    #+#             */
-/*   Updated: 2025/02/07 20:54:58 by welow            ###   ########.fr       */
+/*   Updated: 2025/02/13 13:16:53 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ Animal &Animal::operator=(const Animal &src)
 		std::cout << BLUE_H << "Animal (assignment operator) called" << RESET << std::endl;
 	if (this != &src)
 		this->_type = src._type;
+
 	return (*this);
 }
 

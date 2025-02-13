@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Brain.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: welow <welow@student.42kl.edu.my>          #+#  +:+       +#+        */
+/*   By: welow < welow@student.42kl.edu.my>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-02-09 06:40:20 by welow             #+#    #+#             */
-/*   Updated: 2025-02-09 06:40:20 by welow            ###   ########.fr       */
+/*   Created: 2025/02/09 06:40:20 by welow             #+#    #+#             */
+/*   Updated: 2025/02/13 12:36:31 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,13 @@ Brain::~Brain(void)
         std::cout << "Brain (destructor) called" << std::endl;
 }
 
-std::string Brain::getIdea(int index) const
+const std::string &Brain::getIdea(int index) const
 {
-   if (index < 0 || index >= 100)
+	if (index < 0)
         index = 0;
-    return (this->_idea[index]);
+	else if (index >= 100)
+		index = 99;
+    return (_idea[index]);
 }
 
 void Brain::setIdea(int index, std::string idea)

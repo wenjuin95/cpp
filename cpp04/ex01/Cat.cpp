@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: welow <welow@student.42kl.edu.my>          #+#  +:+       +#+        */
+/*   By: welow < welow@student.42kl.edu.my>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-02-08 10:42:22 by welow             #+#    #+#             */
-/*   Updated: 2025-02-08 10:42:22 by welow            ###   ########.fr       */
+/*   Created: 2025/02/08 10:42:22 by welow             #+#    #+#             */
+/*   Updated: 2025/02/13 13:42:19 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 Cat::Cat(void): Animal()
 {
-    if (CALL == 1) 
+    if (CALL == 1)
         std::cout << RED_H << "Cat (default constructor) called" << RESET << std::endl;
     this->_type = "Cat";
     this->_brain = new Brain();
@@ -37,8 +37,8 @@ Cat::Cat(const Cat &src): Animal(src)
 {
     if (CALL == 1)
         std::cout << RED_H << "Cat (copy constructor) called" << RESET << std::endl;
-    this->_brain = NULL;
-    *this = src;
+    this->_brain = new Brain(*src._brain);
+	*this = src;
 }
 
 /**
@@ -54,9 +54,9 @@ Cat &Cat::operator=(const Cat &src)
 	if (this != &src)
     {
 		this->_type = src._type;
-        if (this->_brain != NULL)
-            delete this->_brain;
-        this->_brain = new Brain(*src._brain);
+		if (this->_brain != NULL)
+			delete this->_brain;
+		this->_brain = new Brain(*src._brain);
     }
 	return (*this);
 }
@@ -65,9 +65,7 @@ Cat::~Cat(void)
 {
 	if (CALL == 1)
 		std::cout << RED_H << "Cat (destructor) called" << RESET << std::endl;
-    if (this->_brain != NULL)
-        delete this->_brain;
-    this->_brain = NULL;
+	delete this->_brain;
 }
 
 void Cat::makeSound(void) const
@@ -75,7 +73,30 @@ void Cat::makeSound(void) const
 	std::cout << this->_type << ": meow" << std::endl;
 }
 
-Brain *Cat::getBrain(void) const
+void Cat::setIdea(int index, std::string idea)
 {
-    return (this->_brain);
+	this->_brain->setIdea(index, idea);
+}
+
+const std::string &Cat::getIdea(int index) const
+{
+	return (this->_brain->getIdea(index));
+}
+
+void Cat::compareBoth(const Cat &other) const
+{
+	std::cout << std::endl << "++++++++++++++++++++++++++++++++++++++++++++++++" << std::endl;
+	std::cout << "+      COMPARING CAT AND COPIED CAT            +" << std::endl;
+	std::cout << "++++++++++++++++++++++++++++++++++++++++++++++++" << std::endl;
+	std::cout << "This Cat's brain address: " << this->_brain << std::endl;
+	std::cout << "copied Cat's brain address: " << other._brain << std::endl;
+
+	std::cout << std::endl << "this cat idea" << std::endl;
+	for (int i = 0; i < 3; i++)
+		std::cout << i + 1 << ": "<< this->_brain->getIdea(i) << std::endl;
+
+	std::cout << std::endl << "copied cat idea" << std::endl;
+	for (int i = 0; i < 3; i++)
+		std::cout << i + 1 << ": "<< other._brain->getIdea(i) << std::endl;
+	std::cout << "++++++++++++++++++++++++++++++++++++++++++++++++" << std::endl;
 }

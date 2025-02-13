@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
+/*   By: welow < welow@student.42kl.edu.my>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 20:34:41 by welow             #+#    #+#             */
-/*   Updated: 2025/02/07 20:35:08 by welow            ###   ########.fr       */
+/*   Updated: 2025/02/13 13:46:34 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,9 @@ class Dog : public Animal
 		Dog &operator=(const Dog &src);
 		~Dog(void);
 		void makeSound(void) const;
-		Brain *getBrain(void) const;
+		const std::string &getIdea(int index) const;
+		void setIdea(int index, std::string idea);
+		void compareBoth(const Dog &other) const;
 };
 
 #endif

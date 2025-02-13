@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: welow <welow@student.42kl.edu.my>          #+#  +:+       +#+        */
+/*   By: welow < welow@student.42kl.edu.my>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-02-09 06:36:29 by welow             #+#    #+#             */
-/*   Updated: 2025-02-09 06:36:29 by welow            ###   ########.fr       */
+/*   Created: 2025/02/09 06:36:29 by welow             #+#    #+#             */
+/*   Updated: 2025/02/13 12:47:09 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ class Brain
         Brain(const Brain &src);
         Brain &operator=(const Brain &src);
         ~Brain(void);
-        std::string getIdea(int index) const;
-        void setIdea(int index, std::string idea);
+		const std::string &getIdea(int index) const;
+		void setIdea(int index, std::string idea);
 };
 
 #endif
