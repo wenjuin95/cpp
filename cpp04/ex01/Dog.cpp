@@ -6,7 +6,7 @@
 /*   By: welow < welow@student.42kl.edu.my>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 11:13:18 by welow             #+#    #+#             */
-/*   Updated: 2025/02/13 13:46:00 by welow            ###   ########.fr       */
+/*   Updated: 2025/02/14 14:12:35 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,11 @@ Dog &Dog::operator=(const Dog &src)
 	if (this != &src)
     {
 		this->_type = src._type;
+		Brain *tmp = new Brain(*src._brain);
+		*tmp = *src._brain;
 		if (this->_brain != NULL)
 			delete this->_brain;
-		this->_brain = new Brain(*src._brain);
+		this->_brain = tmp;
     }
 	return (*this);
 }
@@ -82,10 +84,10 @@ void Dog::compareBoth(const Dog &other) const
 
 	std::cout << std::endl << "this dog idea" << std::endl;
 	for (int i = 0; i < 3; i++)
-		std::cout << i + 1 << ": "<< this->_brain->getIdea(i) << std::endl;
+		std::cout << i + 1 << ": "<< this->_brain->getIdea(i) << " (" << this->_brain << ")" << std::endl;
 
 	std::cout << std::endl << "copied dog idea" << std::endl;
 	for (int i = 0; i < 3; i++)
-		std::cout << i + 1 << ": "<< other._brain->getIdea(i) << std::endl;
+		std::cout << i + 1 << ": "<< other._brain->getIdea(i) << " (" << other._brain << ")" << std::endl;
 	std::cout << "++++++++++++++++++++++++++++++++++++++++++++++++" << std::endl;
 }

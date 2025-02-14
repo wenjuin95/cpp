@@ -2,8 +2,6 @@ NAME = a.out
 
 CC = clang++
 
-INC = -Iinclude
-
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 
 D_CFLAG = -Wall -Wextra -Werror -std=c++98 -g -DCALL=1 -fsanitize=address
@@ -21,11 +19,11 @@ RESET = \033[0m
 all : $(NAME)
 
 $(NAME) : $(OBJ_SRC)
-	$(CC) $(CFLAGS) $(OBJ_SRC) $(INC) -o $@
+	$(CC) $(CFLAGS) $(OBJ_SRC) -o $@
 	@echo "${GREEN}-----COMPILED DONE-----\n${RESET}"
 
 $(OBJ_FOLDER)/%.o : %.cpp | $(OBJ_FOLDER)
-	$(CC) $(CFLAGS) $(INC) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 $(OBJ_FOLDER):
 	@mkdir -p $(OBJ_FOLDER)
@@ -40,7 +38,7 @@ fclean : clean
 re : fclean all
 
 debug:
-	$(CC) $(D_CFLAG) $(SRC) $(INC) -o $(NAME)
+	$(CC) $(D_CFLAG) $(SRC) -o $(NAME)
 	@echo "${GREEN}-----DEBUG DONE-----\n${RESET}"
 
 .PHONY: all clean fclean re debug leak
