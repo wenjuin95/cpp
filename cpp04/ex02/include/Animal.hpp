@@ -6,7 +6,7 @@
 /*   By: welow < welow@student.42kl.edu.my>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 19:00:21 by welow             #+#    #+#             */
-/*   Updated: 2025/02/14 14:21:14 by welow            ###   ########.fr       */
+/*   Updated: 2025/02/14 16:36:15 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ class Animal
 		Animal &operator=(const Animal &src);
 		virtual ~Animal(void);
 		std::string getType(void) const;
-		virtual void makeSound(void) const;
+		virtual void makeSound(void) const = 0;
 };
 
 #endif

@@ -1,42 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: welow < welow@student.42kl.edu.my>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/07 19:00:21 by welow             #+#    #+#             */
-/*   Updated: 2025/02/14 14:21:14 by welow            ###   ########.fr       */
+/*   Created: 2025/02/07 20:29:23 by welow             #+#    #+#             */
+/*   Updated: 2025/02/13 13:42:22 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-#define ANIMAL_HPP
+#ifndef CAT_HPP
+#define CAT_HPP
 
-#ifndef CALL
-#define CALL 0
-#endif
-
-#include <iostream>
-#include <string>
+#include "Animal.hpp"
 #include "Brain.hpp"
 
-#define BLUE_H "\033[1;44m"
+#define RED_H "\033[1;41m"
 #define RESET "\033[0m"
 
-class Animal
+class Cat : public Animal
 {
-	protected:
-		std::string _type;
-
+	private:
+		Brain *_brain;
 	public:
-		Animal(void);
-		Animal(std::string type);
-		Animal(const Animal &src);
-		Animal &operator=(const Animal &src);
-		virtual ~Animal(void);
-		std::string getType(void) const;
-		virtual void makeSound(void) const;
+		Cat(void);
+		Cat(std::string type);
+		Cat(const Cat &src);
+		Cat &operator=(const Cat &src);
+		~Cat(void);
+		void makeSound(void) const;
+		const std::string &getIdea(int index) const;
+		void setIdea(int index, std::string idea);
+		void compareBoth(const Cat &other) const;
 };
 
 #endif

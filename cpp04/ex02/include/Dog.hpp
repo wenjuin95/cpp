@@ -1,42 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: welow < welow@student.42kl.edu.my>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/07 19:00:21 by welow             #+#    #+#             */
-/*   Updated: 2025/02/14 14:21:14 by welow            ###   ########.fr       */
+/*   Created: 2025/02/07 20:34:41 by welow             #+#    #+#             */
+/*   Updated: 2025/02/13 13:46:34 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-#define ANIMAL_HPP
+#ifndef DOG_HPP
+#define DOG_HPP
 
-#ifndef CALL
-#define CALL 0
-#endif
-
-#include <iostream>
-#include <string>
+#include "Animal.hpp"
 #include "Brain.hpp"
 
-#define BLUE_H "\033[1;44m"
+#define YELLOW_H "\033[43m"
 #define RESET "\033[0m"
 
-class Animal
+class Dog : public Animal
 {
-	protected:
-		std::string _type;
-
+	private:
+		Brain *_brain;
 	public:
-		Animal(void);
-		Animal(std::string type);
-		Animal(const Animal &src);
-		Animal &operator=(const Animal &src);
-		virtual ~Animal(void);
-		std::string getType(void) const;
-		virtual void makeSound(void) const;
+		Dog(void);
+		Dog(std::string type);
+		Dog(const Dog &src);
+		Dog &operator=(const Dog &src);
+		~Dog(void);
+		void makeSound(void) const;
+		const std::string &getIdea(int index) const;
+		void setIdea(int index, std::string idea);
+		void compareBoth(const Dog &other) const;
 };
 
 #endif
