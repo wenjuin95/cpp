@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "./include/Character.hpp"
+#include <iomanip>
 
 Character::Character(void) : _name("default")
 {
@@ -85,7 +86,7 @@ void    Character::equip(AMateria *m)
         if (this->_inventory[i] == NULL)
         {
             this->_inventory[i] = m;
-            std::cout << "equipped [" << m->getType() << "] materia to inventory ["
+            std::cout << "[" << this->_name << "] equipped [" << m->getType() << "] materia to inventory ["
                 << i << "]" << std::endl;
             return ;
         }
@@ -123,11 +124,12 @@ void    Character::use(int idx, ICharacter &target)
     {
         std::cout << "[" << this->_name << "] uses [" << this->_inventory[idx]->getType()
             << "] materia on [" << target.getName() << "]" << std::endl;
+        std::cout << "[" << this->_name << "]: ";
         this->_inventory[idx]->use(target);
     }
     else
     {
-        std::cout << "inventory [" << idx << "] is empty" << std::endl;
+        std::cout << "[" << this->_name << "] uses nothing on [" << target.getName() << "]" << std::endl;
     }
     return ;
 }
@@ -135,17 +137,19 @@ void    Character::use(int idx, ICharacter &target)
 void Character::displayInventory(void)
 {
     std::cout << "+------+------+------+------+" << std::endl;
-    std::cout << "|";
+    std::cout << "|         Inventory         |" << std::endl;
+    std::cout << "+-+-------------------------+" << std::endl;
     for (int i = 0; i < 4; i++)
     {
         if (this->_inventory[i] != NULL)
         {
-            std::cout << " " << this->_inventory[i]->getType() << " |";
+            std::cout << "|" << i << "|" << std::setw(5) << this->_inventory[i]->getType() << "(" << this->_inventory[i] << ")" << std::setw(5) << " |" << std::endl;
+            std::cout << "+-+-------------------------+" << std::endl;
         }
         else
         {
-            std::cout << "      |";
+            std::cout << "|" << i << "|                         |" << std::endl;
+            std::cout << "+-+-------------------------+" << std::endl;
         }
     }
-    std::cout << std::endl << "+------+------+------+------+" << std::endl;
 }

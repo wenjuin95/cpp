@@ -13,7 +13,7 @@ class Base
     	int x;
 
 	public:
-	    // pure virtual function
+	    //this is pure virtual function
 	    virtual void fun() = 0;
 
 	    // getter function to access x
