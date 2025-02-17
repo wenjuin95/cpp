@@ -13,24 +13,14 @@
 #include "./include/Animal.hpp"
 #include "./include/Dog.hpp"
 #include "./include/Cat.hpp"
-#include "./include/WrongAnimal.hpp"
-#include "./include/WrongCat.hpp"
 #include <unistd.h>
 
 #define nb_animal 10
 
-//this function will cause error because Animal is an abstract class
-void test()
-{
-	Animal *animal = new Animal();
-	animal->makeSound();
-	delete animal;
-}
-
 int main()
 {
-	void test();
-	std::cout << "=============================================================================" << std::endl << std::endl;
+    //this will cause an error because Animal is an abstract class
+	// Animal *animal = new Animal();
     {
         std::cout << "---------- animal ----------" << std::endl;
         Animal *animalArray[nb_animal + 1];
@@ -114,5 +104,5 @@ int main()
     //     delete dog;
     //     delete copyDog;
     // }
-    std::cout << "=============================================================================" << std::endl << std::endl;
+    // std::cout << "=============================================================================" << std::endl << std::endl;
 }

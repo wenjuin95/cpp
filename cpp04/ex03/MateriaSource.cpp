@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "./include/MateriaSource.hpp"
+#include <iomanip>
 
 MateriaSource::MateriaSource(void)
 {
@@ -18,6 +19,7 @@ MateriaSource::MateriaSource(void)
         std::cout << YELLOW_H << "MateriaSource (default constructor) called" << RESET << std::endl;
     for (int i = 0; i < 4; i++)
         this->_materia[i] = NULL;
+    return ;
 }
 
 MateriaSource::MateriaSource(const MateriaSource &src)
@@ -25,6 +27,7 @@ MateriaSource::MateriaSource(const MateriaSource &src)
     if (CALL == 1)
         std::cout << YELLOW_H << "MateriaSource (copy constructor) called" << RESET << std::endl;
     *this = src;
+    return ;
 }
 
 MateriaSource &MateriaSource::operator=(const MateriaSource &src)
@@ -35,10 +38,15 @@ MateriaSource &MateriaSource::operator=(const MateriaSource &src)
     {
         for (int i = 0; i < 4; i++)
             if (this->_materia[i] != NULL)
+            {
                 delete this->_materia[i];
+                this->_materia[i] = NULL;
+            }
         for (int i = 0; i < 4; i++)
             if (src._materia[i] != NULL)
+            {
                 this->_materia[i] = src._materia[i]->clone();
+            }
     }
     return (*this);
 }
@@ -57,6 +65,7 @@ void MateriaSource::learnMateria(AMateria *m)
     if (m == NULL)
     {
         std::cout << "MateriaSource has no materia to learn" << std::endl;
+        return ;
     }
     for (int i = 0; i < 4; i++)
     {
@@ -88,15 +97,20 @@ AMateria *MateriaSource::createMateria(std::string const &type)
 
 void MateriaSource::displayMateria(void)
 {
-    std::cout << "=============================================" << std::endl;
-    std::cout << "MateriaSource inventory:" << std::endl;
+    std::cout << "+------+------+------+------+" << std::endl;
+    std::cout << "|      Materia Source       |" << std::endl;
+    std::cout << "+---------------------------+" << std::endl;
     for (int i = 0; i < 4; i++)
     {
         if (this->_materia[i] != NULL)
-            std::cout << "MateriaSource inventory [" << i << "] : [" << this->_materia[i]->getType() << "]" << std::endl;
+        {
+            std::cout << "|" << std::setw(5) << this->_materia[i]->getType() << "(" << this->_materia[i] << ")" << std::setw(7) << " |" << std::endl;
+            std::cout << "+---------------------------+" << std::endl;
+        }
         else
-            std::cout << "MateriaSource inventory [" << i << "] : [ ]" << std::endl;
+        {
+            std::cout << "|                           |" << std::endl;
+            std::cout << "+---------------------------+" << std::endl;
+        }
     }
-    std::cout << "=============================================" << std::endl;
-    return ;
 }
