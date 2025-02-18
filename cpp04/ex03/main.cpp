@@ -40,42 +40,42 @@ int main()
     //     delete me;
     //     delete src;
     // }
-    // {
-    //    MateriaSource *src = new MateriaSource();
-    //    std::cout << std::endl << "----------display materia source----------" << std::endl;
-    //    src->displayMateria();
+    {
+       MateriaSource *src = new MateriaSource();
+       std::cout << std::endl << "----------display materia source----------" << std::endl;
+       src->displayMateria();
 
-    //    std::cout << std::endl << "----------learned materia source----------" << std::endl;
-    //    src->learnMateria(NULL);
-    //    src->learnMateria(new Ice());
-    //    src->learnMateria(new Cure());
-    //    src->displayMateria();
+       std::cout << std::endl << "----------learned materia source----------" << std::endl;
+       src->learnMateria(NULL);
+       src->learnMateria(new Ice());
+       src->learnMateria(new Cure());
+       src->displayMateria();
 
-    //    MateriaSource *copySrc = new MateriaSource();
-    //    *copySrc = *src;
-    //    std::cout << std::endl << "----------src vs copy src (address must be different)----------" << std::endl;
-    //    std::cout << "SRC: " << std::endl;
-    //    src->displayMateria();
-    //    std::cout << std::endl << "COPY SRC: " << std::endl;
-    //    copySrc->displayMateria();
+       MateriaSource *copySrc = new MateriaSource();
+       *copySrc = *src;
+       std::cout << std::endl << "----------src vs copy src (address must be different)----------" << std::endl;
+       std::cout << "SRC: " << std::endl;
+       src->displayMateria();
+       std::cout << std::endl << "COPY SRC: " << std::endl;
+       copySrc->displayMateria();
 
-    //    std::cout << std::endl << "----------add new materia to src (address must be different)----------" << std::endl;
-    //    src->learnMateria(new Ice());
-    //    std::cout << "SRC: " << std::endl;
-    //    src->displayMateria();
-    //    std::cout << std::endl << "COPY SRC: " << std::endl;
-    //    copySrc->displayMateria();
+       std::cout << std::endl << "----------add new materia to src (address must be different)----------" << std::endl;
+       src->learnMateria(new Ice());
+       std::cout << "SRC: " << std::endl;
+       src->displayMateria();
+       std::cout << std::endl << "COPY SRC: " << std::endl;
+       copySrc->displayMateria();
 
-    //    std::cout << std::endl << "----------make copy src similar to src (address must be different)----------" << std::endl;
-    //    *copySrc = *src;
-    //    std::cout << "SRC: " << std::endl;
-    //    src->displayMateria();
-    //    std::cout << std::endl << "COPY SRC: " << std::endl;
-    //    copySrc->displayMateria();
+       std::cout << std::endl << "----------make copy src similar to src (address must be different)----------" << std::endl;
+       *copySrc = *src;
+       std::cout << "SRC: " << std::endl;
+       src->displayMateria();
+       std::cout << std::endl << "COPY SRC: " << std::endl;
+       copySrc->displayMateria();
 
-    //    delete src;
-    //    delete copySrc;
-    // }
+       delete src;
+       delete copySrc;
+    }
     // {
     //     IMateriaSource *book = new MateriaSource();
     //     book->learnMateria(new Ice());
