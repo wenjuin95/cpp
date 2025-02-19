@@ -41,6 +41,6 @@ int main(int ac, char **av)
 		<< std::endl;
 		return (1);
 	}
-	harl.complain(ft_toupper(av[1]));
+	harl.complain(ftToupper(av[1]));
 	return (0);
 }
