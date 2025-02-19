@@ -6,7 +6,7 @@
 /*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 17:27:35 by welow             #+#    #+#             */
-/*   Updated: 2025/01/10 15:13:11 by welow            ###   ########.fr       */
+/*   Updated: 2025/02/19 18:15:32 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,22 @@
 #include <iostream>
 #include <cmath>
 
-# define CALL 0
+#ifndef CALL
+#define CALL 0
+#endif
+
+#define BLUE_H "\033[0;44m"
+#define RED_H "\033[0;41m"
+#define YELLOW_H "\033[0;43m"
+#define GREEN_H "\033[0;42m"
+#define PURPLE_H "\033[0;45m"
+#define RESET "\033[0;37m"
 
 class Fixed
 {
 	private:
-		int					_raw;
-		static const int	_bit = 8;
+		int					_fixed_point_nb;
+		static const int	_fractional_bit = 8;
 	public:
 		Fixed(void);
 		Fixed(const Fixed &src);
@@ -32,7 +41,7 @@ class Fixed
 		Fixed(float const nb);
 
 		int		getRawBits(void) const;
-		void	setRawBits(int const raw);
+		void	setRawBits(int const fixed_point_nb);
 		float	toFloat(void) const;
 		int		toInt(void) const;
 

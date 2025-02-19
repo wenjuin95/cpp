@@ -6,7 +6,7 @@
 /*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 17:27:27 by welow             #+#    #+#             */
-/*   Updated: 2025/02/19 17:37:24 by welow            ###   ########.fr       */
+/*   Updated: 2025/02/19 18:17:34 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,9 @@ Fixed::~Fixed()
  * @brief set the raw value
  * @param raw raw value to set
 */
-void	Fixed::setRawBits( int const raw )
+void	Fixed::setRawBits( int const fixed_point_nb )
 {
-	this->_fixed_point_nb = raw;
+	this->_fixed_point_nb = fixed_point_nb;
 }
 
 /**
@@ -92,9 +92,6 @@ int	Fixed::getRawBits( void ) const
 */
 float	Fixed::toFloat( void ) const
 {
-	//1 << 8 = 256
-	//std::cout << "toFloat member function called" << std::endl; //visualize
-	//std::cout << (float)this->_fixed_point_nb  << "/" << (1 << Fixed::_fractional_bit) << " = "; //visualize
 	return ((float)this->_fixed_point_nb / (1 << Fixed::_fractional_bit));
 }
 
@@ -104,8 +101,6 @@ float	Fixed::toFloat( void ) const
 */
 int	Fixed::toInt( void ) const
 {
-	//std::cout << "toInt member function called" << std::endl; //visualize
-	//std::cout << this->_fixed_point_nb << ">>" << Fixed::_fractional_bit << " = "; //visualize
 	return this->_fixed_point_nb >> Fixed::_fractional_bit;
 }
 

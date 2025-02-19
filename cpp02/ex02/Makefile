@@ -4,6 +4,8 @@ CC = c++
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 
+D_CFLAG = -Wall -Wextra -Werror -Wno-shadow -std=c++98 -g -DCALL=1
+
 SRC = main.cpp Fixed.cpp
 
 OBJ_FOLDER = object_files
@@ -34,6 +36,10 @@ fclean : clean
 	@echo "${GREEN}-----FULLY REMOVE-----\n${RESET}"
 
 re : fclean all
+
+debug:
+	$(CC) $(D_CFLAG) $(SRC) $(INC) -o $(NAME)
+	@echo "${GREEN}-----DEBUG DONE-----\n${RESET}"
 
 leak :
 	valgrind --leak-check=full ./$(NAME)
