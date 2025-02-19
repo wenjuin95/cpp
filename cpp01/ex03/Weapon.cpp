@@ -6,7 +6,7 @@
 /*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 15:59:25 by welow             #+#    #+#             */
-/*   Updated: 2025/02/11 14:40:22 by welow            ###   ########.fr       */
+/*   Updated: 2025/02/19 17:13:32 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,10 @@ std::string const	&Weapon::getType(void) const
  */
 void	Weapon::setType(std::string type)
 {
-	std::cout << RED << "[ " << RED_H << this->_type << RESET << RED << " ] changed to [ " << RESET;
+	std::string	tmp_type;
+
+	tmp_type = this->_type;
 	this->_type = type;
-	std::cout <<  RED_H << this->_type << RESET << RED << " ]" << RESET << std::endl;
+	std::cout << RED << "[ " << RED_H << tmp_type << RESET << RED << " ] changed to [ " << RESET <<
+		RED_H << this->_type << RESET << RED << " ]" << RESET << std::endl;
 }
