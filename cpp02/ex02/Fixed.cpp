@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
+/*   By: welow < welow@student.42kl.edu.my>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 18:49:01 by welow             #+#    #+#             */
-/*   Updated: 2025/02/19 19:58:27 by welow            ###   ########.fr       */
+/*   Updated: 2025/02/20 20:27:01 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,32 +183,44 @@ Fixed	Fixed::operator/(Fixed const &src) const
 /**
  * @brief pre-increament operator
  * @return *this
+ * @note this get the object and increase the value by 1
 */
 Fixed	&Fixed::operator++(void)
 {
+	if (CALL == 1)
+		std::cout << "pre-increament operator called" << std::endl;
 	this->_fixed_point_nb++;
+	return *this;
+}
+
+/**
+ * @brief pre-decreament operator
+ * @return *this
+ * @note this get the object and decrease the value by 1
+*/
+Fixed	&Fixed::operator--(void)
+{
+	if (CALL == 1)
+		std::cout << "pre-decreament operator called" << std::endl;
+	this->_fixed_point_nb--;
 	return *this;
 }
 
 /**
  * @brief post-increament operator
  * @return tmp
+ * @note 1. make a copy of the object
+ * @note 2. increase the object by 1
+ * @note 3. return the copy object
+ * @note 4. return the object after increase
 */
 Fixed	Fixed::operator++(int)
 {
+	if (CALL == 1)
+		std::cout << "post-increament operator called" << std::endl;
 	Fixed tmp(*this);
 	operator++();
 	return tmp;
-}
-
-/**
- * @brief pre-decreament operator
- * @return *this
-*/
-Fixed	&Fixed::operator--(void)
-{
-	this->_fixed_point_nb--;
-	return *this;
 }
 
 /**
@@ -217,6 +229,8 @@ Fixed	&Fixed::operator--(void)
 */
 Fixed	Fixed::operator--(int)
 {
+	if (CALL == 1)
+		std::cout << "post-decreament operator called" << std::endl;
 	Fixed tmp(*this);
 	operator--();
 	return tmp;

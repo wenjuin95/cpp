@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
+/*   By: welow < welow@student.42kl.edu.my>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 17:27:35 by welow             #+#    #+#             */
-/*   Updated: 2025/02/19 18:15:32 by welow            ###   ########.fr       */
+/*   Updated: 2025/02/20 17:04:01 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@
 #define YELLOW_H "\033[0;43m"
 #define GREEN_H "\033[0;42m"
 #define PURPLE_H "\033[0;45m"
+#define GREEN "\033[0;32m"
+#define RED "\033[0;31m"
 #define RESET "\033[0;37m"
 
 class Fixed

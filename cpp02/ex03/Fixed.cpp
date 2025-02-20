@@ -3,42 +3,45 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
+/*   By: welow < welow@student.42kl.edu.my>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 15:22:14 by welow             #+#    #+#             */
-/*   Updated: 2025/01/13 15:22:29 by welow            ###   ########.fr       */
+/*   Updated: 2025/02/20 21:28:12 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
 /**
- * @brief call default constructor with init the "_raw" with 0
+ * @brief call default constructor with init the "_fixed_point_nb" with 0
 */
-Fixed::Fixed() : _raw(0)
+Fixed::Fixed() : _fixed_point_nb(0)
 {
 	if (CALL == 1)
-		std::cout << "Default constructor called" << std::endl;
+		std::cout << BLUE_H << "Default constructor called" << RESET << std::endl;
 }
 
 /**
- * @brief call constructor with init the "_raw" with the value of "nb"
+ * @brief call constructor with init the "_fixed_point_nb" with the value of "nb"
  * @param nb value in int
 */
-Fixed::Fixed( int const nb ) : _raw(nb << Fixed::_bit)
+Fixed::Fixed( int const nb )
 {
 	if (CALL == 1)
 		std::cout << "Int constructor called"<< std::endl;
+	this->_fixed_point_nb = nb << Fixed::_fractional_bit;
 }
 
 /**
- * @brief call constructor with init the "_raw" with the value of "nb"
+ *
+ * @brief call constructor with init the "_fixed_point_nb" with the value of "nb"
  * @param nb value in float
 */
-Fixed::Fixed( float const nb ) : _raw(roundf(nb * (1 << Fixed::_bit)))
+Fixed::Fixed( float const nb )
 {
 	if (CALL == 1)
 		std::cout << "Float constructor called" << std::endl;
+	this->_fixed_point_nb = roundf(nb * (1 << Fixed::_fractional_bit));
 }
 
 /**
@@ -49,7 +52,7 @@ Fixed::Fixed( float const nb ) : _raw(roundf(nb * (1 << Fixed::_bit)))
 Fixed::Fixed(const Fixed &src)
 {
 	if (CALL == 1)
-		std::cout << "Copy constructor called" << std::endl;
+		std::cout << RED_H << "Copy constructor called" << RESET << std::endl;
 	*this = src;
 }
 
@@ -62,8 +65,8 @@ Fixed::Fixed(const Fixed &src)
 Fixed &Fixed::operator=( Fixed const &src)
 {
 	if (CALL == 1)
-		std::cout << "Copy assignment operator called" << std::endl;
-	this->_raw = src.getRawBits();
+		std::cout << YELLOW_H << "Copy assignment operator called" << RESET << std::endl;
+	this->_fixed_point_nb = src.getRawBits();
 	return *this;
 }
 
@@ -73,16 +76,16 @@ Fixed &Fixed::operator=( Fixed const &src)
 Fixed::~Fixed()
 {
 	if (CALL == 1)
-		std::cout << "Destructor called" << std::endl;
+		std::cout << GREEN_H << "Destructor called" << RESET << std::endl;;
 }
 
 /**
  * @brief set the raw value
  * @param raw raw value to set
 */
-void	Fixed::setRawBits( int const raw )
+void	Fixed::setRawBits( int const fixed_point_nb )
 {
-	this->_raw = raw;
+	this->_fixed_point_nb = fixed_point_nb;
 }
 
 /**
@@ -91,7 +94,7 @@ void	Fixed::setRawBits( int const raw )
 */
 int	Fixed::getRawBits( void ) const
 {
-	return this->_raw;
+	return this->_fixed_point_nb;
 }
 
 /**
@@ -100,8 +103,7 @@ int	Fixed::getRawBits( void ) const
 */
 float	Fixed::toFloat( void ) const
 {
-	//std::cout << this->_raw << "/" << (1 << Fixed::_bit) << std::endl;
-	return ((float)this->_raw / (1 << Fixed::_bit));
+	return ((float)this->_fixed_point_nb / (1 << Fixed::_fractional_bit));
 }
 
 /**
@@ -110,48 +112,48 @@ float	Fixed::toFloat( void ) const
 */
 int	Fixed::toInt( void ) const
 {
-	return this->_raw >> Fixed::_bit;
+	return this->_fixed_point_nb >> Fixed::_fractional_bit;
 }
 
 //////////////////////////////Comparison operators//////////////////////////////////////
 bool	Fixed::operator>(Fixed const &src) const
 {
-	if (this->_raw > src.getRawBits())
+	if (this->_fixed_point_nb > src.getRawBits())
 		return true;
 	return false;
 }
 
 bool	Fixed::operator<(Fixed const &src) const
 {
-	if (this->_raw < src.getRawBits())
+	if (this->_fixed_point_nb < src.getRawBits())
 		return true;
 	return false;
 }
 
 bool	Fixed::operator>=(Fixed const &src) const
 {
-	if (this->_raw >= src.getRawBits())
+	if (this->_fixed_point_nb >= src.getRawBits())
 		return true;
 	return false;
 }
 
 bool	Fixed::operator<=(Fixed const &src) const
 {
-	if (this->_raw <= src.getRawBits())
+	if (this->_fixed_point_nb <= src.getRawBits())
 		return true;
 	return false;
 }
 
 bool	Fixed::operator==(Fixed const &src) const
 {
-	if (this->_raw == src.getRawBits())
+	if (this->_fixed_point_nb == src.getRawBits())
 		return true;
 	return false;
 }
 
 bool	Fixed::operator!=(Fixed const &src) const
 {
-	if (this->_raw != src.getRawBits())
+	if (this->_fixed_point_nb != src.getRawBits())
 		return true;
 	return false;
 }
@@ -181,32 +183,44 @@ Fixed	Fixed::operator/(Fixed const &src) const
 /**
  * @brief pre-increament operator
  * @return *this
+ * @note this get the object and increase the value by 1
 */
 Fixed	&Fixed::operator++(void)
 {
-	this->_raw++;
+	if (CALL == 1)
+		std::cout << "pre-increament operator called" << std::endl;
+	this->_fixed_point_nb++;
+	return *this;
+}
+
+/**
+ * @brief pre-decreament operator
+ * @return *this
+ * @note this get the object and decrease the value by 1
+*/
+Fixed	&Fixed::operator--(void)
+{
+	if (CALL == 1)
+		std::cout << "pre-decreament operator called" << std::endl;
+	this->_fixed_point_nb--;
 	return *this;
 }
 
 /**
  * @brief post-increament operator
  * @return tmp
+ * @note 1. make a copy of the object
+ * @note 2. increase the object by 1
+ * @note 3. return the copy object
+ * @note 4. return the object after increase
 */
 Fixed	Fixed::operator++(int)
 {
+	if (CALL == 1)
+		std::cout << "post-increament operator called" << std::endl;
 	Fixed tmp(*this);
 	operator++();
 	return tmp;
-}
-
-/**
- * @brief pre-decreament operator
- * @return *this
-*/
-Fixed	&Fixed::operator--(void)
-{
-	this->_raw--;
-	return *this;
 }
 
 /**
@@ -215,6 +229,8 @@ Fixed	&Fixed::operator--(void)
 */
 Fixed	Fixed::operator--(int)
 {
+	if (CALL == 1)
+		std::cout << "post-decreament operator called" << std::endl;
 	Fixed tmp(*this);
 	operator--();
 	return tmp;

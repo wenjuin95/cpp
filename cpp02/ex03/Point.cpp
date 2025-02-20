@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Point.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
+/*   By: welow < welow@student.42kl.edu.my>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 16:02:35 by welow             #+#    #+#             */
-/*   Updated: 2025/01/15 14:13:27 by welow            ###   ########.fr       */
+/*   Updated: 2025/02/20 20:54:36 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,20 +35,12 @@ Point::Point(Fixed const x, Fixed const y): _x(x), _y(y)
 /**
  * @brief Copy constructor
  * @param src Point object to copy
+ * @note 1. this copy need to copy the x and y value not the object itself
 */
 Point::Point(Point const &src): _x(src.getX()), _y(src.getY())
 {
 	if (CALL == 1)
 		std::cout << "Point copy constructor called" << std::endl;
-}
-
-/**
- * @brief Destructor
-*/
-Point::~Point(void)
-{
-	if (CALL == 1)
-		std::cout << "Point destructor called" << std::endl;
 }
 
 /**
@@ -62,6 +54,15 @@ Point &Point::operator=(Point const &src)
 		std::cout << "Point assignment operator called" << std::endl;
 	(void)src;
 	return (*this);
+}
+
+/**
+ * @brief Destructor
+*/
+Point::~Point(void)
+{
+	if (CALL == 1)
+		std::cout << "Point destructor called" << std::endl;
 }
 
 /**

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
+/*   By: welow < welow@student.42kl.edu.my>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 15:22:35 by welow             #+#    #+#             */
-/*   Updated: 2025/01/15 14:13:15 by welow            ###   ########.fr       */
+/*   Updated: 2025/02/20 21:30:42 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,25 @@
 #include <iostream>
 #include <cmath>
 
-# define CALL 0
+#ifndef CALL
+#define CALL 0
+#endif
+
+#define BLUE_H "\033[0;44m"
+#define RED_H "\033[0;41m"
+#define YELLOW_H "\033[0;43m"
+#define GREEN_H "\033[0;42m"
+#define PURPLE_H "\033[0;45m"
+#define CYAN "\033[0;36m"
+#define GREEN "\033[0;32m"
+#define RED "\033[0;31m"
+#define RESET "\033[0;37m"
 
 class Fixed
 {
 	private:
-		int					_raw;
-		static const int	_bit = 8;
+		int					_fixed_point_nb;
+		static const int	_fractional_bit = 8;
 	public:
 		Fixed(void);
 		Fixed(const Fixed &src);
@@ -32,7 +44,7 @@ class Fixed
 		Fixed(float const nb);
 
 		int		getRawBits(void) const;
-		void	setRawBits(int const raw);
+		void	setRawBits(int const fixed_point_nb);
 		float	toFloat(void) const;
 		int		toInt(void) const;
 

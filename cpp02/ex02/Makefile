@@ -44,4 +44,4 @@ debug:
 leak :
 	valgrind --leak-check=full ./$(NAME)
 
-.PHONY: all clean fclean re leak
+.PHONY: all clean fclean re leak debug
