@@ -15,30 +15,6 @@
 // https://www.geeksforgeeks.org/check-whether-a-given-point-lies-inside-a-triangle-or-not/
 
 /**
- * @brief check if point is on a line
- * @param a Point a
- * @param b Point b
- * @param p Point p
- * @return true if point is on the line, false otherwise
- * @note 1. using equation of a line in a slope-intercept form
- * @note 2. formula for this is y = mx + c
- * @note 2. m = (y2 - y1) / (x2 - x1)
- * @note 3. c = y - mx
-*/
-static bool	point_is_on_line(Point const a, Point const b, Point const p)
-{
-	Fixed m, c, res;
-
-	m = ((b.getX() - a.getX()) / (b.getY() - a.getY()));
-	c = a.getY() - m * a.getX();
-	res = m * p.getX() + c;
-	if (res == p.getY())
-		return (true);
-	else
-		return (false);
-}
-
-/**
  * @brief calculate the area of a triangle
  * @param a Point a
  * @param b Point b
@@ -57,6 +33,17 @@ static float get_area(Point const a, Point const b, Point const c)
 	return (std::abs(area));
 }
 
+/**
+ * @brief check if a point is inside a triangle
+ * @param a Point a
+ * @param b Point b
+ * @param c Point c
+ * @param p Point p
+ * @return true if the point is inside the triangle, false otherwise
+ * @note 1. check if found one triangle area is 0 then the point is outside the triangle
+ * @note 2. check if the sum of the three triangle areas is equal to the total area of
+ * 			the triangle mean the point is in the triangle
+*/
 bool bsp( Point const a, Point const b, Point const c, Point const p )
 {
 	float total_area, pab, pbc, pac;
@@ -65,9 +52,11 @@ bool bsp( Point const a, Point const b, Point const c, Point const p )
 	pab = get_area(p, a, b);
 	pbc = get_area(p, b, c);
 	pac = get_area(p, a, c);
-	if (point_is_on_line(a, b, p) || point_is_on_line(b, c, p) || point_is_on_line(a, c, p))
-		return (false);
-	if (total_area == pab + pbc + pac)
+	// std::cout << "Total area: " << total_area << std::endl; //visualize
+	// std::cout << "Area of PAB: " << pab << std::endl; //visualize
+	// std::cout << "Area of PBC: " << pbc << std::endl; //visualize
+	// std::cout << "Area of PAC: " << pac << std::endl; //visualize
+	if (pab != 0 && pbc != 0 && pac != 0 && total_area == pab + pbc + pac)
 		return (true);
 	else
 		return (false);

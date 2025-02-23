@@ -37,14 +37,11 @@ class Fixed
 		static const int	_fractional_bit = 8;
 	public:
 		Fixed(void);
+		Fixed(int const nb);
+		Fixed(float const nb);
 		Fixed(const Fixed &src);
 		Fixed &operator=(const Fixed &src);
 		~Fixed(void);
-		Fixed(int const nb);
-		Fixed(float const nb);
-
-		int		getRawBits(void) const;
-		void	setRawBits(int const fixed_point_nb);
 		float	toFloat(void) const;
 		int		toInt(void) const;
 

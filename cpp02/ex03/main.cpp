@@ -16,14 +16,14 @@ bool bsp( Point const a, Point const b, Point const c, Point const p );
 
 void	printIsPointInsideTriangle(Point const a, Point const b, Point const c, Point const p)
 {
-	std::cout << CYAN << "-- Triangle: A(" << a.getX() << ", " << a.getY() << ") "
+	std::cout << CYAN "Triangle: A(" << a.getX() << ", " << a.getY() << ") "
 		<< "| B(" << b.getX() << ", " << b.getY() << ") "
 		<< "| C(" << c.getX() << ", " << c.getY() << ")" << std::endl
-		<< "-- Point   : P(" << p.getX() << ", " << p.getY() << ")" << RESET << std::endl;
+		<< "Point   : P(" << p.getX() << ", " << p.getY() << ")" RESET << std::endl;
 	if (bsp(a, b, c, p) == true)
-		std::cout << "point P inside triangle: "<< GREEN "YES" RESET<< std::endl;
+		std::cout << GREEN "inside" RESET<< std::endl;
 	else
-		std::cout << "point P inside triangle: " << RED "NO" RESET << std::endl;
+		std::cout << RED "outside" RESET << std::endl;
 }
 
 int	main( void )
@@ -35,6 +35,7 @@ int	main( void )
 		Point	p(10, 15);
 		printIsPointInsideTriangle(a, b, c, p);
 	}
+	std::cout << "===============================================" << std::endl;
 	{
 		Point	a(0, 0);
 		Point	b(5, 5);
@@ -42,6 +43,7 @@ int	main( void )
 		Point	p(2.5f, 2.5f);
 		printIsPointInsideTriangle(a, b, c, p);
 	}
+	std::cout << "===============================================" << std::endl;
 	{
 		Point	a(0, 0);
 		Point	b(0, 0);
@@ -49,12 +51,13 @@ int	main( void )
 		Point	p(-1, 5);
 		printIsPointInsideTriangle(a, b, c, p);
 	}
+	std::cout << "===============================================" << std::endl;
 	{
 		Point	a(0, 0);
 		Point	b(6, 0);
 		Point	c(0, 6);
-		Point	p(4.5f, 0.5f);
+		Point	p(2.02f, 0.05f);
 		printIsPointInsideTriangle(a, b, c, p);
 	}
-	return ( 0 );
+	return 0;
 }

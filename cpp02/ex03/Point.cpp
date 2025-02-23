@@ -37,7 +37,7 @@ Point::Point(Fixed const x, Fixed const y): _x(x), _y(y)
  * @param src Point object to copy
  * @note 1. this copy need to copy the x and y value not the object itself
 */
-Point::Point(Point const &src): _x(src.getX()), _y(src.getY())
+Point::Point(Point const &src): _x(src._x), _y(src._y)
 {
 	if (CALL == 1)
 		std::cout << "Point copy constructor called" << std::endl;
@@ -52,7 +52,8 @@ Point &Point::operator=(Point const &src)
 {
 	if (CALL == 1)
 		std::cout << "Point assignment operator called" << std::endl;
-	(void)src;
+	if (this == &src)
+		return (*this);
 	return (*this);
 }
 
