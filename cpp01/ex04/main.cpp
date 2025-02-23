@@ -38,9 +38,10 @@ static void	process_line(std::ofstream &WriteFile, std::ifstream &ReadFile, std:
     /* "std::string::npos" means null or not found                                  */
     /* this function returns the position of the first occurrence of the substring  */
     /********************************************************************************/
-	// std::cout << "orignal line: " << line << std::endl;//visualize
+	std::cout << "orignal line: " << line << std::endl;//visualize
 	while ((linePosition = line.find(s1, position)) != std::string::npos)
 	{
+		
         /************************************************************************/
         /* "substr(position, length)" returns a new string which is a substring */
         /* position : the starting position of the substring                    */
@@ -50,21 +51,22 @@ static void	process_line(std::ofstream &WriteFile, std::ifstream &ReadFile, std:
 		//return the string after the string that you want to replace
 		//example abc (find b) -> c
 		tempLine = line.substr(linePosition + s1.size());
-		// std::cout << std::endl << "after remove with s1: " << tempLine << std::endl;//visualize
+		std::cout << std::endl << "after remove with s1: " << tempLine << std::endl;//visualize
 
 		//get the string with the position the rest will be removed
 		//example abc (find b) -> a
 		line.resize(linePosition);
-		// if (line == "") //visualize
-		// 	std::cout << "[ line: \"\"" << " ] + ";//visualize
-		// else//visualize
-		// 	std::cout << "[ line: " << line << " ] + ";//visualize
-		// std::cout << "[ s2: " << s2 << " ] + ";//visualize
-		// std::cout << "[ tempLine: " << tempLine << " ]" << std::endl;//visualize
+		if (line == "") //visualize
+			std::cout << "[ line: \"\"" << " ] + ";//visualize
+		else//visualize
+			std::cout << "[ line: " << line << " ] + ";//visualize
+		std::cout << "[ s2: " << s2 << " ] + ";//visualize
+		std::cout << "[ tempLine: " << tempLine << " ]" << std::endl;//visualize
 		line = line + s2 + tempLine;
-		// std::cout << "Modified line: " << line << std::endl << std::endl;//visualize
+		std::cout << "Modified line: " << line << std::endl << std::endl;//visualize
 
-		//move the position to the next character after the string that you want to replace
+		//move the position to the next character after the string that you want to replace.
+		//example abc (now the position is at c because 2) -> a(0) b(1) c(2)
 		position = linePosition + s2.size();
 	}
 

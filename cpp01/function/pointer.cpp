@@ -3,6 +3,7 @@
 int main()
 {
 	{
+		//pointer => point of the address that store the value
 		// provide a way to access and modify variables indirectly through their memory
 		// addresses and can be reassigned to point to different variables or memory
 		// locations as needed
@@ -19,6 +20,7 @@ int main()
 	std::cout << std::endl;
 
 	{
+		//reference => an alias for the variable that store the value
 		// when you need an alias for an existing variable and do not
 		// need to change the reference itself.
 		std::string str = "hello, world!";
@@ -69,8 +71,8 @@ int main()
  *
  * WHICH TO USE
  * ============
- * POINTER :: more for memory allocation or reassigning
- * REFERENCE :: safer from null pointer and more readable
- * 				without unitialization
- * 1.
+ * REFERENCE :: 1. function paramter and return type
+ * 				2. when you don't need to reassign
+ * POINTER   :: 1. implement data structure
+ * 				2. when you need to reassign or using NULL
 */

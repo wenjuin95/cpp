@@ -16,8 +16,9 @@
  * @brief a contructor
  * @note 1. "_zombieName(zombieName)" is an initialization list (initialization of member variables)
  */
-Zombie::Zombie(std::string zombieName): _zombieName(zombieName)
+Zombie::Zombie(std::string zombieName)
 {
+	this->_zombieName = zombieName;
 	std::cout << this->getZombieName() << " (constructor) is created" << std::endl;
 }
 

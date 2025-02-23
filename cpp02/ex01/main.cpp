@@ -21,8 +21,8 @@ int main(void)
 
 	a = Fixed(1234.4321f);
 
-	//default convert to fixed
-	std::cout << std::endl << "---------- int/float to fixed ----------" << std::endl;
+	//convert fixed to float because the operator(<<) overloaded
+	std::cout << std::endl << "---------- fixed to float ----------" << std::endl;
 	std::cout << "a is " << a << std::endl;
 	std::cout << "b is " << b << std::endl;
 	std::cout << "c is " << c << std::endl;

@@ -35,8 +35,6 @@ class Fixed
 		Fixed(const Fixed &src);
 		Fixed &operator=(const Fixed &src);
 		~Fixed(void);
-		int		getRawBits(void) const;
-		void	setRawBits(int const fixed_point_nb);
 		float	toFloat(void) const;
 		int		toInt(void) const;
 };

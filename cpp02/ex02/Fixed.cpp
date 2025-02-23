@@ -22,26 +22,25 @@ Fixed::Fixed() : _fixed_point_nb(0)
 }
 
 /**
- * @brief call constructor with init the "_fixed_point_nb" with the value of "nb"
- * @param nb value in int
+ * @brief convert the integer to fixed point
+ * @param nb integer value to convert
+ * @note 1. EXAMPLE : [ 10 << 8 ] => [ 10 * 2^8 ] => [ 10 * 256 = 2560 ]
 */
-Fixed::Fixed( int const nb )
+Fixed::Fixed( int const nb ) : _fixed_point_nb(nb << Fixed::_fractional_bit)
 {
 	if (CALL == 1)
 		std::cout << "Int constructor called"<< std::endl;
-	this->_fixed_point_nb = nb << Fixed::_fractional_bit;
 }
 
 /**
- *
- * @brief call constructor with init the "_fixed_point_nb" with the value of "nb"
- * @param nb value in float
+ * @brief convert the float to fixed point
+ * @param nb float value to convert
+ * @note 1. EXAMPLE : [ roundf(42.42 * (1 << 8)) ] => [ roundf(42.42 * 2^8) ] => [ roundf(42.42 * 256) = 10837 ]
 */
-Fixed::Fixed( float const nb )
+Fixed::Fixed( float const nb ) : _fixed_point_nb(roundf(nb * (1 << Fixed::_fractional_bit)))
 {
 	if (CALL == 1)
 		std::cout << "Float constructor called" << std::endl;
-	this->_fixed_point_nb = roundf(nb * (1 << Fixed::_fractional_bit));
 }
 
 /**
@@ -66,7 +65,8 @@ Fixed &Fixed::operator=( Fixed const &src)
 {
 	if (CALL == 1)
 		std::cout << YELLOW_H << "Copy assignment operator called" << RESET << std::endl;
-	this->_fixed_point_nb = src.getRawBits();
+	if (this != &src)
+		this->_fixed_point_nb = src._fixed_point_nb;
 	return *this;
 }
 
@@ -77,24 +77,6 @@ Fixed::~Fixed()
 {
 	if (CALL == 1)
 		std::cout << GREEN_H << "Destructor called" << RESET << std::endl;;
-}
-
-/**
- * @brief set the raw value
- * @param raw raw value to set
-*/
-void	Fixed::setRawBits( int const fixed_point_nb )
-{
-	this->_fixed_point_nb = fixed_point_nb;
-}
-
-/**
- * @brief get the raw value
- * @return raw value
-*/
-int	Fixed::getRawBits( void ) const
-{
-	return this->_fixed_point_nb;
 }
 
 /**
@@ -118,42 +100,42 @@ int	Fixed::toInt( void ) const
 //////////////////////////////Comparison operators//////////////////////////////////////
 bool	Fixed::operator>(Fixed const &src) const
 {
-	if (this->_fixed_point_nb > src.getRawBits())
+	if (this->_fixed_point_nb > src._fixed_point_nb)
 		return true;
 	return false;
 }
 
 bool	Fixed::operator<(Fixed const &src) const
 {
-	if (this->_fixed_point_nb < src.getRawBits())
+	if (this->_fixed_point_nb < src._fixed_point_nb)
 		return true;
 	return false;
 }
 
 bool	Fixed::operator>=(Fixed const &src) const
 {
-	if (this->_fixed_point_nb >= src.getRawBits())
+	if (this->_fixed_point_nb >= src._fixed_point_nb)
 		return true;
 	return false;
 }
 
 bool	Fixed::operator<=(Fixed const &src) const
 {
-	if (this->_fixed_point_nb <= src.getRawBits())
+	if (this->_fixed_point_nb <= src._fixed_point_nb)
 		return true;
 	return false;
 }
 
 bool	Fixed::operator==(Fixed const &src) const
 {
-	if (this->_fixed_point_nb == src.getRawBits())
+	if (this->_fixed_point_nb == src._fixed_point_nb)
 		return true;
 	return false;
 }
 
 bool	Fixed::operator!=(Fixed const &src) const
 {
-	if (this->_fixed_point_nb != src.getRawBits())
+	if (this->_fixed_point_nb != src._fixed_point_nb)
 		return true;
 	return false;
 }
@@ -291,16 +273,14 @@ Fixed const &Fixed::max(Fixed const &a, Fixed const &b)
 
 /////////////////////////////////Output operators////////////////////////////////////////
 /**
- * @brief when "std::cout" is called, this function will be called
+ * @brief when "std::cout" is called, this function will be called to do other operation
  * @param output output stream
  * @param src copy of the value
  * @return output stream
- * @note output the float value
+ * @note it convert output to floating point value (pdf require)
 */
 std::ostream	&operator<<(std::ostream &output, Fixed const &src)
 {
-	if (CALL == 1)
-		std::cout << "output operator called" << std::endl;
 	output << src.toFloat();
 	return output;
 }

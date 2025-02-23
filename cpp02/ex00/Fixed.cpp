@@ -12,11 +12,26 @@
 
 #include "Fixed.hpp"
 
-
-
-Fixed::Fixed() : _fixed_point_nb(0)
+/**
+ * @breif default constructor
+ * @note 1. setter:
+ * 			pros:
+ * 				1. making code easy to maintian
+ * 				2. if the logic for the setter changed, only change the function
+ * 			cons:
+ * 				1. less efficient duw to another function call
+ * 				2. poor readability
+ * 		2. initialize list:
+ * 			pros:
+ * 				1. more efficient because no function call
+ * 				2. easy read
+ * 			cons:
+ * 				1. if the logic for the setter changed, need to change the constructor
+*/
+Fixed::Fixed(void)
 {
 	std::cout << BLUE_H << "Default constructor called" << RESET << std::endl;
+	this->setRawBits(0);
 }
 
 /**
@@ -33,13 +48,15 @@ Fixed::Fixed(const Fixed &src)
 /**
  * @brief assignment operator
  * @param src source to copy
- * @note if the source is not same, copy the source to this object
  * @return *this
+ * @note 1. if the source is not same with this object, copy the source to this object
+ * @note 2. we change fixed number because fractional number always the same (because constant)
 */
 Fixed &Fixed::operator=( Fixed const &src)
 {
 	std::cout << YELLOW_H << "Copy assignment operator called" << RESET << std::endl;
-	this->_fixed_point_nb = src.getRawBits();
+	if (this != &src)
+		this->_fixed_point_nb = src.getRawBits();
 	return *this;
 }
 
