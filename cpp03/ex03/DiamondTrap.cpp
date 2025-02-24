@@ -6,7 +6,7 @@
 /*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 07:51:45 by welow             #+#    #+#             */
-/*   Updated: 2025/02/07 13:50:19 by welow            ###   ########.fr       */
+/*   Updated: 2025/02/24 16:57:05 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,12 @@ DiamondTrap::DiamondTrap(void)
 
 DiamondTrap::DiamondTrap(std::string name)
     : ClapTrap(name + "_clap_name"),
-    ScavTrap(name + "_clap2_name"),
-    FragTrap(name + "_clap3_name")
+    ScavTrap(name),
+    FragTrap(name)
 {
     if (CALL == 1)
         std::cout << BLUE_H << "DiamondTrap (constructor) called" << RESET << std::endl;
-    this->_name = name;
+	this->_name = ClapTrap::_name;
     this->_hitPoint = FragTrap::_hitPoint;
     this->_energyPoint = ScavTrap::_energyPoint;
     this->_attackDamage = FragTrap::_attackDamage;

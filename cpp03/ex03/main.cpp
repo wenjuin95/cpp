@@ -6,7 +6,7 @@
 /*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 15:58:45 by welow             #+#    #+#             */
-/*   Updated: 2025/02/07 14:12:35 by welow            ###   ########.fr       */
+/*   Updated: 2025/02/24 16:50:21 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int main(void)
 		std::cout << std::endl;
 
 		std::cout << "---------- diamondtrap1 vs diamondtrap2 ---------" << std::endl;
-		diamondtrap1.attack(diamondtrap2.getName());
+		diamondtrap1.attack("d-2");
 		display_bot(diamondtrap1, diamondtrap2);
 		std::cout << std::endl;
 
