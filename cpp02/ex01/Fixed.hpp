@@ -6,7 +6,7 @@
 /*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 17:27:35 by welow             #+#    #+#             */
-/*   Updated: 2025/02/19 17:34:44 by welow            ###   ########.fr       */
+/*   Updated: 2025/02/24 11:47:19 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ class Fixed
 		int		toInt(void) const;
 };
 
+//* std::ostream is a class that represents the output stream
 std::ostream &operator<<(std::ostream &output, Fixed const &src);
 
 #endif

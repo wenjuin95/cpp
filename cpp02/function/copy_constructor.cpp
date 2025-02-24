@@ -1,5 +1,13 @@
 #include <iostream>
 
+/**
+ * COPY CONSTRUCTOR
+ * 1. create a new object by copy
+ * 2. use only at object creation
+ * 3. create a new object
+ * 4. copy value from another object
+*/
+
 class student
 {
 	private:

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: welow < welow@student.42kl.edu.my>         +#+  +:+       +#+        */
+/*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 12:49:29 by welow             #+#    #+#             */
-/*   Updated: 2025/02/20 20:32:52 by welow            ###   ########.fr       */
+/*   Updated: 2025/02/24 12:26:45 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ int main( void )
 		std::cout << std::endl << "----------arithmetic operator----------" << std::endl;
 		Fixed a(20);
 		Fixed b(10);
+		//Fixed b(0); //it will cause error because it will divide by zero but pdf accept
 
 		std::cout << "a: " << a << ", b: " << b << std::endl;
 		Fixed c = a + b;

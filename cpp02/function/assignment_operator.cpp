@@ -1,5 +1,12 @@
 #include <iostream>
 
+/**
+ * ASSIGNMENT OPERATOR
+ * 1. copy when the object is already created (if not can't copy)
+ * 2. used only with existing object
+ * 3. it have self assignment check [ if (this != &src) ]
+*/
+
 class student
 {
 	private:

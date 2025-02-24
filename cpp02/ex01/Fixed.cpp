@@ -6,7 +6,7 @@
 /*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 17:27:27 by welow             #+#    #+#             */
-/*   Updated: 2025/02/19 18:17:34 by welow            ###   ########.fr       */
+/*   Updated: 2025/02/24 11:47:14 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,10 @@ Fixed::Fixed() : _fixed_point_nb(0)
 /**
  * @brief convert the integer to fixed point
  * @param nb integer value to convert
- * @note 1. EXAMPLE : [ 10 << 8 ] => [ 10 * 2^8 ] => [ 10 * 256 = 2560 ]
+ * @note 1. formula : [ nb * (1 << fractional_bit) ]
+ * @note 2. EXAMPLE : [ 10 * (1 << 8) ] => [ 10 * 2^8 ] => [ 10 * 256 = 2560 ]
 */
-Fixed::Fixed( int const nb ) : _fixed_point_nb(nb << Fixed::_fractional_bit)
+Fixed::Fixed( int const nb ) : _fixed_point_nb(nb * (1 << Fixed::_fractional_bit))
 {
 	std::cout << "Int constructor called"<< std::endl;
 }
@@ -30,7 +31,8 @@ Fixed::Fixed( int const nb ) : _fixed_point_nb(nb << Fixed::_fractional_bit)
 /**
  * @brief convert the float to fixed point
  * @param nb float value to convert
- * @note 1. EXAMPLE : [ roundf(42.42 * (1 << 8)) ] => [ roundf(42.42 * 2^8) ] => [ roundf(42.42 * 256) = 10837 ]
+ * @note 1. formula : [ roundf(nb * (1 << fractional_bit)) ]
+ * @note 2. EXAMPLE : [ roundf(42.42 * (1 << 8)) ] => [ roundf(42.42 * 2^8) ] => [ roundf(42.42 * 256) = 10837 ]
 */
 Fixed::Fixed( float const nb ) : _fixed_point_nb(roundf(nb * (1 << Fixed::_fractional_bit)))
 {
@@ -50,9 +52,12 @@ Fixed::Fixed(const Fixed &src)
 
 /**
  * @brief assignment operator
- * @param src source to copy
- * @note if the source is not same, copy the source to this object
+ * @param src source to assign
  * @return *this
+ * @note 1. if the source is not same with this object, copy the source to this object
+ * @note 2. we change fixed number because fractional number always the same (because constant)
+ * @note 3. "&" in return type is to return the reference of the object itself. this
+ *          avoid the object to be copied ( allow to chain multiple assignment)
 */
 Fixed &Fixed::operator=( Fixed const &src)
 {
@@ -73,6 +78,9 @@ Fixed::~Fixed()
 /**
  * @brief convert fixed point value to floating point value
  * @return floating point value
+ * @note 1. formula : [ (float)fixed_point / 1 << fractional_bit ]
+ * @note 2. EXAMPLE : 2560 that is float 10 fixed point value
+ *          [ (float)2560 / 1 << 8 ] => [ 2560 / 2^8 ] => [ 2560 / 256 = 10 ]
 */
 float	Fixed::toFloat( void ) const
 {
@@ -82,10 +90,13 @@ float	Fixed::toFloat( void ) const
 /**
  * @brief convert fixed point value to integer value
  * @return integer value
+ * @note 1. formula : [ fixed_point / 1 << fractional_bit ]
+ * @note 2. EXAMPLE : 10837 that is integer 42.42 fixed point value
+ * 		 [ 10837 / 1 << 8 ] => [ 10837 / 2^8 ] => [ 10837 / 256 = 42.42 ]
 */
 int	Fixed::toInt( void ) const
 {
-	return this->_fixed_point_nb >> Fixed::_fractional_bit;
+	return (this->_fixed_point_nb / (1 << Fixed::_fractional_bit));
 }
 
 /**

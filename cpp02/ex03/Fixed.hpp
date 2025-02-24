@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: welow < welow@student.42kl.edu.my>         +#+  +:+       +#+        */
+/*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 15:22:35 by welow             #+#    #+#             */
-/*   Updated: 2025/02/20 21:30:42 by welow            ###   ########.fr       */
+/*   Updated: 2025/02/24 12:28:14 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,9 @@ class Fixed
 		Fixed	operator*(Fixed const &src) const;
 		Fixed	operator/(Fixed const &src) const;
 
-		Fixed	&operator++(void);
+		Fixed	operator++(void);
 		Fixed	operator++(int);
-		Fixed	&operator--(void);
+		Fixed	operator--(void);
 		Fixed	operator--(int);
 
 		static Fixed 		&min( Fixed &a, Fixed &b );

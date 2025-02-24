@@ -6,7 +6,7 @@
 /*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 17:24:32 by welow             #+#    #+#             */
-/*   Updated: 2025/02/19 18:06:52 by welow            ###   ########.fr       */
+/*   Updated: 2025/02/24 11:14:46 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,6 @@ int main(void)
 	std::cout << "b is " << b.toInt() << " as integer" << std::endl;
 	std::cout << "c is " << c.toInt() << " as integer" << std::endl;
 	std::cout << "d is " << d.toInt() << " as integer" << std::endl;
-
-	//convert the fixed to float
-	std::cout << std::endl << "---------- fixed to float ---------" << std::endl;
-	std::cout << "a is " << a.toFloat() << " as float" << std::endl;
-	std::cout << "b is " << b.toFloat() << " as float" << std::endl;
-	std::cout << "c is " << c.toFloat() << " as float" << std::endl;
-	std::cout << "d is " << d.toFloat() << " as float" << std::endl;
 
 	return 0;
 }

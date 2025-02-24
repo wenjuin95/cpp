@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: welow < welow@student.42kl.edu.my>         +#+  +:+       +#+        */
+/*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 14:05:38 by welow             #+#    #+#             */
-/*   Updated: 2025/02/20 21:30:31 by welow            ###   ########.fr       */
+/*   Updated: 2025/02/24 14:13:05 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	printIsPointInsideTriangle(Point const a, Point const b, Point const c, Poi
 	if (bsp(a, b, c, p) == true)
 		std::cout << GREEN "inside" RESET<< std::endl;
 	else
-		std::cout << RED "outside" RESET << std::endl;
+		std::cout << RED "not inside" RESET << std::endl;
 }
 
 int	main( void )
@@ -35,7 +35,7 @@ int	main( void )
 		Point	p(10, 15);
 		printIsPointInsideTriangle(a, b, c, p);
 	}
-	std::cout << "===============================================" << std::endl;
+	std::cout << std::endl << "===============================================" << std::endl << std::endl;
 	{
 		Point	a(0, 0);
 		Point	b(5, 5);
@@ -43,15 +43,15 @@ int	main( void )
 		Point	p(2.5f, 2.5f);
 		printIsPointInsideTriangle(a, b, c, p);
 	}
-	std::cout << "===============================================" << std::endl;
+	std::cout << std::endl << "===============================================" << std::endl << std::endl;
 	{
-		Point	a(0, 0);
-		Point	b(0, 0);
-		Point	c(1, 1);
-		Point	p(-1, 5);
+		Point	a(-5.44f, 0.29f);
+		Point	b(2.62f, 2.95f);
+		Point	c(1.0f, -1.45f);
+		Point	p(-5.43f, 0.29f);
 		printIsPointInsideTriangle(a, b, c, p);
 	}
-	std::cout << "===============================================" << std::endl;
+	std::cout << std::endl << "===============================================" << std::endl << std::endl;
 	{
 		Point	a(0, 0);
 		Point	b(6, 0);

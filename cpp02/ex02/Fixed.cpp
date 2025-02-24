@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: welow < welow@student.42kl.edu.my>         +#+  +:+       +#+        */
+/*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 18:49:01 by welow             #+#    #+#             */
-/*   Updated: 2025/02/20 20:27:01 by welow            ###   ########.fr       */
+/*   Updated: 2025/02/24 12:19:50 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,23 +24,23 @@ Fixed::Fixed() : _fixed_point_nb(0)
 /**
  * @brief convert the integer to fixed point
  * @param nb integer value to convert
- * @note 1. EXAMPLE : [ 10 << 8 ] => [ 10 * 2^8 ] => [ 10 * 256 = 2560 ]
+ * @note 1. formula : [ nb * (1 << fractional_bit) ]
+ * @note 2. EXAMPLE : [ 10 * (1 << 8) ] => [ 10 * 2^8 ] => [ 10 * 256 = 2560 ]
 */
-Fixed::Fixed( int const nb ) : _fixed_point_nb(nb << Fixed::_fractional_bit)
+Fixed::Fixed( int const nb ) : _fixed_point_nb(nb * (1 << Fixed::_fractional_bit))
 {
-	if (CALL == 1)
-		std::cout << "Int constructor called"<< std::endl;
+	std::cout << "Int constructor called"<< std::endl;
 }
 
 /**
  * @brief convert the float to fixed point
  * @param nb float value to convert
- * @note 1. EXAMPLE : [ roundf(42.42 * (1 << 8)) ] => [ roundf(42.42 * 2^8) ] => [ roundf(42.42 * 256) = 10837 ]
+ * @note 1. formula : [ roundf(nb * (1 << fractional_bit)) ]
+ * @note 2. EXAMPLE : [ roundf(42.42 * (1 << 8)) ] => [ roundf(42.42 * 2^8) ] => [ roundf(42.42 * 256) = 10837 ]
 */
 Fixed::Fixed( float const nb ) : _fixed_point_nb(roundf(nb * (1 << Fixed::_fractional_bit)))
 {
-	if (CALL == 1)
-		std::cout << "Float constructor called" << std::endl;
+	std::cout << "Float constructor called" << std::endl;
 }
 
 /**
@@ -56,10 +56,13 @@ Fixed::Fixed(const Fixed &src)
 }
 
 /**
- * @brief assignment operator
- * @param src source to copy
- * @note if the source is not same, copy the source to this object
+ * @brief assign an object to another object
+ * @param src source to assign
  * @return *this
+ * @note 1. if the source is not same with this object, copy the source to this object
+ * @note 2. we change fixed number because fractional number always the same (because constant)
+ * @note 3. "&" in return type is to return the reference of the object itself. this
+ *          avoid the object to be copied ( allow to chain multiple assignment)
 */
 Fixed &Fixed::operator=( Fixed const &src)
 {
@@ -80,8 +83,11 @@ Fixed::~Fixed()
 }
 
 /**
- * @brief convert value to float
- * @return float value of the fixed point value
+ * @brief convert fixed point value to floating point value
+ * @return floating point value
+ * @note 1. formula : [ (float)fixed_point / 1 << fractional_bit ]
+ * @note 2. EXAMPLE : 2560 that is float 10 fixed point value
+ *          [ (float)2560 / 1 << 8 ] => [ 2560 / 2^8 ] => [ 2560 / 256 = 10 ]
 */
 float	Fixed::toFloat( void ) const
 {
@@ -89,15 +95,18 @@ float	Fixed::toFloat( void ) const
 }
 
 /**
- * @brief convert value to int
- * @return integer value of the fixed point value
+ * @brief convert fixed point value to integer value
+ * @return integer value
+ * @note 1. formula : [ fixed_point / 1 << fractional_bit ]
+ * @note 2. EXAMPLE : 10837 that is integer 42.42 fixed point value
+ * 		 [ 10837 / 1 << 8 ] => [ 10837 / 2^8 ] => [ 10837 / 256 = 42.42 ]
 */
 int	Fixed::toInt( void ) const
 {
-	return this->_fixed_point_nb >> Fixed::_fractional_bit;
+	return (this->_fixed_point_nb / (1 << Fixed::_fractional_bit));
 }
 
-//////////////////////////////Comparison operators//////////////////////////////////////
+//////////////////////////////* Comparison operators//////////////////////////////////////
 bool	Fixed::operator>(Fixed const &src) const
 {
 	if (this->_fixed_point_nb > src._fixed_point_nb)
@@ -140,7 +149,7 @@ bool	Fixed::operator!=(Fixed const &src) const
 	return false;
 }
 
-//////////////////////////////Arithmetric operators//////////////////////////////////////
+//////////////////////////////* Arithmetric operators//////////////////////////////////////
 Fixed	Fixed::operator+(Fixed const &src) const
 {
 	return Fixed(this->toFloat() + src.toFloat());
@@ -161,13 +170,13 @@ Fixed	Fixed::operator/(Fixed const &src) const
 	return Fixed(this->toFloat() / src.toFloat());
 }
 
-//////////////////////////////increament/decreament operators//////////////////////////////////////
+//////////////////////////////* increament/decreament operators//////////////////////////////////////
 /**
  * @brief pre-increament operator
  * @return *this
  * @note this get the object and increase the value by 1
 */
-Fixed	&Fixed::operator++(void)
+Fixed	Fixed::operator++(void)
 {
 	if (CALL == 1)
 		std::cout << "pre-increament operator called" << std::endl;
@@ -180,7 +189,7 @@ Fixed	&Fixed::operator++(void)
  * @return *this
  * @note this get the object and decrease the value by 1
 */
-Fixed	&Fixed::operator--(void)
+Fixed	Fixed::operator--(void)
 {
 	if (CALL == 1)
 		std::cout << "pre-decreament operator called" << std::endl;
@@ -218,7 +227,7 @@ Fixed	Fixed::operator--(int)
 	return tmp;
 }
 
-/////////////////////////////////compare operators////////////////////////////////////////
+//////////////////////////////* Compare operator//////////////////////////////////////
 /**
  * @brief look for the smallest value
  * @param a first value
@@ -237,6 +246,7 @@ Fixed &Fixed::min(Fixed &a, Fixed &b)
  * @param a first value
  * @param b second value
  * @return the smallest value
+ * @note 1. need "const&" because it is not changable
 */
 Fixed const &Fixed::min(Fixed const &a, Fixed const &b)
 {
@@ -263,6 +273,7 @@ Fixed &Fixed::max(Fixed &a, Fixed &b)
  * @param a first value
  * @param b second value
  * @return the biggest value
+ * @note 1. need "const&" because it is not changable
 */
 Fixed const &Fixed::max(Fixed const &a, Fixed const &b)
 {
@@ -271,7 +282,7 @@ Fixed const &Fixed::max(Fixed const &a, Fixed const &b)
 	return b;
 }
 
-/////////////////////////////////Output operators////////////////////////////////////////
+//////////////////////////////* Output operators//////////////////////////////////////
 /**
  * @brief when "std::cout" is called, this function will be called to do other operation
  * @param output output stream

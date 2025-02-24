@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Point.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: welow < welow@student.42kl.edu.my>         +#+  +:+       +#+        */
+/*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 16:02:35 by welow             #+#    #+#             */
-/*   Updated: 2025/02/20 20:54:36 by welow            ###   ########.fr       */
+/*   Updated: 2025/02/24 13:38:07 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,24 +35,27 @@ Point::Point(Fixed const x, Fixed const y): _x(x), _y(y)
 /**
  * @brief Copy constructor
  * @param src Point object to copy
- * @note 1. this copy need to copy the x and y value not the object itself
+ * @note 1. initialize the object with the same value as the source object ( if not the object will be empty )
 */
-Point::Point(Point const &src): _x(src._x), _y(src._y)
+Point::Point(Point const &src) : _x(src._x), _y(src._y)
 {
 	if (CALL == 1)
 		std::cout << "Point copy constructor called" << std::endl;
+	*this = src;
 }
 
 /**
  * @brief Assignment operator
  * @param src Point object to copy
  * @return reference to this object
+ * @note 1. if the object is constant(always the same), just return the object itself doesn't care
+ *          whether is the same object or not
 */
 Point &Point::operator=(Point const &src)
 {
 	if (CALL == 1)
 		std::cout << "Point assignment operator called" << std::endl;
-	if (this == &src)
+	if (this != &src)
 		return (*this);
 	return (*this);
 }

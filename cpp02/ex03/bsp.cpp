@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bsp.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: welow < welow@student.42kl.edu.my>         +#+  +:+       +#+        */
+/*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 13:14:48 by welow             #+#    #+#             */
-/*   Updated: 2025/02/20 21:23:30 by welow            ###   ########.fr       */
+/*   Updated: 2025/02/24 14:00:38 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,14 @@ bool bsp( Point const a, Point const b, Point const c, Point const p )
 	pab = get_area(p, a, b);
 	pbc = get_area(p, b, c);
 	pac = get_area(p, a, c);
-	// std::cout << "Total area: " << total_area << std::endl; //visualize
-	// std::cout << "Area of PAB: " << pab << std::endl; //visualize
-	// std::cout << "Area of PBC: " << pbc << std::endl; //visualize
-	// std::cout << "Area of PAC: " << pac << std::endl; //visualize
+	std::cout << "+++++++++++++++++++++++++++++++++" << std::endl; //visualize
+	std::cout << "Total area: " << total_area << std::endl << std::endl; //visualize
+	std::cout << "Area of PAB: " << pab << std::endl; //visualize
+	std::cout << "Area of PBC: " << pbc << std::endl; //visualize
+	std::cout << "Area of PAC: " << pac << std::endl; //visualize
+	std::cout << "========================" << std::endl; //visualize
+	std::cout << "             " << pab + pbc + pac << std::endl; //visualize
+	std::cout << "+++++++++++++++++++++++++++++++++" << std::endl; //visualize
 	if (pab != 0 && pbc != 0 && pac != 0 && total_area == pab + pbc + pac)
 		return (true);
 	else

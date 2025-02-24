@@ -6,7 +6,7 @@
 /*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 18:16:48 by welow             #+#    #+#             */
-/*   Updated: 2025/02/19 17:33:52 by welow            ###   ########.fr       */
+/*   Updated: 2025/02/24 11:39:46 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,14 @@ Fixed::Fixed(const Fixed &src)
 
 /**
  * @brief assignment operator
- * @param src source to copy
+ * @param src source to assign
  * @return *this
  * @note 1. if the source is not same with this object, copy the source to this object
  * @note 2. we change fixed number because fractional number always the same (because constant)
+ * @note 3. "&" in return type is to return the reference of the object itself. this
+ *          avoid the object to be copied ( allow to chain multiple assignment)
 */
-Fixed &Fixed::operator=( Fixed const &src)
+Fixed& Fixed::operator=( Fixed const &src)
 {
 	std::cout << YELLOW_H << "Copy assignment operator called" << RESET << std::endl;
 	if (this != &src)
