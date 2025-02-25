@@ -41,6 +41,15 @@ void display_bot(ScavTrap &bot1, ScavTrap &bot2)
 
 int main(void)
 {
+	{
+		ScavTrap srav1;
+		ScavTrap srav2("Scavvvvvvv");
+		ScavTrap srav3(srav2);
+
+		std::cout << "scavtrap1: " << srav1.getName() << std::endl;
+		std::cout << "scavtrap2: " << srav2.getName() << std::endl;
+		std::cout << "scavtrap3: " << srav3.getName() << std::endl;
+	}
 	//these both create one "Claptrap" constructor each
 	ScavTrap botA("S-1");
 	ScavTrap botB("S-2"); //Claptrap constructor -> Scavtrap constructor

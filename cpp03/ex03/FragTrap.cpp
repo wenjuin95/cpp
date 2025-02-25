@@ -16,7 +16,6 @@ FragTrap::FragTrap(void) : ClapTrap()
 {
     if (CALL == 1)
         std::cout << YELLOW_H << "FragTrap (default constructor) called" << RESET << std::endl;
-    this->_name = "F-DEFAULT";
     this->_hitPoint = 100;
     this->_energyPoint = 100;
     this->_attackDamage = 30;

@@ -16,7 +16,6 @@ ScavTrap::ScavTrap(void) : ClapTrap()
 {
 	if (CALL == 1)
 		std::cout << RED_H << "ScavTrap (default constructor) called" << RESET << std::endl;
-	this->_name = "C-DEFAULT";
 	this->_hitPoint = 100;
 	this->_energyPoint = 50;
 	this->_attackDamage = 20;
@@ -57,6 +56,21 @@ ScavTrap::~ScavTrap(void)
 {
 	if (CALL == 1)
 		std::cout << RED_H << "ScavTrap (destructor) called" << RESET << std::endl;
+}
+
+void ScavTrap::attack(const std::string &target)
+{
+	if ( this->_energyPoint > 0 && this->_hitPoint > 0)
+	{
+		this->_energyPoint--;
+		std::cout << "ScavTrap [" << this->_name << "] attacks [" << target
+				<< "], causing [" << this->_attackDamage
+				<< "] point of damage!" << std::endl;
+	}
+	else if (this->_energyPoint == 0)
+		std::cout <<  "ScavTrap [" << this->_name << "] can't attack because [" << this->_energyPoint << "] energy point" << std::endl;
+	else if (this->_hitPoint == 0)
+		std::cout <<  "ScavTrap [" << this->_name << "] already dead, can't attack" << std::endl;
 }
 
 void ScavTrap::guardGate(void)

@@ -27,8 +27,8 @@
 */
 DiamondTrap::DiamondTrap(void)
     : ClapTrap(),
-    ScavTrap(),
-    FragTrap()
+    FragTrap(),
+    ScavTrap()
 {
     if (CALL == 1)
         std::cout << BLUE_H << "DiamondTrap (default constructor) called" << RESET << std::endl;
@@ -38,14 +38,22 @@ DiamondTrap::DiamondTrap(void)
     this->_attackDamage = FragTrap::_attackDamage;
 }
 
+/**
+ * @brief a constructor
+ * @param name name of object
+ * @note 1. Claptrap name must + "_clap_name" (pdf require)
+*/
 DiamondTrap::DiamondTrap(std::string name)
-    : ClapTrap(name + "_clap_name"),
-    ScavTrap(name),
-    FragTrap(name)
+    : ClapTrap(name),
+    FragTrap(name),
+    ScavTrap(name)
 {
     if (CALL == 1)
+    {
         std::cout << BLUE_H << "DiamondTrap (constructor) called" << RESET << std::endl;
-	this->_name = ClapTrap::_name;
+    }
+    ClapTrap::_name = name + "_clap_name";
+	this->_name = name;
     this->_hitPoint = FragTrap::_hitPoint;
     this->_energyPoint = ScavTrap::_energyPoint;
     this->_attackDamage = FragTrap::_attackDamage;
@@ -53,8 +61,8 @@ DiamondTrap::DiamondTrap(std::string name)
 
 DiamondTrap::DiamondTrap(const DiamondTrap &src)
     : ClapTrap(src),
-    ScavTrap(src),
-    FragTrap(src)
+    FragTrap(src),
+    ScavTrap(src)
 {
     if (CALL == 1)
         std::cout << BLUE_H << "DiamondTrap (copy constructor) called" << RESET << std::endl;

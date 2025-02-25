@@ -58,11 +58,11 @@ int main(void)
 		std::cout << std::endl;
 
 		std::cout << "---------- diamondtrap1 vs diamondtrap2 ---------" << std::endl;
-		diamondtrap1.attack("d-2");
+		diamondtrap1.attack("d-2"); //claptrap::attack will be called
 		display_bot(diamondtrap1, diamondtrap2);
 		std::cout << std::endl;
 
-		diamondtrap2.takeDamage(diamondtrap1.getAttackDamage());
+		diamondtrap2.takeDamage(diamondtrap1.getAttackDamage()); //claptrap::takeDamage will be called
 		display_bot(diamondtrap1, diamondtrap2);
 		std::cout << std::endl;
 

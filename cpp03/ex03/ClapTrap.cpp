@@ -12,7 +12,7 @@
 
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(void) : _name("C-DEFAULT"), _hitPoint(10), _energyPoint(10), _attackDamage(0)
+ClapTrap::ClapTrap(void) : _hitPoint(10), _energyPoint(10), _attackDamage(0)
 {
 	if (CALL == 1)
 		std::cout << "ClapTrap (default constructor) called" << std::endl;

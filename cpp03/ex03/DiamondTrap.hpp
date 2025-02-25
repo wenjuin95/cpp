@@ -20,8 +20,8 @@
 #define RESET "\033[0m"
 
 class DiamondTrap
-	: public ScavTrap,
-	public FragTrap
+	: public FragTrap,
+	public ScavTrap
 {
     private:
         std::string _name;

@@ -12,7 +12,8 @@
 
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap(void) : ClapTrap()
+//initialize the base class constructor to prevent undefined behavior
+ScavTrap::ScavTrap(void)
 {
 	if (CALL == 1)
 		std::cout << RED_H << "ScavTrap (default constructor) called" << RESET << std::endl;
@@ -22,7 +23,7 @@ ScavTrap::ScavTrap(void) : ClapTrap()
 	this->_attackDamage = 20;
 }
 
-ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
+ScavTrap::ScavTrap(std::string name)
 {
 	if (CALL == 1)
 		std::cout << RED_H << "ScavTrap (constructor) called" << RESET << std::endl;
@@ -32,7 +33,7 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 	this->_attackDamage = 20;
 }
 
-ScavTrap::ScavTrap(const ScavTrap &src) : ClapTrap(src)
+ScavTrap::ScavTrap(const ScavTrap &src)
 {
 	if (CALL == 1)
 		std::cout << RED_H << "ScavTrap (copy constructor) called" << RESET << std::endl;
@@ -57,6 +58,21 @@ ScavTrap::~ScavTrap(void)
 {
 	if (CALL == 1)
 		std::cout << RED_H << "ScavTrap (destructor) called" << RESET << std::endl;
+}
+
+void ScavTrap::attack(const std::string &target)
+{
+	if ( this->_energyPoint > 0 && this->_hitPoint > 0)
+	{
+		this->_energyPoint--;
+		std::cout << "ScavTrap [" << this->_name << "] attacks [" << target
+				<< "], causing [" << this->_attackDamage
+				<< "] point of damage!" << std::endl;
+	}
+	else if (this->_energyPoint == 0)
+		std::cout <<  "ScavTrap [" << this->_name << "] can't attack because [" << this->_energyPoint << "] energy point" << std::endl;
+	else if (this->_hitPoint == 0)
+		std::cout <<  "ScavTrap [" << this->_name << "] already dead, can't attack" << std::endl;
 }
 
 void ScavTrap::guardGate(void)
