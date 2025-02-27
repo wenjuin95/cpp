@@ -17,8 +17,10 @@ int main()
     //have memory allocation
     Zombie  *zombie1 = newZombie("Zombie1 (with memory)");
     zombie1->announce();
-    delete zombie1;
+    // delete zombie1;
+
 	std::cout << std::endl;
+
     //no memory allocation
     randomChump("Zombie1 (no memory)");
 

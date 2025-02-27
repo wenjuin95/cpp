@@ -19,20 +19,24 @@
 
 class ClapTrap
 {
-	//change to protected
-	//protected: mean that the member is accessible from the class itself and its derived classes
+	//protected: can be accessed by own class and derived class
+	//static: is to share the same value for all instances of the class
+	//const: is to make the value constant and cannot be changed
 	protected:
 		std::string		_name;
 		unsigned int	_hitPoint;
 		unsigned int	_energyPoint;
 		unsigned int	_attackDamage;
+		static unsigned int const	_ClapTrapHitPoint = 10;
+		static unsigned int const	_ClapTrapEnergyPoint = 10;
+		static unsigned int const	_ClapTrapAttackDamage = 0;
 	public:
 		ClapTrap(void);
 		ClapTrap(std::string name);
 		ClapTrap(const ClapTrap &src);
 		ClapTrap &operator=(const ClapTrap &src);
 		~ClapTrap(void);
-		virtual void	attack(const std::string &target);
+		void	attack(const std::string &target);
 		void	takeDamage(unsigned int amount);
 		void	beRepaired(unsigned int amount);
 		std::string		getName(void) const;

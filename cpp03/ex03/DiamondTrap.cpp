@@ -13,8 +13,8 @@
 #include "DiamondTrap.hpp"
 
 /**
- * 1. DiamondTrap inherits from both ScavTrap and FragTrap.
- * 2. Both ScavTrap and FragTrap inherit from ClapTrap, so two copies of
+ * 1. DiamondTrap inherits from both FragTrap and ScavTrap.
+ * 2. Both FragTrap and ScavTrap inherit from ClapTrap, so two copies of
  *    ClapTrap exist in DiamondTrap.
  * 3. Now, DiamondTrap has two separate _hitPoint variables, one from ScavTrap
  *    and one from FragTrap.
@@ -26,16 +26,12 @@
  * "virtual inheritance" : Only one shared copy of ClapTrap
 */
 DiamondTrap::DiamondTrap(void)
-    : ClapTrap(),
-    FragTrap(),
-    ScavTrap()
+    : ClapTrap("C-default"),
+    FragTrap("F-default"),
+    ScavTrap("S-default")
 {
     if (CALL == 1)
         std::cout << BLUE_H << "DiamondTrap (default constructor) called" << RESET << std::endl;
-    this->_name = "D-default";
-	this->_hitPoint = FragTrap::_hitPoint;
-    this->_energyPoint = ScavTrap::_energyPoint;
-    this->_attackDamage = FragTrap::_attackDamage;
 }
 
 /**
@@ -52,11 +48,11 @@ DiamondTrap::DiamondTrap(std::string name)
     {
         std::cout << BLUE_H << "DiamondTrap (constructor) called" << RESET << std::endl;
     }
-    ClapTrap::_name = name + "_clap_name";
 	this->_name = name;
-    this->_hitPoint = FragTrap::_hitPoint;
-    this->_energyPoint = ScavTrap::_energyPoint;
-    this->_attackDamage = FragTrap::_attackDamage;
+    ClapTrap::_name = name + "_clap_name";
+    this->_hitPoint = FragTrap::_FragTrapHitPoint;
+    this->_energyPoint = ScavTrap::_ScavTrapEnergyPoint;
+    this->_attackDamage = FragTrap::_FragTrapAttackDamage;
 }
 
 DiamondTrap::DiamondTrap(const DiamondTrap &src)

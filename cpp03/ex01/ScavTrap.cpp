@@ -13,17 +13,16 @@
 #include "ScavTrap.hpp"
 
 //initialize the base class constructor to prevent undefined behavior
-ScavTrap::ScavTrap(void)
+ScavTrap::ScavTrap(void) : ClapTrap("S-Default")
 {
 	if (CALL == 1)
 		std::cout << RED_H << "ScavTrap (default constructor) called" << RESET << std::endl;
-	this->_name = "S-DEFAULT";
 	this->_hitPoint = 100;
 	this->_energyPoint = 50;
 	this->_attackDamage = 20;
 }
 
-ScavTrap::ScavTrap(std::string name)
+ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
 	if (CALL == 1)
 		std::cout << RED_H << "ScavTrap (constructor) called" << RESET << std::endl;
@@ -33,7 +32,7 @@ ScavTrap::ScavTrap(std::string name)
 	this->_attackDamage = 20;
 }
 
-ScavTrap::ScavTrap(const ScavTrap &src)
+ScavTrap::ScavTrap(const ScavTrap &src) : ClapTrap(src)
 {
 	if (CALL == 1)
 		std::cout << RED_H << "ScavTrap (copy constructor) called" << RESET << std::endl;

@@ -10,16 +10,21 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRAPTRAP_HPP
-#define FRAPTRAP_HPP
+#ifndef FRAGTRAP_HPP
+#define FRAGTRAP_HPP
 
 #include "ScavTrap.hpp"
 
 #define YELLOW_H "\033[43m"
 #define RESET "\033[0m"
 
+//use virtual to avoid two copies of ClapTrap, so when diamond class inherit, it will not have two copies of ClapTrap
 class FragTrap : virtual public ClapTrap
 {
+    protected:
+        static unsigned int const _FragTrapHitPoint = 100;
+        static unsigned int const _FragTrapEnergyPoint = 100;
+        static unsigned int const _FragTrapAttackDamage = 30;
     public:
         FragTrap(void);
         FragTrap(std::string name);

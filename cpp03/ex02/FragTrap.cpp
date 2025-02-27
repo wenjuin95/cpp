@@ -12,11 +12,10 @@
 
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap(void) : ClapTrap()
+FragTrap::FragTrap(void) : ClapTrap("F-DEFAULT")
 {
     if (CALL == 1)
         std::cout << YELLOW_H << "FragTrap (default constructor) called" << RESET << std::endl;
-    this->_name = "F-DEFAULT";
     this->_hitPoint = 100;
     this->_energyPoint = 100;
     this->_attackDamage = 30;

@@ -8,16 +8,16 @@
  * method for accessing the private variable: use "set" and "get" method
  * 
  * 1. set method: used to set the value of the private variable
- * SYNTAX: <data_type> set_<variable_name>(<data_type> <parameter_name>) { <class_name> = <parameter_name>; }
- * EXAMPLE: void set_name(std::string name) { this->name = name; }
+ * SYNTAX: <void> set_<variable_name>(<data_type> <parameter_name>) { <class_name> = <parameter_name>; }
+ * EXAMPLE: void set_name(std::string name) { this->_name = name; }
  * 
  * 2. get method: used to get the value of the private variable
  * SYNTAX: <data_type> get_<variable_name>(void) { return <class_name>; }
- * EXAMPLE: std::string get_name(void) { return this->name; }
+ * EXAMPLE: std::string get_name(void) { return this->_name; }
  */
 // class student { //with private
 // 	private:
-// 		std::string name;
+// 		std::string _name;
 // 		std::string gender;
 // 		int age;
 

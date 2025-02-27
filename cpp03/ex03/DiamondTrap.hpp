@@ -19,9 +19,7 @@
 #define BLUE_H "\033[44m"
 #define RESET "\033[0m"
 
-class DiamondTrap
-	: public FragTrap,
-	public ScavTrap
+class DiamondTrap : public FragTrap, public ScavTrap
 {
     private:
         std::string _name;
@@ -32,6 +30,9 @@ class DiamondTrap
         DiamondTrap &operator=(const DiamondTrap &src);
         ~DiamondTrap(void);
         using   ScavTrap::attack;
+        using   FragTrap::_hitPoint;
+        using   ScavTrap::_energyPoint;
+        using   FragTrap::_attackDamage;
         void    whoAmI(void);
 };
 

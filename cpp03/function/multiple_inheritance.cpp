@@ -105,15 +105,22 @@
 /********************************************************************************************************/
 class A
 {
+	protected:
+		int a_nb;
 	public:
-	    A(int x)  { std::cout << "A::A called" << std::endl;   }
+	    A(int x) : a_nb(10)
+		{ 
+			std::cout << "A::A called" << std::endl;   
+		}
 		A() { std::cout << "A::A default called" << std::endl; }
 };
 
 class B : virtual public A
 {
+	private:
+		int	b_nb;
 	public:
-	    B(int x) : A(x)
+	    B(int x) : A(x), b_nb(20)
 		{
 	       std::cout<<"B::B called"<< std::endl;
 	    }
@@ -121,8 +128,10 @@ class B : virtual public A
 
 class C : virtual public A
 {
+	private:
+		int c_nb;
 	public:
-	    C(int x) : A(x)
+	    C(int x) : A(x), c_nb(30)
 		{
 	        std::cout<<"C::C called"<< std::endl;
 	    }
@@ -130,9 +139,12 @@ class C : virtual public A
 
 class D : public B, public C
 {
+	private:
+		int d_nb;
 	public:
 	    D(int x):C(x), B(x)
 		{
+			this->d_nb = C::c_nb;
 	        std::cout<<"D::D called"<< std::endl;
 	    }
 };

@@ -12,23 +12,22 @@
 
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap(void) : ClapTrap()
+ScavTrap::ScavTrap(void) : ClapTrap("S-Default")
 {
 	if (CALL == 1)
 		std::cout << RED_H << "ScavTrap (default constructor) called" << RESET << std::endl;
-	this->_hitPoint = 100;
-	this->_energyPoint = 50;
-	this->_attackDamage = 20;
+	this->_hitPoint = _ScavTrapHitPoint;
+	this->_energyPoint = _ScavTrapEnergyPoint;
+	this->_attackDamage = _ScavTrapAttackDamage;
 }
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
 	if (CALL == 1)
 		std::cout << RED_H << "ScavTrap (constructor) called" << RESET << std::endl;
-	this->_name = name;
-	this->_hitPoint = 100;
-	this->_energyPoint = 50;
-	this->_attackDamage = 20;
+	this->_hitPoint = _ScavTrapHitPoint;
+	this->_energyPoint = _ScavTrapEnergyPoint;
+	this->_attackDamage = _ScavTrapAttackDamage;
 }
 
 ScavTrap::ScavTrap(const ScavTrap &src) : ClapTrap(src)
