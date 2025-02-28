@@ -6,7 +6,7 @@
 /*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 15:58:45 by welow             #+#    #+#             */
-/*   Updated: 2025/02/28 13:41:48 by welow            ###   ########.fr       */
+/*   Updated: 2025/02/28 14:09:20 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,7 @@
 #define RED "\033[31m"
 #define CYAN "\033[36m"
 
-void display_bot(DiamondTrap &bot1, DiamondTrap &bot2)
-{
-	std::cout << CYAN "Name: (" RESET << bot1.getName() << CYAN ") " RESET
-		GREEN "hit_point (" RESET << bot1.getHitPoint() << GREEN ") " RESET
-		BLUE "energy_point(" RESET << bot1.getEnergyPoint() << BLUE ") " RESET
-		RED "attack_damage(" RESET << bot1.getAttackDamage() << RED ")" RESET << std::endl;
-
-	std::cout << CYAN "Name: (" RESET << bot2.getName() << CYAN ") " RESET
-		GREEN "hit_point (" RESET << bot2.getHitPoint() << GREEN ") " RESET
-		BLUE "energy_point(" RESET << bot2.getEnergyPoint() << BLUE ") " RESET
-		RED "attack_damage(" RESET << bot2.getAttackDamage() << RED ")" RESET << std::endl;
-}
+void display_bot(DiamondTrap &bot1, DiamondTrap &bot2);
 
 int main(void)
 {
@@ -58,4 +47,17 @@ int main(void)
 		diamondtrap2.whoAmI();
 	}
 	std::cout << "=============================================================================" << std::endl << std::endl;
+}
+
+void display_bot(DiamondTrap &bot1, DiamondTrap &bot2)
+{
+	std::cout << CYAN "Name: (" RESET << bot1.getName() << CYAN ") " RESET
+		GREEN "hit_point (" RESET << bot1.getHitPoint() << GREEN ") " RESET
+		BLUE "energy_point(" RESET << bot1.getEnergyPoint() << BLUE ") " RESET
+		RED "attack_damage(" RESET << bot1.getAttackDamage() << RED ")" RESET << std::endl;
+
+	std::cout << CYAN "Name: (" RESET << bot2.getName() << CYAN ") " RESET
+		GREEN "hit_point (" RESET << bot2.getHitPoint() << GREEN ") " RESET
+		BLUE "energy_point(" RESET << bot2.getEnergyPoint() << BLUE ") " RESET
+		RED "attack_damage(" RESET << bot2.getAttackDamage() << RED ")" RESET << std::endl;
 }
