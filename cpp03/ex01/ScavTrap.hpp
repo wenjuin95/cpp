@@ -6,7 +6,7 @@
 /*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 15:40:46 by welow             #+#    #+#             */
-/*   Updated: 2025/02/07 11:17:23 by welow            ###   ########.fr       */
+/*   Updated: 2025/02/27 17:27:41 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ class ScavTrap : public ClapTrap
 		ScavTrap(const ScavTrap &src);
 		ScavTrap &operator=(const ScavTrap &src);
 		~ScavTrap(void);
+
 		void attack(std::string const &target);
 		void guardGate(void);
 };

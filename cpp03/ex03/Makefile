@@ -2,9 +2,9 @@ NAME = a.out
 
 CC = c++
 
-CFLAGS = -Wall -Wextra -Werror -Wno-shadow -std=c++98 -g
+CFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 
-D_CFLAG = -Wall -Wextra -Werror -Wno-shadow -std=c++98 -g -DCALL=1
+D_CFLAG = -Wall -Wextra -Werror -std=c++98 -g -DCALL=1
 
 SRC = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp
 

@@ -6,17 +6,18 @@
 /*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 04:36:46 by welow             #+#    #+#             */
-/*   Updated: 2025/02/07 13:55:18 by welow            ###   ########.fr       */
+/*   Updated: 2025/02/28 13:03:16 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap(void) : ClapTrap("F-Default")
+FragTrap::FragTrap(void) : ClapTrap()
 {
     if (CALL == 1)
-        std::cout << YELLOW_H << "FragTrap (default constructor) called" << RESET << std::endl;
-    this->_hitPoint = _FragTrapHitPoint;
+		std::cout << YELLOW_H << "FragTrap (default constructor) called" << RESET << std::endl;
+    this->_name = "F-DEFAULT";
+	this->_hitPoint = _FragTrapHitPoint;
     this->_energyPoint = _FragTrapEnergyPoint;
     this->_attackDamage = _FragTrapAttackDamage;
 }

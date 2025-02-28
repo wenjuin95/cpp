@@ -6,53 +6,35 @@
 /*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 15:58:45 by welow             #+#    #+#             */
-/*   Updated: 2025/02/07 14:12:53 by welow            ###   ########.fr       */
+/*   Updated: 2025/02/28 13:15:32 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
 
-#include <iomanip>
 #define GREEN "\033[32m"
 #define BLUE "\033[34m"
 #define RED "\033[31m"
 #define CYAN "\033[36m"
 
-void display_bot(FragTrap &bot1, FragTrap &bot2)
-{
-    std::cout << std::left << CYAN << "Name: " << RESET << bot1.getName()
-              << std::setw(26) << CYAN << "Name: " << RESET << bot2.getName() << std::endl;
-
-    std::cout << std::left << GREEN << "Hit Point: " << RESET << bot1.getHitPoint();
-	if (bot1.getHitPoint() >= 10)
-		std::cout << std::setw(21) << GREEN << "Hit Point: " << RESET << bot2.getHitPoint() << std::endl;
-	else
-		std::cout << std::setw(22) << GREEN << "Hit Point: " << RESET << bot2.getHitPoint() << std::endl;
-
-    std::cout << std::left << BLUE << "Energy Point: " << RESET << bot1.getEnergyPoint();
-	if (bot1.getEnergyPoint() >= 10)
-		std::cout << std::setw(18) << BLUE << "Energy Point: " << RESET << bot2.getEnergyPoint() << std::endl;
-	else
-		std::cout << std::setw(19) << BLUE << "Energy Point: " << RESET << bot2.getEnergyPoint() << std::endl;
-
-    std::cout << std::left << RED << "Attack Damage: " << RESET << bot1.getAttackDamage()
-              << std::setw(18) << RED << "Attack Damage: " << RESET << bot2.getAttackDamage() << std::endl;
-}
+void display_bot(FragTrap &bot1, FragTrap &bot2);
+void display_3bot(ClapTrap &bot1, ScavTrap &bot2, FragTrap &bot3);
 
 int main(void)
 {
 	FragTrap botA("F-1");
 	FragTrap botB("F-2");
 
+	std::cout << "=============================================================================" << std::endl << std::endl;
 	{
 		FragTrap fragtrap(botA);
 		FragTrap fragtrap2(botB);
 
-		std::cout << "FRAGTRAP1                     FRAGTRAP2" << std::endl;
+		std::cout << "---------- DISPLAY ----------" << std::endl << std::endl;
 		display_bot(fragtrap, fragtrap2);
 		std::cout << std::endl;
 
-		std::cout << "---------- start ----------" << std::endl;
+		std::cout << "---------- start ----------" << std::endl << std::endl;
 		fragtrap.attack(fragtrap2.getName());
 		display_bot(fragtrap, fragtrap2);
 		std::cout << std::endl;
@@ -65,8 +47,48 @@ int main(void)
 		display_bot(fragtrap, fragtrap2);
 		std::cout << std::endl;
 
-		std::cout << "---------- fragtrap ability ----------" << std::endl;
+		std::cout << "---------- fragtrap ability ----------" << std::endl << std::endl;
 		fragtrap.highFiveGuys();
 	}
 	std::cout << "=============================================================================" << std::endl << std::endl;
+	{
+		ClapTrap claptrap("Claptrap");
+		ScavTrap scavtrap("Scavtrap");
+		FragTrap fragtrap("Fragtrap");
+
+		std::cout << "---------- DISPLAY ----------" << std::endl << std::endl;
+		display_3bot(claptrap, scavtrap, fragtrap);
+	}
+	std::cout << "=============================================================================" << std::endl << std::endl;
+}
+
+void display_bot(FragTrap &bot1, FragTrap &bot2)
+{
+	std::cout << CYAN "Name: (" RESET << bot1.getName() << CYAN ") " RESET
+		GREEN "hit_point (" RESET << bot1.getHitPoint() << GREEN ") " RESET
+		BLUE "energy_point(" RESET << bot1.getEnergyPoint() << BLUE ") " RESET
+		RED "attack_damage(" RESET << bot1.getAttackDamage() << RED ")" RESET << std::endl;
+
+	std::cout << CYAN "Name: (" RESET << bot2.getName() << CYAN ") " RESET
+		GREEN "hit_point (" RESET << bot2.getHitPoint() << GREEN ") " RESET
+		BLUE "energy_point(" RESET << bot2.getEnergyPoint() << BLUE ") " RESET
+		RED "attack_damage(" RESET << bot2.getAttackDamage() << RED ")" RESET << std::endl;
+}
+
+void display_3bot(ClapTrap &bot1, ScavTrap &bot2, FragTrap &bot3)
+{
+	std::cout << CYAN "Name: (" RESET << bot1.getName() << CYAN ") " RESET
+	GREEN "hit_point (" RESET << bot1.getHitPoint() << GREEN ") " RESET
+	BLUE "energy_point(" RESET << bot1.getEnergyPoint() << BLUE ") " RESET
+	RED "attack_damage(" RESET << bot1.getAttackDamage() << RED ")" RESET << std::endl;
+
+	std::cout << CYAN "Name: (" RESET << bot2.getName() << CYAN ") " RESET
+	GREEN "hit_point (" RESET << bot2.getHitPoint() << GREEN ") " RESET
+	BLUE "energy_point(" RESET << bot2.getEnergyPoint() << BLUE ") " RESET
+	RED "attack_damage(" RESET << bot2.getAttackDamage() << RED ")" RESET << std::endl;
+
+	std::cout << CYAN "Name: (" RESET << bot3.getName() << CYAN ") " RESET
+	GREEN "hit_point (" RESET << bot3.getHitPoint() << GREEN ") " RESET
+	BLUE "energy_point(" RESET << bot3.getEnergyPoint() << BLUE ") " RESET
+	RED "attack_damage(" RESET << bot3.getAttackDamage() << RED ")" RESET << std::endl;
 }

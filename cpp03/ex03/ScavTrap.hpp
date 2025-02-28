@@ -6,7 +6,7 @@
 /*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 15:40:46 by welow             #+#    #+#             */
-/*   Updated: 2025/02/07 14:19:34 by welow            ###   ########.fr       */
+/*   Updated: 2025/02/28 13:25:34 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@
 #define RED_H "\033[41m"
 #define RESET "\033[0m"
 
-//use virtual to avoid two copies of ClapTrap, so when diamond class inherit, it will not have two copies of ClapTrap
+/**
+ * @note 1. virtual: make sure only one copy of ClapTrap (either ScavTrap or FragTrap) is inherited
+*/
 class ScavTrap : virtual public ClapTrap
 {
 	protected:

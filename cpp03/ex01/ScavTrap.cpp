@@ -6,17 +6,22 @@
 /*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 15:51:23 by welow             #+#    #+#             */
-/*   Updated: 2025/02/07 11:19:25 by welow            ###   ########.fr       */
+/*   Updated: 2025/02/28 13:00:08 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
-//initialize the base class constructor to prevent undefined behavior
-ScavTrap::ScavTrap(void) : ClapTrap("S-Default")
+/**
+ * 1. initialize the base class if the derived class has base class constructor
+ * 2. it don't initialze the followed base class it will call the default constructor of the base class.
+ *    that will cause error if you default constructor is not defined / not same design with constructor
+*/
+ScavTrap::ScavTrap(void) : ClapTrap()
 {
 	if (CALL == 1)
 		std::cout << RED_H << "ScavTrap (default constructor) called" << RESET << std::endl;
+	this->_name = "S-DEFAULT";
 	this->_hitPoint = 100;
 	this->_energyPoint = 50;
 	this->_attackDamage = 20;

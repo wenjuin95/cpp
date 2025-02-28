@@ -6,7 +6,7 @@
 /*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 07:37:00 by welow             #+#    #+#             */
-/*   Updated: 2025/02/24 16:49:51 by welow            ###   ########.fr       */
+/*   Updated: 2025/02/28 13:36:36 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,8 @@ class DiamondTrap : public FragTrap, public ScavTrap
         DiamondTrap(const DiamondTrap &src);
         DiamondTrap &operator=(const DiamondTrap &src);
         ~DiamondTrap(void);
-        using   ScavTrap::attack;
-        using   FragTrap::_hitPoint;
-        using   ScavTrap::_energyPoint;
-        using   FragTrap::_attackDamage;
+
+		using   ScavTrap::attack;
         void    whoAmI(void);
 };
 

@@ -6,16 +6,17 @@
 /*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 15:51:23 by welow             #+#    #+#             */
-/*   Updated: 2025/02/07 13:10:38 by welow            ###   ########.fr       */
+/*   Updated: 2025/02/28 13:03:31 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap(void) : ClapTrap("S-Default")
+ScavTrap::ScavTrap(void) : ClapTrap()
 {
 	if (CALL == 1)
 		std::cout << RED_H << "ScavTrap (default constructor) called" << RESET << std::endl;
+	this->_name = "S-DEFAULT";
 	this->_hitPoint = _ScavTrapHitPoint;
 	this->_energyPoint = _ScavTrapEnergyPoint;
 	this->_attackDamage = _ScavTrapAttackDamage;
