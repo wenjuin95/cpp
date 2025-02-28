@@ -6,7 +6,7 @@
 /*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 04:28:37 by welow             #+#    #+#             */
-/*   Updated: 2025/02/07 13:59:25 by welow            ###   ########.fr       */
+/*   Updated: 2025/02/28 13:56:04 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,9 @@ class FragTrap : public ClapTrap
         FragTrap(void);
         FragTrap(std::string name);
         FragTrap(const FragTrap &src);
-        FragTrap    &operator=(const FragTrap &src);
+        FragTrap &operator=(const FragTrap &src);
         ~FragTrap(void);
+
         void    highFiveGuys(void);
 };
 

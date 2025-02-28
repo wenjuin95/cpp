@@ -6,7 +6,7 @@
 /*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:27:47 by welow             #+#    #+#             */
-/*   Updated: 2025/02/27 17:27:23 by welow            ###   ########.fr       */
+/*   Updated: 2025/02/28 13:56:32 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@
 # define CALL 0
 # endif
 
+/**
+ * 	private vs protected
+ * 1. private: only able to access within the class, can't access by derived class
+ * 2. protected: able to access within the class and also able to access by derived class
+*/
 class ClapTrap
 {
 	private:
