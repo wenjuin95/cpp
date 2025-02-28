@@ -6,7 +6,7 @@
 /*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 20:29:23 by welow             #+#    #+#             */
-/*   Updated: 2025/02/07 20:34:26 by welow            ###   ########.fr       */
+/*   Updated: 2025/02/28 20:59:10 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ class Cat : public Animal
 		Cat(const Cat &src);
 		Cat &operator=(const Cat &src);
 		~Cat(void);
+
 		void makeSound(void) const;
 };
 

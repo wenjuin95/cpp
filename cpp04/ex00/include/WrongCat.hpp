@@ -6,7 +6,7 @@
 /*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 20:35:51 by welow             #+#    #+#             */
-/*   Updated: 2025/02/07 20:40:19 by welow            ###   ########.fr       */
+/*   Updated: 2025/02/28 21:00:00 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ class WrongCat : public WrongAnimal
 		WrongCat(const WrongCat &src);
 		WrongCat &operator=(const WrongCat &src);
 		~WrongCat(void);
+
 		void makeSound(void) const;
 };
 

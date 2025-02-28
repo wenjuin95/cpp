@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   WrongCat.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: welow <welow@student.42kl.edu.my>          #+#  +:+       +#+        */
+/*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-02-08 11:18:53 by welow             #+#    #+#             */
-/*   Updated: 2025-02-08 11:18:53 by welow            ###   ########.fr       */
+/*   Created: 2025/02/08 11:18:53 by welow             #+#    #+#             */
+/*   Updated: 2025/02/28 21:01:59 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 WrongCat::WrongCat(void): WrongAnimal()
 {
-    if (CALL == 1) 
+    if (CALL == 1)
         std::cout << PURPLE_H << "WrongCat (default constructor) called" << RESET << std::endl;
     this->_type = "WrongCat";
 }
@@ -50,5 +50,5 @@ WrongCat::~WrongCat(void)
 
 void WrongCat::makeSound(void) const
 {
-	std::cout << this->_type << ": Meow" << std::endl;
+	std::cout << this->_type << ": meow" << std::endl;
 }

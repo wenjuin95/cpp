@@ -6,7 +6,7 @@
 /*   By: welow <welow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 20:40:24 by welow             #+#    #+#             */
-/*   Updated: 2025/02/07 20:54:58 by welow            ###   ########.fr       */
+/*   Updated: 2025/02/28 21:01:30 by welow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,5 @@ std::string Animal::getType(void) const
 
 void Animal::makeSound(void) const
 {
-	std::cout << this->_type << ": no sound" << std::endl;
+	std::cout << this->_type << ": * no sound *" << std::endl;
 }
